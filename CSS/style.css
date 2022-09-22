@@ -1,0 +1,39 @@
+/* HEADER de la page index.html */
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 42px;
+}
+
+header img {
+    /* Logo */
+    height: 50px;
+    width: auto;
+}
+
+header h1 {
+    /* Titre */
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2.25em;
+    color: #D04F4F;
+}
+
+header input {
+    /* barre de recherche */
+    Width : 1240px;
+    Height : 69px;
+    background: #E7E7E7;
+    border-color: #FFF;
+    border-radius: 5px;
+    
+    /* placeholder */
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.125em;
+}

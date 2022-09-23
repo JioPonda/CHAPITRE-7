@@ -1,3 +1,8 @@
+/* BODY */
+* {
+ font-family: 'Lato';
+}
+
 /* HEADER de la page index.html */
 
 header {
@@ -25,15 +30,69 @@ header h1 {
 
 header input {
     /* barre de recherche */
-    Width : 1240px;
+    Width : 80vw;
     Height : 69px;
     background: #E7E7E7;
     border-color: #FFF;
     border-radius: 5px;
+    margin: 20px 0 0 0vw;
     
     /* placeholder */
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 400;
     font-size: 1.125em;
 }
+
+/* NAVBAR */
+
+.search-zone {
+    display: flex;
+    flex-direction: row;
+    margin: 50px 0 0 9vw;
+}
+
+.select-buttons {
+    margin: 0 0 0 1vw;
+}
+
+.ingredient {
+    /* aspect */
+    height: 69px;
+    width: clamp(5vw ,10vw,15vw) ;
+    background-color: #3282F7;
+    border-radius: 5px;
+    border-color: #3282F7;
+    /* texte */
+    font-size: 1.125em;
+    padding: 5%;
+    color: #FFF;
+}
+
+.appareils {
+    /* aspect */
+    height: 69px;
+    width: 10vw;
+    background-color: #68D9A4;
+    border-color: #68D9A4;
+    border-radius: 5px;
+    /* texte */
+    font-size: 1.125em;
+    padding: 5%;
+    color: #FFF;
+}
+
+.ustensiles {
+    /* aspect */
+    height: 69px;
+    width: 10vw;
+    background-color: #ED6454;
+    border-color: #ED6454;
+    border-radius: 5px;
+    /* texte */
+    font-size: 1.125em;
+    padding: 5%;
+    color: #FFF;
+}
+
+/* CARD ZONE */
+

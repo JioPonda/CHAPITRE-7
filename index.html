@@ -10,18 +10,45 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https : //fonts.googleapis.com/css2?family=DM+Sans & display =famille= Lato:wght@400;700 & swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/style.css">
     <title>Les petits plats</title>
 </head>
 <body>
+    <!-- logo et barre de recherche -->
     <header>
         <img src="assets/LOGO.png" alt="Logo du site 'Les petits plats'">
         <h1>Les petits plats</h1>
         <input id="searchbar" type="text" name="search" placeholder="Rechercher une recette">
     </header>
     <main>
+        <!-- Navbar -->
+        <nav>
+            <div class="search-zone">
+                <div class="select-buttons">
+                    <select class="ingredient" name="ingredients" id="ingredient">
+                        <option value="ingredients">Ingredients</option>
+                    </select>
+                </div>
+                <div class="select-buttons">
+                    <select class="appareils" name="appareils" id="appareils">
+                        <option value="appareils">Appareils</option>
+                    </select>
+                </div>
+                <div class="select-buttons">
+                    <select class="ustensiles" name="ustensiles" id="ustensiles">
+                        <option value="ustensiles">Ustensiles</option>
+                    </select>
+                </div>
+            </div>
+        </nav>
+        <!-- Zone des recipes -->
+        <div class="container">
 
+        </div>
     </main>
+    <script src="JS/page_element.js"></script>
 </body>
 </html>

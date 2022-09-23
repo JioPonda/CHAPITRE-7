@@ -2,7 +2,7 @@
 
 /** ---------- FETCH DATA pour récupérer les infos des photographes du fichier JSON ---------- */
 async function getRecipes() {
-    await fetch("JS/recipes.js")
+    await fetch("JS/recipes.json")
       .then((res) => res.json())
       .then((data) => (recipes = data.recipes));
     return {recipes: [...recipes],};
@@ -15,7 +15,7 @@ function recipesFactory(data) {
   const {id,name,servings,ingredients,time,description, appliance , ustensils }= data;
   
   console.log(data);
-  const clock = `assets/clock.png`;
+  const clock = "assets/clock.png";
   
   function getRecipesCardDOM() {
     /** Squelette de la card */ 
@@ -38,10 +38,10 @@ function recipesFactory(data) {
     const cardTime = document.createElement("p");
     cardTime.setAttribute("class", "card-time");
     cardTime.textContent = time;
-    const cardIngredient = ingredients.forEach(ingredients => {
+    let cardIngredient = ingredients.forEach(ingredients => {
       const ingredientArray = document.createElement("p");
       ingredientArray.setAttribute("class" , "card-ingredient");
-      ingredientArray.textContent = [...ingredients];
+      ingredientArray.textContent = ingredients;
     });
     const cardDescription = document.createElement("p");
     cardDescription.setAttribute("class" , "card-description");

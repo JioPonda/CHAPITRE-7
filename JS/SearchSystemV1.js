@@ -8,9 +8,9 @@ async function getRecipes() {
     return {recipes: [...recipes],};
   }
 
-/*********************************************  ALGORYTHME DE RECHERCHE  *********************************************************/
+/*********************************************  ALGORYTHME DE RECHERCHE V1 *********************************************************/
 
-function Search (data) {
+function search (data) {
     /** Données du JSON*/ 
     const {ingredients,appliance,ustensils}= data;
     
@@ -62,4 +62,14 @@ function Search (data) {
     return {ingredients,appliance , ustensils , ingredientSearch , appareilsSearch, ustensilsSearch}
 }
 
-Search();
+/********************************************* INITIALISATION *********************************************************/
+
+/** Initialisation des données des recipes pour la recherche */
+async function initSearch () {
+    const { recipes } = await getRecipes(); /** Récupére les données des récipes avant recherche*/
+    search(recipes); /** Apelle de la fonction de rercherche des données des récipes */
+}
+
+initSearch();
+
+

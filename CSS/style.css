@@ -153,6 +153,10 @@ header input {
     font-size: 1.125em;    
 }
 
+.card-ingredient {
+    font-size: 0.75em;
+}
+
 /* card infos right */
 
 .div-description {

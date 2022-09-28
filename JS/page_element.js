@@ -14,7 +14,7 @@ async function getRecipes() {
 function recipesFactory(data) {
   const {id,name,servings,ingredients,time,description, appliance , ustensils }= data;
   
-  console.log(data);
+  // console.log(data);
   const clock = "assets/clock.png";
   
   function getRecipesCardDOM() {
@@ -41,11 +41,20 @@ function recipesFactory(data) {
     const cardTime = document.createElement("p");
     cardTime.setAttribute("class", "card-time");
     cardTime.textContent = time + "min";
-    let cardIngredient = ingredients.forEach(ingredients => {
-      const ingredientArray = document.createElement("p");
-      ingredientArray.setAttribute("class" , "card-ingredient");
-      ingredientArray.textContent = ingredients;
-    });
+    const cardIngredient = document.createElement("p"); 
+    if ( ingredients.unit === 'undefined') {
+      for ( let i = 0 ; i < ingredients.length ; i++) {
+      cardIngredient.setAttribute("class" , "card-ingredient");
+      cardIngredient.textContent = cardIngredient.textContent + ingredients[i].ingredient + ":" + ingredients[i].quantity;
+      // console.log(ingredients);
+      };
+    } else {
+      for ( let i = 0 ; i < ingredients.length ; i++) {
+      cardIngredient.setAttribute("class" , "card-ingredient");
+      cardIngredient.textContent = cardIngredient.textContent + ingredients[i].ingredient + ":" + ingredients[i].quantity + ingredients[i].unit ;
+      // console.log(ingredients);
+      };
+    };
     const cardDescription = document.createElement("p");
     cardDescription.setAttribute("class" , "card-description");
     cardDescription.textContent = description;
@@ -54,7 +63,7 @@ function recipesFactory(data) {
     divCard.appendChild(divCardInfos);
     divCardInfos.appendChild(divRecipes);
     divRecipes.appendChild(cardTitle);
-    // divRecipes.appendChild(cardIngredient);
+    divRecipes.appendChild(cardIngredient);
     divCardInfos.appendChild(divDescription);
     divTime.appendChild(cardClock);
     divTime.appendChild(cardTime);

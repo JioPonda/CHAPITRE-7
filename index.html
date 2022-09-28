@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/Favicon.png">
+    <link rel="stylesheet" href="CSS/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
@@ -16,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <title>Les petits plats</title>
 </head>
 <body>
@@ -31,19 +32,19 @@
         <nav>
             <div class="search-zone">
                 <div class="select-buttons">
-                    <select class="ingredient" name="ingredients" id="ingredient">
-                        <option value="ingredients">Ingredients</option>
-                    </select>
+                    <input id="ingredient" type="text" name="ingredients" placeholder="Ingredient">
+                    <FontAwesomeIcon icon="fa-solid fa-chevron-up" class="chevron-ingredient"/>
+                    <div id="suggestions-ingredient"></div>
                 </div>
                 <div class="select-buttons">
-                    <select class="appareils" name="appareils" id="appareils">
-                        <option value="appareils">Appareils</option>
-                    </select>
+                    <input id="appareils" type="text" name="appareils" placeholder="Appareils">
+                    <FontAwesomeIcon icon="fa-solid fa-chevron-up" class="chevron-appareils"/>
+                    <div id="suggestions-appareils"></div>
                 </div>
                 <div class="select-buttons">
-                    <select class="ustensiles" name="ustensiles" id="ustensiles">
-                        <option value="ustensiles">Ustensiles</option>
-                    </select>
+                    <input id="ustensiles" type="text" name="ustensiles" placeholder="Ustensiles">
+                    <FontAwesomeIcon icon="fa-solid fa-chevron-up" class="chevron-ustensiles"/>
+                    <div id="suggestions-ustensiles"></div>
                 </div>
             </div>
         </nav>
@@ -53,5 +54,6 @@
         </section>
     </main>
     <script src="JS/page_element.js"></script>
+    <script src="JS/SearchSystemV1.js"></script>
 </body>
 </html>

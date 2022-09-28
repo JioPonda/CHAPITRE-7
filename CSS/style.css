@@ -48,14 +48,14 @@ header input {
 .search-zone {
     display: flex;
     flex-direction: row;
-    margin: 50px 0 0 9vw;
+    margin: 50px 0 0 4vw;
 }
 
 .select-buttons {
-    margin: 0 0 0 1vw;
+    margin: 0 0 0 5vw;
 }
 
-.ingredient {
+#ingredient {
     /* aspect */
     height: 69px;
     width: clamp(5vw ,10vw,15vw) ;
@@ -63,12 +63,17 @@ header input {
     border-radius: 5px;
     border-color: #3282F7;
     /* texte */
+    color: #FFF;
     font-size: 1.125em;
     padding: 5%;
+    outline: 0;
+}
+
+#ingredient::placeholder {
     color: #FFF;
 }
 
-.appareils {
+#appareils {
     /* aspect */
     height: 69px;
     width: 10vw;
@@ -79,9 +84,14 @@ header input {
     font-size: 1.125em;
     padding: 5%;
     color: #FFF;
+    outline: 0;
 }
 
-.ustensiles {
+#appareils::placeholder {
+    color: #FFF;
+}
+
+#ustensiles {
     /* aspect */
     height: 69px;
     width: 10vw;
@@ -92,8 +102,12 @@ header input {
     font-size: 1.125em;
     padding: 5%;
     color: #FFF;
+    outline: 0;
 }
 
+#ustensiles::placeholder {
+    color: #FFF;
+}
 /* CARD ZONE */
 
 .container {

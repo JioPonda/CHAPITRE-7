@@ -42,17 +42,17 @@ function recipesFactory(data) {
     cardTime.setAttribute("class", "card-time");
     cardTime.textContent = time + "min";
     const cardIngredient = document.createElement("p"); 
-    const BR = document.createElement("br")
+    const breakLine = document.createElement('br');
     if ( ingredients.unit === 'undefined') {
       for ( let i = 0 ; i < ingredients.length ; i++) {
       cardIngredient.setAttribute("class" , "card-ingredient");
-      cardIngredient.textContent = cardIngredient.textContent + ingredients[i].ingredient + ":" + ingredients[i].quantity + BR;
+      cardIngredient.textContent = cardIngredient.textContent + ingredients[i].ingredient + ":" + ingredients[i].quantity + breakLine;
       // console.log(ingredients);
       };
     } else {
       for ( let i = 0 ; i < ingredients.length ; i++) {
       cardIngredient.setAttribute("class" , "card-ingredient");
-      cardIngredient.textContent = cardIngredient.textContent + ingredients[i].ingredient + ":" + ingredients[i].quantity + ingredients[i].unit + BR;
+      cardIngredient.textContent = cardIngredient.textContent + ingredients[i].ingredient + ":" + ingredients[i].quantity + ingredients[i].unit + breakLine;
       // console.log(ingredients);
       };
     };

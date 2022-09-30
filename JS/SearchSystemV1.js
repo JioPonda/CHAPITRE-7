@@ -15,14 +15,14 @@ function search (data) {
     const {ingredients,appliance,ustensils}= data;
     
     /** Element du DOM*/ 
-    const searchIgredient = document.getElementById('ingredient');
+    const searchIngredient = document.getElementById('ingredient');
     const searchAppareils = document.getElementById('appareils');
     const searchUstensiles = document.getElementById('ustensiles');
 
     /** Recherche des Ingrédients*/ 
     function ingredientSearch () {
         searchIngredient.addEventListener('keyup', function() { /** On écoute la barre de recherche lors de la saisie du texte */
-            const inputIngredient = searchIgredient.value; /** on récupére la valeur saisie*/ 
+            const inputIngredient = searchIngredient.value; /** on récupére la valeur saisie*/ 
             console.log(inputIngredient); /** on récupére la valeur dans la console */
 
             const resultIngredient = data.filter(item => item.ingredients.includes(inputIngredient)); /** on filtre les ingrédients et pour chaque ingrédients incluant
@@ -66,7 +66,7 @@ function search (data) {
 
 /** Initialisation des données des recipes pour la recherche */
 async function initSearch () {
-    const { recipes } = await getRecipes(); /** Récupére les données des récipes avant recherche*/
+    const {recipes} = await getRecipes(); /** Récupére les données des récipes avant recherche*/
     search(recipes); /** Apelle de la fonction de rercherche des données des récipes */
 }
 

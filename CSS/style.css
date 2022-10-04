@@ -73,6 +73,23 @@ header input {
     color: #FFF;
 }
 
+#suggestions-ingredient {
+    position: absolute;
+    height: 350px;
+    display: none;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #3282F7;
+    overflow: hidden;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+#suggestions-ingredient a {
+    color: #FFF;
+    padding: 5%;
+}
+
 #appareils {
     /* aspect */
     height: 69px;
@@ -91,6 +108,25 @@ header input {
     color: #FFF;
 }
 
+#suggestions-appareils {
+    position: absolute;
+    height: 350px;
+    display: none;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #68D9A4;
+    overflow: hidden;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+#suggestions-appareils a {
+    color: #FFF;
+    margin-top: 15px;
+    padding: 5%;
+}
+
+
 #ustensiles {
     /* aspect */
     height: 69px;
@@ -107,6 +143,24 @@ header input {
 
 #ustensiles::placeholder {
     color: #FFF;
+}
+
+#suggestions-ustensiles {
+    position: absolute;
+    height: 350px;
+    display: none;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #ED6454;
+    overflow: hidden;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+#suggestions-ustensiles a {
+    color: #FFF;
+    margin-top: 15px;
+    padding: 5%;
 }
 /* CARD ZONE */
 

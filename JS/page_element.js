@@ -6,14 +6,13 @@ async function getRecipes() {
       .then((res) => res.json())
       .then((data) => (recipes = data.recipes));
     return {recipes: [...recipes],};
-  }
+};
 
 /*****************************************************  RECIPES  ********************************************************************/
 
 /** ---------- CREATION DU GABARIT DES CARDS ---------- */ 
 function recipesFactory(data) {
   const {id,name,servings,ingredients,time,description, appliance , ustensils }= data;
-  
   // console.log(data);
   const clock = "assets/clock.png";
   

@@ -36,10 +36,11 @@ function factorySearch (data) {
     ingredientList.forEach(e =>  { /** Pour chaqque element de nortre ingredientList */
         /** Element du dom*/ 
         const suggestionIngredients = document.getElementById("suggestions-ingredient"); 
-        const pIngredient = document.createElement("a"); /** Nous créeons un lien */
+        const aIngredient = document.createElement("a"); /** Nous créeons un lien */
+        aIngredient.setAttribute("href" , "#");
         /** Texte et implémentation*/ 
-        pIngredient.textContent = e; /** pour chaque lien crée nous ajoutons en texte un ingrédients */
-        suggestionIngredients.appendChild(pIngredient); /** notre DIV suggestion-ingredient enfante de chaque lien crée précédemment */
+        aIngredient.textContent = e; /** pour chaque lien crée nous ajoutons en texte un ingrédients */
+        suggestionIngredients.appendChild(aIngredient); /** notre DIV suggestion-ingredient enfante de chaque lien crée précédemment */
     });
 
     /************************* APPLIANCE *************************************/
@@ -59,6 +60,7 @@ function factorySearch (data) {
         /** Element du dom*/ 
         const suggestionAppareils = document.getElementById("suggestions-appareils"); 
         const aAppareils = document.createElement("a");
+        aAppareils.setAttribute("href" , "#");
         /** Texte et implémentation*/ 
         aAppareils.textContent = e; /** pour chaque lien crée nous ajoutons en texte les ingrédients */
         suggestionAppareils.appendChild(aAppareils); /** notre DIV suggestion-ingédient enfante de chaque lien crée précédemment */
@@ -81,6 +83,7 @@ function factorySearch (data) {
         /** Element du dom*/ 
         const suggestionUstensils = document.getElementById("suggestions-ustensiles"); 
         const aUstensils = document.createElement("a");
+        aUstensils.setAttribute("href" , "#");
         /** Texte et implémentation*/ 
         aUstensils.textContent = e; /** pour chaque lien crée nous ajoutons en texte les ingrédients */
         suggestionUstensils.appendChild(aUstensils); /** notre DIV suggestion-ingédient enfante de chaque lien crée précédemment */
@@ -147,18 +150,63 @@ async function initSearch () {
 
 initSearch();
 
+
+/********************************************* LISTES *********************************************************/
+
 /** Affichage de la liste des ingredients */ 
 function displayIngredientList () {
     const divIngredient = document.getElementById("suggestions-ingredient");
     divIngredient.style.display = "grid";
+    const chevronIngredient = document.querySelector(".chevron-ingredients");
+    chevronIngredient.style.transform = "rotate(180deg)";
 };
 
 /** Masquer la liste d'ingrédient */
 function hideIngredientList () {
-    const body = document.querySelector("body");
+    const divIngredient = document.getElementById("suggestions-ingredient");
     divIngredient.style.display = "none";
+    const chevronIngredient = document.querySelector(".chevron-ingredients");
+    chevronIngredient.style.transform = "rotate(0)";
 };
 
 const divIngredientButton = document.getElementById("ingredient");
 divIngredientButton.setAttribute("onclick","displayIngredientList()");
+
+/** Affichage de la liste des appareils */ 
+function displayAppareilsList () {
+    const divAppareils = document.getElementById("suggestions-appareils");
+    divAppareils.style.display = "grid";
+    const chevronAppareils = document.querySelector(".chevron-appareils");
+    chevronAppareils.style.transform = "rotate(180deg)";
+};
+
+/** Masquer la liste d'appareils */
+function hideAppareilsList () {
+    const divAppareils = document.getElementById("suggestions-appareils");
+    divAppareils.style.display = "none";
+    const chevronAppareils = document.querySelector(".chevron-appareils");
+    chevronAppareils.style.transform = "rotate(0)";
+};
+
+const divAppareilsButton = document.getElementById("appareils");
+divAppareilsButton.setAttribute("onclick","displayAppareilsList()");
+
+/** Affichage de la liste des ustensiles */ 
+function displayUstensilesList () {
+    const divUstensiles = document.getElementById("suggestions-ustensiles");
+    divUstensiles.style.display = "grid";
+    const chevronUstensiles = document.querySelector(".chevron-ustensiles");
+    chevronUstensiles.style.transform = "rotate(180deg)";
+};
+
+/** Masquer la liste d'ustensiles */
+function hideUstensilesList () {
+    const divUstensiles = document.getElementById("suggestions-ustensiles");
+    divUstensiles.style.display = "none";
+    const chevronUstensiles = document.querySelector(".chevron-ustensiles");
+    chevronUstensiles.style.transform = "rotate(0)";
+};
+
+const divUstensilesButton = document.getElementById("ustensiles");
+divUstensilesButton.setAttribute("onclick","displayUstensilesList()");
 

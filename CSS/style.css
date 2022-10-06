@@ -88,6 +88,7 @@ header input {
 #suggestions-ingredient a {
     color: #FFF;
     padding: 5%;
+    text-decoration: none;
 }
 
 #appareils {
@@ -124,6 +125,7 @@ header input {
     color: #FFF;
     margin-top: 15px;
     padding: 5%;
+    text-decoration: none;
 }
 
 
@@ -161,7 +163,43 @@ header input {
     color: #FFF;
     margin-top: 15px;
     padding: 5%;
+    text-decoration: none;
 }
+
+.chevron-ingredients {
+    position: absolute;
+    color: #FFF;
+    margin: -51px 0 0 9vw;
+    font-size: 1.25em;
+}
+
+.chevron-appareils:hover {
+    cursor: pointer;
+}
+
+.chevron-appareils {
+    position: absolute;
+    color: #FFF;
+    margin: -51px 0 0 9vw;
+    font-size: 1.25em;
+}
+
+.chevron-ustensiles:hover {
+    cursor: pointer;
+}
+
+.chevron-ustensiles {
+    position: absolute;
+    color: #FFF;
+    margin: -51px 0 0 9vw;
+    font-size: 1.25em;
+}
+
+.chevron-ingredients:hover {
+    cursor: pointer;
+}
+
+
 /* CARD ZONE */
 
 .container {

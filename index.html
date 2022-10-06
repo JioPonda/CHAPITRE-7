@@ -33,17 +33,17 @@
             <div class="search-zone">
                 <div class="select-buttons">
                     <input id="ingredient" type="text" name="ingredients" placeholder="Ingredient">
-                    <FontAwesomeIcon icon="fa-solid fa-chevron-up" class="chevron-ingredient"/>
+                    <i class="fa-solid fa-chevron-up chevron-ingredients" onclick="hideIngredientList ()"></i>
                     <div id="suggestions-ingredient"></div>
                 </div>
                 <div class="select-buttons">
                     <input id="appareils" type="text" name="appareils" placeholder="Appareils">
-                    <FontAwesomeIcon icon="fa-solid fa-chevron-up" class="chevron-appareils"/>
+                    <i class="fa-solid fa-chevron-up chevron-appareils " onclick="hideAppareilsList ()"></i>
                     <div id="suggestions-appareils"></div>
                 </div>
                 <div class="select-buttons">
                     <input id="ustensiles" type="text" name="ustensiles" placeholder="Ustensiles">
-                    <FontAwesomeIcon icon="fa-solid fa-chevron-up" class="chevron-ustensiles"/>
+                    <i class="fa-solid fa-chevron-up chevron-ustensiles" onclick="hideUstensilesList ()"></i>
                     <div id="suggestions-ustensiles"></div>
                 </div>
             </div>
@@ -53,8 +53,8 @@
 
         </section>
     </main>
+    <script src="https://kit.fontawesome.com/61b07ae80e.js" crossorigin="anonymous"></script>
     <script src="JS/page_element.js"></script>
     <script src="JS/SearchSystemV1.js"></script>
-    <script src="JS/api.js"></script>
 </body>
 </html>

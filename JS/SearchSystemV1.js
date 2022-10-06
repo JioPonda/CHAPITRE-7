@@ -34,7 +34,7 @@ function factorySearch (data) {
     afin de retourner un tableau sans doublons */
 
     ingredientList.forEach(e =>  { /** Pour chaqque element de nortre ingredientList */
-        /** Element du dom*/ 
+        /** Element du DOM */ 
         const suggestionIngredients = document.getElementById("suggestions-ingredient"); 
         const aIngredient = document.createElement("a"); /** Nous créeons un lien */
         aIngredient.setAttribute("href" , "#");
@@ -42,7 +42,6 @@ function factorySearch (data) {
         aIngredient.textContent = e; /** pour chaque lien crée nous ajoutons en texte un ingrédients */
         suggestionIngredients.appendChild(aIngredient); /** notre DIV suggestion-ingredient enfante de chaque lien crée précédemment */
     });
-
     /************************* APPLIANCE *************************************/
     
     /** création d'un tableau avec uniquement les ingrédient*/ 
@@ -97,47 +96,46 @@ function factorySearch (data) {
     const searchUstensiles = document.getElementById('ustensiles');
 
 
-    /** Recherche des Ingrédients*/ 
-    function ingredientSearch () {
-        searchIngredient.addEventListener('keyup', function() { /** On écoute la barre de recherche lors de la saisie du texte */
-            const inputIngredient = searchIngredient.value; /** on récupére la valeur saisie*/ 
-            console.log(inputIngredient); /** on récupére la valeur dans la console */
+    /** Recherche des Ingrédients*/     
+    searchIngredient.addEventListener('keyup', function() { /** On écoute la barre de recherche lors de la saisie du texte */
+        const inputIngredient = searchIngredient.value; /** on récupére la valeur saisie*/ 
+        console.log(inputIngredient); /** on récupére la valeur dans la console */
 
-            const resultIngredient = data.filter(item => item.ingredientList.includes(inputIngredient)); /** on filtre les ingrédients et pour chaque ingrédients incluant
-            la valeur de inputIngredient */
+        const resultIngredient = ingredientList.filter(item => item.includes(inputIngredient)); /** on filtre les ingrédients et pour chaque ingrédients incluant
+        la valeur de inputIngredient */
 
-            /** on renvoie dans la console les valeurs de notre JSON correspondante */
-            console.log(resultIngredient);
-        })
-    }
-
-    function appareilsSearch () {
-        searchAppareils.addEventListener('keyup', function() { /** On écoute la barre de recherche lors de la saisie du texte */
-            const inputAppareils = searchAppareils.value; /** on récupére la valeur saisie*/ 
-            console.log(inputAppareils); /** on récupére la valeur dans la console */
-
-            const resultAppareils = data.filter(item => item.appliance.includes(inputAppareils)); /** on filtre les appareils et pour chaque Appareils incluant
-            la valeur de inputAppareils */
-
-            /** on renvoie dans la console les valeurs de notre JSON correspondante */
-            console.log(resultAppareils);
-        })
-    }
+        /** on renvoie dans la console les valeurs de notre JSON correspondante */
+        console.log(resultIngredient);
+    })
     
-    function ustensilsSearch () {
-        searchUstensiles.addEventListener('keyup', function() { /** On écoute la barre de recherche lors de la saisie du texte */
-            const inputUstensiles = searchUstensiles.value; /** on récupére la valeur saisie*/ 
-            console.log(inputUstensiles); /** on récupére la valeur dans la console */
 
-            const resultUstensiles = data.filter(item => item.ustensils.includes(inputUstensiles)); /** on filtre les Ustensiles et pour chaque Ustensiles incluant
-            la valeur de inputUstensiles */
+    /** Recherche des Appareils*/
+    searchAppareils.addEventListener('keyup', function() { /** On écoute la barre de recherche lors de la saisie du texte */
+        const inputAppareils = searchAppareils.value; /** on récupére la valeur saisie*/ 
+        console.log(inputAppareils); /** on récupére la valeur dans la console */
 
-            /** on renvoie dans la console les valeurs de notre JSON correspondante */
-            console.log(resultUstensiles);
-        })
-    }
+        const resultAppareils = appareilList.filter(item => item.includes(inputAppareils)); /** on filtre les appareils et pour chaque Appareils incluant
+        la valeur de inputAppareils */
 
-    return {ingredients,appliance , ustensils , ingredientSearch , appareilsSearch, ustensilsSearch, displayIngredientList}
+        /** on renvoie dans la console les valeurs de notre JSON correspondante */
+        console.log(resultAppareils);
+    })
+    
+    
+    /** Recherche des Ustensiles*/
+    searchUstensiles.addEventListener('keyup', function() { /** On écoute la barre de recherche lors de la saisie du texte */
+        const inputUstensiles = searchUstensiles.value; /** on récupére la valeur saisie*/ 
+        console.log(inputUstensiles); /** on récupére la valeur dans la console */
+
+        const resultUstensiles = ustensilslList.filter(item => item.includes(inputUstensiles)); /** on filtre les Ustensiles et pour chaque Ustensiles incluant
+        la valeur de inputUstensiles */
+
+        /** on renvoie dans la console les valeurs de notre JSON correspondante */
+        console.log(resultUstensiles);
+    })
+    
+
+    return {ingredients,appliance , ustensils}
 }
 
 /********************************************* INITIALISATION *********************************************************/

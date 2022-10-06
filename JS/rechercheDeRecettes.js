@@ -1,12 +1,10 @@
 /** Recherchez une recette dans la barre principale */ 
 const searchBar = document.querySelector("#searchbar");
-const divCard = document.querySelector(".div-card");
-
+const divCard = document.querySelectorAll(".div-card");
+const cardTitle = document.querySelectorAll(".card-title");
 searchBar.addEventListener('keyup', function() {
 const searchValue = searchBar.value;
-console.log(searchValue);
-if (divCard.includes(searchValue)) {
+if (cardTitle.textContent !== searchValue) {
     divCard.style.display = "none";
 };
-
 })

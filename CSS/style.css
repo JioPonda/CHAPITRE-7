@@ -211,6 +211,7 @@ header input {
 
 /* card skull*/
 .div-card {
+    display: block;
     height: 400px;
     width: 25vw;
     display: flex;

@@ -90,6 +90,28 @@ function factorySearch (data) {
 
     /************************* SEARCH SYSTEM *************************************/
 
+
+    /** Recherchez une recette dans la barre principale */
+    
+    /** Element du DOM */
+    const searchBar = document.querySelector("#searchbar");
+    const cardTitle = document.querySelectorAll(".card-title");
+    const divCard = document.querySelector(".div-card");
+    const searchValue = searchBar.value;
+    
+    /** recherche dans la barre principale */ 
+    searchBar.addEventListener('keyup', function() { /** Lorsque nous écrivons dans la barre de recherche */
+        if (cardTitle.textContent !== searchValue) {  /** si le texte contenu dans cardTitle n'est pas égale a ce que nous saisisons */
+            divCard.style.display = "none"; /** la CARD disparait */
+            console.log(searchValue);
+        } else { /** sinon elle reste visible */
+            divCard.style.display = "block";
+            console.log(searchValue);
+        };
+    })
+
+    /** Recherchez dans les barres d'ingrédients d'appareils et d'ustensiles */ 
+
     /** Element du DOM*/ 
     const searchIngredient = document.getElementById('ingredient');
     const searchAppareils = document.getElementById('appareils');

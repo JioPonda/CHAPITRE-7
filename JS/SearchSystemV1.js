@@ -92,23 +92,48 @@ function factorySearch (data) {
 
 
     /** Recherchez une recette dans la barre principale */
-    
-    /** Element du DOM */
-    const searchBar = document.querySelector("#searchbar");
-    const cardTitle = document.querySelectorAll(".card-title");
-    const divCard = document.querySelector(".div-card");
-    const searchValue = searchBar.value;
+    let dishArray = [];
+
+    for ( let i = 0; i < data.length; i++) {
+        dishArray.push(data[i].name);
+    };
     
     /** recherche dans la barre principale */ 
-    searchBar.addEventListener('keyup', function() { /** Lorsque nous écrivons dans la barre de recherche */
-        if (cardTitle.textContent !== searchValue) {  /** si le texte contenu dans cardTitle n'est pas égale a ce que nous saisisons */
-            divCard.style.display = "none"; /** la CARD disparait */
+    const searchBar = document.querySelector("#searchbar");
+    const divCard = document.querySelectorAll(".div-card");
+    
+    searchBar.addEventListener('keyup', function() { 
+    const searchValue = searchBar.value;
+    const resultDishArray = dishArray.filter(item => item.includes(searchValue));
+        
+    if (resultDishArray !== searchValue) { 
+            divCard.style.display = "none"; 
             console.log(searchValue);
-        } else { /** sinon elle reste visible */
+        } else {
             divCard.style.display = "block";
             console.log(searchValue);
         };
     })
+    
+    // if (dishArray[i].textContent !== searchValue) {  /** si le texte contenu dans cardTitle n'est pas égale a ce que nous saisisons */
+    //         divCard.style.display = "none"; /** la CARD disparait */
+    //         console.log(searchValue);
+    //     } else { /** sinon elle reste visible */
+    //         divCard.style.display = "block";
+    //         console.log(searchValue);
+    //     };
+    // };
+    
+    // /** recherche dans la barre principale */ 
+    // searchBar.addEventListener('keyup', function() { /** Lorsque nous écrivons dans la barre de recherche */
+    // if (dishArray[i] !== searchValue) {  /** si le texte contenu dans cardTitle n'est pas égale a ce que nous saisisons */
+    //         divCard.style.display = "none"; /** la CARD disparait */
+    //         console.log(searchValue);
+    //     } else { /** sinon elle reste visible */
+    //         divCard.style.display = "block";
+    //         console.log(searchValue);
+    //     };
+    // })
 
     /** Recherchez dans les barres d'ingrédients d'appareils et d'ustensiles */ 
 

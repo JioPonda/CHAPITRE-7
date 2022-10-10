@@ -97,43 +97,29 @@ function factorySearch (data) {
     for ( let i = 0; i < data.length; i++) {
         dishArray.push(data[i].name);
     };
-    
+
     /** recherche dans la barre principale */ 
     const searchBar = document.querySelector("#searchbar");
     const divCard = document.querySelectorAll(".div-card");
-    
+    const divTitle = document.querySelectorAll(".card-title");
+
     searchBar.addEventListener('keyup', function() { 
-    const searchValue = searchBar.value;
-    const resultDishArray = dishArray.filter(item => item.includes(searchValue));
-        
-    if (resultDishArray !== searchValue) { 
-            divCard.style.display = "none"; 
+    const searchValue = searchBar.value;      
+    
+    for ( let i = 0; i < divCard.length; i++) {
+        if (divTitle[i].textContent.toLowerCase().includes(searchValue.toLowerCase())) {
+            divCard[i].style.display = "block";
             console.log(searchValue);
         } else {
-            divCard.style.display = "block";
-            console.log(searchValue);
-        };
+            divCard[i].style.display = "none"; 
+            console.log(searchValue);            
+        }
+        
+        if (searchValue === "")
+            divCard[i].style.display = "block";
+        }
     })
     
-    // if (dishArray[i].textContent !== searchValue) {  /** si le texte contenu dans cardTitle n'est pas égale a ce que nous saisisons */
-    //         divCard.style.display = "none"; /** la CARD disparait */
-    //         console.log(searchValue);
-    //     } else { /** sinon elle reste visible */
-    //         divCard.style.display = "block";
-    //         console.log(searchValue);
-    //     };
-    // };
-    
-    // /** recherche dans la barre principale */ 
-    // searchBar.addEventListener('keyup', function() { /** Lorsque nous écrivons dans la barre de recherche */
-    // if (dishArray[i] !== searchValue) {  /** si le texte contenu dans cardTitle n'est pas égale a ce que nous saisisons */
-    //         divCard.style.display = "none"; /** la CARD disparait */
-    //         console.log(searchValue);
-    //     } else { /** sinon elle reste visible */
-    //         divCard.style.display = "block";
-    //         console.log(searchValue);
-    //     };
-    // })
 
     /** Recherchez dans les barres d'ingrédients d'appareils et d'ustensiles */ 
 
@@ -184,7 +170,6 @@ function factorySearch (data) {
 
     return {ingredients,appliance , ustensils}
 }
-
 /********************************************* INITIALISATION *********************************************************/
 
 /** Initialisation des données des recipes pour la recherche */
@@ -197,6 +182,8 @@ initSearch();
 
 
 /********************************************* LISTES *********************************************************/
+
+const bodyPage = document.getElementsByTagName("body");
 
 /** Affichage de la liste des ingredients */ 
 function displayIngredientList () {

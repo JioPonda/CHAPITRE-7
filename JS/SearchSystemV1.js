@@ -183,8 +183,6 @@ initSearch();
 
 /********************************************* LISTES *********************************************************/
 
-const bodyPage = document.getElementsByTagName("body");
-
 /** Affichage de la liste des ingredients */ 
 function displayIngredientList () {
     const divIngredient = document.getElementById("suggestions-ingredient");
@@ -241,4 +239,3 @@ function hideUstensilesList () {
 
 const divUstensilesButton = document.getElementById("ustensiles");
 divUstensilesButton.setAttribute("onclick","displayUstensilesList()");
-

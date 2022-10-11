@@ -36,87 +36,88 @@ function factorySearch (data) {
     ingredientList.forEach(e =>  { /** Pour chaqque element de nortre ingredientList */
         /** Element du DOM */ 
         const suggestionIngredients = document.getElementById("suggestions-ingredient"); 
-        const aIngredient = document.createElement("a"); /** Nous créeons un lien */
-        aIngredient.setAttribute("href" , "#");
+        const pIngredient = document.createElement("p"); /** Nous créeons un lien */
+        pIngredient.setAttribute("id" , "pIngredient")
         /** Texte et implémentation*/ 
-        aIngredient.textContent = e; /** pour chaque lien crée nous ajoutons en texte un ingrédients */
-        suggestionIngredients.appendChild(aIngredient); /** notre DIV suggestion-ingredient enfante de chaque lien crée précédemment */
+        pIngredient.textContent = e; /** pour chaque lien crée nous ajoutons en texte un ingrédients */
+        suggestionIngredients.appendChild(pIngredient); /** notre DIV suggestion-ingredient enfante de chaque lien crée précédemment */
     });
     /************************* APPLIANCE *************************************/
     
-    /** création d'un tableau avec uniquement les ingrédient*/ 
-    let appareilsArray = []; /** premier tableau avec les données brute */
+    /** création d'un tableau avec uniquement les appareils*/ 
+    let appareilsArray = []; /** tableau avec les données brute */ 
     
     for ( let i = 0; i < data.length; i++ ) {
-        appareilsArray.push(data[i].appliance); /** pour chaque ingredient dans le JSON nous l'ajoutons dans le premier tableau*/
+        appareilsArray.push(data[i].appliance.toLowerCase()); /** pour chaque appareil dans le JSON nous l'ajoutons dans le tableau*/
     };
-    appareilsArray = appareilsArray.flat(); /** Mise a plat du premier tableau */
     
-    let appareilList = appareilsArray.filter((x, i) => appareilsArray.indexOf(x) === i); /** Nous créons une variable ou  nous filtrons les ingrédients 
+    appareilsArray = appareilsArray.flat(); /** Mise a plat du tableau */
+
+    let appareilList = appareilsArray.filter((x, i) => appareilsArray.indexOf(x) === i); /** Nous créons une variable ou  nous filtrons les appareils 
     afin de retourner un tableau sans doublons */
 
     appareilList.forEach(e =>  {
         /** Element du dom*/ 
         const suggestionAppareils = document.getElementById("suggestions-appareils"); 
-        const aAppareils = document.createElement("a");
-        aAppareils.setAttribute("href" , "#");
+        const pAppareils = document.createElement("p");
+        pAppareils.setAttribute("id" , "pAppareils")
         /** Texte et implémentation*/ 
-        aAppareils.textContent = e; /** pour chaque lien crée nous ajoutons en texte les ingrédients */
-        suggestionAppareils.appendChild(aAppareils); /** notre DIV suggestion-ingédient enfante de chaque lien crée précédemment */
+        pAppareils.textContent = e; /** pour chaque lien crée nous ajoutons en texte les appareils */
+        suggestionAppareils.appendChild(pAppareils); /** notre DIV suggestion-ingédient enfante de chaque lien crée précédemment */
     });
 
     /************************* USTENSILES *************************************/
 
-    /** création d'un tableau avec uniquement les ingrédient*/ 
-    let ustensilesArray = []; /** premier tableau avec les données brute */
+    /** création d'un tableau avec uniquement les ustensiles*/ 
+    let ustensilesArray = []; /** tableau avec les données brute */
     
     for ( let i = 0; i < data.length; i++ ) {
-        ustensilesArray.push(data[i].ustensils); /** pour chaque ingredient dans le JSON nous l'ajoutons dans le premier tableau*/
+        ustensilesArray.push(data[i].ustensils); /** pour chaque ustensile dans le JSON nous l'ajoutons dans le tableau*/
     };
-    ustensilesArray = ustensilesArray.flat(); /** Mise a plat du premier tableau */
+    ustensilesArray = ustensilesArray.flat(); /** Mise a plat du tableau */
     
-    let ustensilslList = ustensilesArray.filter((x, i) => ustensilesArray.indexOf(x) === i); /** Nous créons une variable ou  nous filtrons les ingrédients 
+    let ustensilslList = ustensilesArray.filter((x, i) => ustensilesArray.indexOf(x) === i); /** Nous créons une variable ou nous filtrons les ustensiles 
     afin de retourner un tableau sans doublons */
 
     ustensilslList.forEach(e =>  {
         /** Element du dom*/ 
         const suggestionUstensils = document.getElementById("suggestions-ustensiles"); 
-        const aUstensils = document.createElement("a");
-        aUstensils.setAttribute("href" , "#");
+        const pUstensils = document.createElement("p");
+        pUstensils.setAttribute("id" , "pUstensils")
         /** Texte et implémentation*/ 
-        aUstensils.textContent = e; /** pour chaque lien crée nous ajoutons en texte les ingrédients */
-        suggestionUstensils.appendChild(aUstensils); /** notre DIV suggestion-ingédient enfante de chaque lien crée précédemment */
+        pUstensils.textContent = e; /** pour chaque lien crée nous ajoutons en texte les ustensiles */
+        suggestionUstensils.appendChild(pUstensils); /** notre DIV suggestion-ingédient enfante de chaque lien crée précédemment */
     });
 
     /************************* SEARCH SYSTEM *************************************/
 
 
     /** Recherchez une recette dans la barre principale */
-    let dishArray = [];
+    let dishArray = []; /** Tableau des plats */
 
-    for ( let i = 0; i < data.length; i++) {
-        dishArray.push(data[i].name);
+    for ( let i = 0; i < data.length; i++) { 
+        dishArray.push(data[i].name); /** Boucle for pour ajouter les noms des plats */
     };
 
-    /** recherche dans la barre principale */ 
+    /** Element du DOM*/
     const searchBar = document.querySelector("#searchbar");
     const divCard = document.querySelectorAll(".div-card");
     const divTitle = document.querySelectorAll(".card-title");
 
-    searchBar.addEventListener('keyup', function() { 
-    const searchValue = searchBar.value;      
+    searchBar.addEventListener('keyup', function() { /** mise en place d'un écoute sur la barre de recherche*/ 
+    const searchValue = searchBar.value;       
     
-    for ( let i = 0; i < divCard.length; i++) {
-        if (divTitle[i].textContent.toLowerCase().includes(searchValue.toLowerCase())) {
-            divCard[i].style.display = "block";
+    for ( let i = 0; i < divCard.length; i++) { /** Boucle for pour que */
+        if (divTitle[i].textContent.toLowerCase().includes(searchValue.toLowerCase())) { /** Pour chaque card si le titre de notre plat inclue ce qui est saisie dans la barre de recherche */
+            divCard[i].style.display = "block"; /** alors notre card reste ou deviennent visible */
             console.log(searchValue);
         } else {
-            divCard[i].style.display = "none"; 
+            divCard[i].style.display = "none"; /** sinon elle disparait */
             console.log(searchValue);            
         }
         
-        if (searchValue === "")
-            divCard[i].style.display = "block";
+        if (searchValue === "") /** et si la barre de recherche est vide  */
+            divCard[i].style.display = "block"; /** les card s'affiche */
         }
     })
     
@@ -125,46 +126,63 @@ function factorySearch (data) {
 
     /** Element du DOM*/ 
     const searchIngredient = document.getElementById('ingredient');
+    const pIngredient = document.querySelectorAll('#pIngredient')
     const searchAppareils = document.getElementById('appareils');
+    const pAppareils = document.querySelectorAll('#pAppareils')
     const searchUstensiles = document.getElementById('ustensiles');
+    const pUstensils = document.querySelectorAll('#pUstensils')
 
 
     /** Recherche des Ingrédients*/     
     searchIngredient.addEventListener('keyup', function() { /** On écoute la barre de recherche lors de la saisie du texte */
-        const inputIngredient = searchIngredient.value; /** on récupére la valeur saisie*/ 
-        console.log(inputIngredient); /** on récupére la valeur dans la console */
+        const inputIngredient = searchIngredient.value; /** on récupére la valeur saisie*/
 
-        const resultIngredient = ingredientList.filter(item => item.includes(inputIngredient)); /** on filtre les ingrédients et pour chaque ingrédients incluant
-        la valeur de inputIngredient */
+        for (let i = 0; i < pIngredient.length; i++) {
+            if (pIngredient[i].textContent.toLowerCase().includes(inputIngredient.toLowerCase())) {
+                pIngredient[i].style.display = "block";
+            } else {
+                pIngredient[i].style.display = "none";
+            }
 
-        /** on renvoie dans la console les valeurs de notre JSON correspondante */
-        console.log(resultIngredient);
+            if (inputIngredient === "") {
+                pIngredient[i].style.display = "block";
+            }
+        }
     })
     
 
     /** Recherche des Appareils*/
     searchAppareils.addEventListener('keyup', function() { /** On écoute la barre de recherche lors de la saisie du texte */
-        const inputAppareils = searchAppareils.value; /** on récupére la valeur saisie*/ 
-        console.log(inputAppareils); /** on récupére la valeur dans la console */
+        const inputAppareils = searchAppareils.value; /** on récupére la valeur saisie*/
 
-        const resultAppareils = appareilList.filter(item => item.includes(inputAppareils)); /** on filtre les appareils et pour chaque Appareils incluant
-        la valeur de inputAppareils */
+        for (let i = 0; i < pAppareils.length; i++) {
+            if (pAppareils[i].textContent.includes(inputAppareils.toLowerCase())) {
+                pAppareils[i].style.display = "block";
+            } else {
+                pAppareils[i].style.display = "none";
+            }
 
-        /** on renvoie dans la console les valeurs de notre JSON correspondante */
-        console.log(resultAppareils);
+            if (inputAppareils === "") {
+                pAppareils[i].style.display = "block";
+            }
+        }
     })
     
     
     /** Recherche des Ustensiles*/
     searchUstensiles.addEventListener('keyup', function() { /** On écoute la barre de recherche lors de la saisie du texte */
         const inputUstensiles = searchUstensiles.value; /** on récupére la valeur saisie*/ 
-        console.log(inputUstensiles); /** on récupére la valeur dans la console */
+        for (let i = 0; i < pUstensils.length; i++) {
+            if (pUstensils[i].textContent.includes(inputUstensiles.toLowerCase())) {
+                pUstensils[i].style.display = "block";
+            } else {
+                pUstensils[i].style.display = "none";
+            }
 
-        const resultUstensiles = ustensilslList.filter(item => item.includes(inputUstensiles)); /** on filtre les Ustensiles et pour chaque Ustensiles incluant
-        la valeur de inputUstensiles */
-
-        /** on renvoie dans la console les valeurs de notre JSON correspondante */
-        console.log(resultUstensiles);
+            if (inputUstensiles === "") {
+                pUstensils[i].style.display = "block";
+            }
+        }
     })
     
 

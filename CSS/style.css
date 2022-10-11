@@ -75,20 +75,23 @@ header input {
 
 #suggestions-ingredient {
     position: absolute;
-    height: 350px;
+    height: auto;
     display: none;
     grid-template-columns: 1fr 1fr 1fr;
     background-color: #3282F7;
-    overflow: hidden;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
 }
 
-#suggestions-ingredient a {
+#pIngredient {
     color: #FFF;
     padding: 5%;
-    text-decoration: none;
+}
+
+#pIngredient:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 #appareils {
@@ -111,23 +114,25 @@ header input {
 
 #suggestions-appareils {
     position: absolute;
-    height: 350px;
+    height: auto;
     display: none;
     grid-template-columns: 1fr 1fr 1fr;
     background-color: #68D9A4;
-    overflow: hidden;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
 }
 
-#suggestions-appareils a {
+#pAppareils {
     color: #FFF;
     margin-top: 15px;
     padding: 5%;
-    text-decoration: none;
 }
 
+#pAppareils:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
 
 #ustensiles {
     /* aspect */
@@ -149,21 +154,24 @@ header input {
 
 #suggestions-ustensiles {
     position: absolute;
-    height: 350px;
+    height: auto;
     display: none;
     grid-template-columns: 1fr 1fr 1fr;
     background-color: #ED6454;
-    overflow: hidden;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
 }
 
-#suggestions-ustensiles a {
+#pUstensils {
     color: #FFF;
     margin-top: 15px;
     padding: 5%;
-    text-decoration: none;
+}
+
+#pUstensils:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .chevron-ingredients {

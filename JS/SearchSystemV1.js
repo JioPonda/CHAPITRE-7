@@ -333,7 +333,15 @@ function hideUstensilesList () {
     chevronUstensiles.style.transform = "rotate(0)";
 };
 
-
-
 const divUstensilesButton = document.getElementById("ustensiles");
 divUstensilesButton.setAttribute("onclick","displayUstensilesList()");
+
+/** Supprimer un tag*/ 
+
+const crossTag = document.querySelectorAll(".fa-circle-xmark");
+const divTagIngredient = document.getElementById("ingredient-tag-liste");
+const tagIngredient = document.querySelectorAll(".tag-ingredient");
+for (let iC = 0; iC < crossTag.length; iC ++)
+crossTag[iC].addEventListener('click', function() {
+        divTagIngredient.removech(tagIngredient);
+})

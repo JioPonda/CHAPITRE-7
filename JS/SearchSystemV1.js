@@ -37,7 +37,7 @@ function factorySearch (data) {
         /** Element du DOM */ 
         const suggestionIngredients = document.getElementById("suggestions-ingredient"); 
         const pIngredient = document.createElement("p"); /** Nous créeons un lien */
-        pIngredient.setAttribute("id" , "pIngredient")
+        pIngredient.setAttribute("id" , "pIngredient");
         /** Texte et implémentation*/ 
         pIngredient.textContent = e; /** pour chaque lien crée nous ajoutons en texte un ingrédients */
         suggestionIngredients.appendChild(pIngredient); /** notre DIV suggestion-ingredient enfante de chaque lien crée précédemment */
@@ -91,14 +91,6 @@ function factorySearch (data) {
 
     /************************* SEARCH SYSTEM *************************************/
 
-
-    /** Recherchez une recette dans la barre principale */
-    let dishArray = []; /** Tableau des plats */
-
-    for ( let i = 0; i < data.length; i++) { 
-        dishArray.push(data[i].name); /** Boucle for pour ajouter les noms des plats */
-    };
-
     /** Element du DOM*/
     const searchBar = document.querySelector("#searchbar");
     const divCard = document.querySelectorAll(".div-card");
@@ -120,7 +112,6 @@ function factorySearch (data) {
             divCard[i].style.display = "block"; /** les card s'affiche */
         }
     })
-    
 
     /** Recherchez dans les barres d'ingrédients d'appareils et d'ustensiles */ 
 
@@ -130,9 +121,8 @@ function factorySearch (data) {
     const searchAppareils = document.getElementById('appareils');
     const pAppareils = document.querySelectorAll('#pAppareils')
     const searchUstensiles = document.getElementById('ustensiles');
-    const pUstensils = document.querySelectorAll('#pUstensils')
-
-
+    const pUstensils = document.querySelectorAll('#pUstensils');
+    const cardIngredient = document.querySelectorAll(".card-ingredient")
     /** Recherche des Ingrédients*/     
     searchIngredient.addEventListener('keyup', function() { /** On écoute la barre de recherche lors de la saisie du texte */
         const inputIngredient = searchIngredient.value; /** on récupére la valeur saisie*/
@@ -148,8 +138,19 @@ function factorySearch (data) {
                 pIngredient[i].style.display = "block";
             }
         }
-    })
+    });
     
+    for (let iI = 0; iI < pIngredient.length; iI++)
+    pIngredient[iI].addEventListener('click', function() {
+        for (let i = 0; i < cardIngredient.length; i++) {
+            if (cardIngredient[i].textContent.includes(pIngredient[iI].textContent)) {
+                divCard[i].style.display = "block";
+            } else {
+                divCard[i].style.display = "none";
+            }
+        }
+    });
+
 
     /** Recherche des Appareils*/
     searchAppareils.addEventListener('keyup', function() { /** On écoute la barre de recherche lors de la saisie du texte */

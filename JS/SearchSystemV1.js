@@ -140,6 +140,7 @@ function factorySearch (data) {
         }
     });
     
+    /** Recherche des Ingrédients via suggestion */ 
     for (let iI = 0; iI < pIngredient.length; iI++)
     pIngredient[iI].addEventListener('click', function() {
         for (let i = 0; i < cardIngredient.length; i++) {
@@ -150,6 +151,24 @@ function factorySearch (data) {
             }
         }
     });
+
+    /** Affichage des tag ingrédients */ 
+    const ingredientSearch = document.querySelector("#ingredient");
+    ingredientSearch.addEventListener('keyup', function(e) {
+        const tag = document.getElementById("ingredient-tag-liste");
+        const divTag = document.createElement("div");
+        divTag.setAttribute("class" , "tag-ingredient");
+        const iTag = document.createElement("p");
+        iTag.setAttribute("class" , "text-ingredient-tag")
+        const crossTag = document.createElement("i");
+        if (e.key === "Enter" & ingredientSearch.value !== "") {
+            iTag.textContent = ingredientSearch.value        
+            crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
+            divTag.appendChild(iTag);
+            divTag.appendChild(crossTag);
+            tag.appendChild(divTag);
+        }
+    })
 
 
     /** Recherche des Appareils*/
@@ -169,6 +188,35 @@ function factorySearch (data) {
         }
     })
     
+    /** Recherche des Appareils via suggestion */ 
+    for (let iA = 0; iA < pAppareils.length; iA++)
+    pAppareils[iA].addEventListener('click', function() {
+        for (let i = 0; i < cardIngredient.length; i++) {
+            if (cardIngredient[i].textContent.includes(pAppareils[iA].textContent)) {
+                divCard[i].style.display = "block";
+            } else {
+                divCard[i].style.display = "none";
+            }
+        }
+    });
+    
+    /** Affichage des tag appareils */ 
+    const appareilSearch = document.querySelector("#appareils");
+    appareilSearch.addEventListener('keyup', function(e) {
+        const tag = document.getElementById("appareil-tag-liste");
+        const divTag = document.createElement("div");
+        divTag.setAttribute("class" , "tag-appareil");
+        const aTag = document.createElement("p");
+        aTag.setAttribute("class" , "text-appareil-tag")
+        const crossTag = document.createElement("i");
+        if (e.key === "Enter" & appareilSearch.value !== "") {
+            aTag.textContent = appareilSearch.value        
+            crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
+            divTag.appendChild(aTag);
+            divTag.appendChild(crossTag);
+            tag.appendChild(divTag);
+        }
+    })    
     
     /** Recherche des Ustensiles*/
     searchUstensiles.addEventListener('keyup', function() { /** On écoute la barre de recherche lors de la saisie du texte */
@@ -185,7 +233,36 @@ function factorySearch (data) {
             }
         }
     })
-    
+
+    /** Recherche des Ustensiles via suggestion */ 
+    for (let iU = 0; iU < pUstensils.length; iU++)
+    pUstensils[iU].addEventListener('click', function() {
+        for (let i = 0; i < cardIngredient.length; i++) {
+            if (cardIngredient[i].textContent.includes(pUstensils[iA].textContent)) {
+                divCard[i].style.display = "block";
+            } else {
+                divCard[i].style.display = "none";
+            }
+        }
+    });    
+
+    /** Affichage des tag ustensiles */ 
+    const ustensileSearch = document.querySelector("#ustensiles");
+    ustensileSearch.addEventListener('keyup', function(e) {
+        const tag = document.getElementById("ustensile-tag-liste");
+        const divTag = document.createElement("div");
+        divTag.setAttribute("class" , "tag-ustensile");
+        const uTag = document.createElement("p");
+        uTag.setAttribute("class" , "text-ustensile-tag")
+        const crossTag = document.createElement("i");
+        if (e.key === "Enter" & ustensileSearch.value !== "") {
+            uTag.textContent = ustensileSearch.value        
+            crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
+            divTag.appendChild(uTag);
+            divTag.appendChild(crossTag);
+            tag.appendChild(divTag);
+        }
+    })
 
     return {ingredients,appliance , ustensils}
 }
@@ -255,6 +332,8 @@ function hideUstensilesList () {
     const chevronUstensiles = document.querySelector(".chevron-ustensiles");
     chevronUstensiles.style.transform = "rotate(0)";
 };
+
+
 
 const divUstensilesButton = document.getElementById("ustensiles");
 divUstensilesButton.setAttribute("onclick","displayUstensilesList()");

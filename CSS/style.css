@@ -45,6 +45,86 @@ header input {
 
 /* NAVBAR */
 
+/** tags */
+
+#ingredient-tag-liste {
+    display: flex;
+    flex-direction: row;
+    margin: 15px 0 0 9vw;
+}
+
+.tag-ingredient {
+    display: flex;
+    height: 50px;
+    width: auto;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #3282F7;
+    font-size: 1.125em;
+    color: #FFF;
+    border-radius: 5px;
+    padding: 0.5em;
+}
+
+.text-ingredient-tag {
+    margin: 0.5em;
+}
+
+#appareil-tag-liste {
+    display: flex;
+    flex-direction: row;
+    margin: 15px 0 0 9vw;
+}
+
+.tag-appareil {
+    display: flex;
+    height: 50px;
+    width: auto;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #68D9A4;
+    font-size: 1.125em;
+    color: #FFF;
+    border-radius: 5px;
+    padding: 0.5em;
+}
+
+.text-appareil-tag {
+    margin: 0.5em;
+}
+
+.fa-circle-xmark {
+    margin: 0.5em;
+    cursor: pointer;
+}
+
+#ustensile-tag-liste {
+    display: flex;
+    flex-direction: row;
+    margin: 15px 0 0 9vw;
+}
+
+.tag-ustensile {
+    display: flex;
+    height: 50px;
+    width: auto;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #ED6454;
+    font-size: 1.125em;
+    color: #FFF;
+    border-radius: 5px;
+    padding: 0.5em;
+}
+
+.text-ustensile-tag {
+    margin: 0.5em;
+}
+
+/** barre de recherches*/
 .search-zone {
     display: flex;
     flex-direction: row;

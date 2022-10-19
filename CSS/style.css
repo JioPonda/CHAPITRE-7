@@ -3,6 +3,10 @@
  font-family: 'Lato';
 }
 
+.hide {
+    display: none;
+}
+
 /* HEADER de la page index.html */
 
 header {
@@ -65,6 +69,7 @@ header input {
     color: #FFF;
     border-radius: 5px;
     padding: 0.5em;
+    margin: 0.5em;
 }
 
 .text-ingredient-tag {
@@ -89,6 +94,7 @@ header input {
     color: #FFF;
     border-radius: 5px;
     padding: 0.5em;
+    margin: 0.5em;
 }
 
 .text-appareil-tag {
@@ -118,6 +124,7 @@ header input {
     color: #FFF;
     border-radius: 5px;
     padding: 0.5em;
+    margin: 0.5em;
 }
 
 .text-ustensile-tag {

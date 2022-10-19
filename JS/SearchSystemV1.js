@@ -123,9 +123,10 @@ function factorySearch (data) {
     const searchUstensiles = document.getElementById('ustensiles');
     const pUstensils = document.querySelectorAll('#pUstensils');
     const cardIngredient = document.querySelectorAll(".card-ingredient")
+    const cardDescription = document.querySelectorAll(".card-description")
     /** Recherche des Ingrédients*/     
-    searchIngredient.addEventListener('keyup', function() { /** On écoute la barre de recherche lors de la saisie du texte */
-        const inputIngredient = searchIngredient.value; /** on récupére la valeur saisie*/
+    searchIngredient.addEventListener('keyup', function() {
+        const inputIngredient = searchIngredient.value;
 
         for (let i = 0; i < pIngredient.length; i++) {
             if (pIngredient[i].textContent.toLowerCase().includes(inputIngredient.toLowerCase())) {
@@ -144,7 +145,7 @@ function factorySearch (data) {
     for (let iI = 0; iI < pIngredient.length; iI++)
     pIngredient[iI].addEventListener('click', function() {
         for (let i = 0; i < cardIngredient.length; i++) {
-            if (cardIngredient[i].textContent.includes(pIngredient[iI].textContent)) {
+            if (cardIngredient[i].textContent.toLowerCase().includes(pIngredient[iI].textContent.toLowerCase())) {
                 divCard[i].style.display = "block";
             } else {
                 divCard[i].style.display = "none";
@@ -172,8 +173,8 @@ function factorySearch (data) {
 
 
     /** Recherche des Appareils*/
-    searchAppareils.addEventListener('keyup', function() { /** On écoute la barre de recherche lors de la saisie du texte */
-        const inputAppareils = searchAppareils.value; /** on récupére la valeur saisie*/
+    searchAppareils.addEventListener('keyup', function() {
+        const inputAppareils = searchAppareils.value;
 
         for (let i = 0; i < pAppareils.length; i++) {
             if (pAppareils[i].textContent.includes(inputAppareils.toLowerCase())) {
@@ -191,8 +192,8 @@ function factorySearch (data) {
     /** Recherche des Appareils via suggestion */ 
     for (let iA = 0; iA < pAppareils.length; iA++)
     pAppareils[iA].addEventListener('click', function() {
-        for (let i = 0; i < cardIngredient.length; i++) {
-            if (cardIngredient[i].textContent.includes(pAppareils[iA].textContent)) {
+        for (let i = 0; i < cardDescription.length; i++) {
+            if (cardDescription[i].textContent.includes(pAppareils[iA].textContent)) {
                 divCard[i].style.display = "block";
             } else {
                 divCard[i].style.display = "none";
@@ -219,8 +220,8 @@ function factorySearch (data) {
     })    
     
     /** Recherche des Ustensiles*/
-    searchUstensiles.addEventListener('keyup', function() { /** On écoute la barre de recherche lors de la saisie du texte */
-        const inputUstensiles = searchUstensiles.value; /** on récupére la valeur saisie*/ 
+    searchUstensiles.addEventListener('keyup', function() {
+        const inputUstensiles = searchUstensiles.value;
         for (let i = 0; i < pUstensils.length; i++) {
             if (pUstensils[i].textContent.includes(inputUstensiles.toLowerCase())) {
                 pUstensils[i].style.display = "block";
@@ -237,8 +238,8 @@ function factorySearch (data) {
     /** Recherche des Ustensiles via suggestion */ 
     for (let iU = 0; iU < pUstensils.length; iU++)
     pUstensils[iU].addEventListener('click', function() {
-        for (let i = 0; i < cardIngredient.length; i++) {
-            if (cardIngredient[i].textContent.includes(pUstensils[iA].textContent)) {
+        for (let i = 0; i < cardDescription.length; i++) {
+            if (cardDescription[i].textContent.includes(pUstensils[iU].textContent)) {
                 divCard[i].style.display = "block";
             } else {
                 divCard[i].style.display = "none";
@@ -263,6 +264,17 @@ function factorySearch (data) {
             tag.appendChild(divTag);
         }
     })
+
+    const tagIngredient = document.querySelectorAll(".tag-ingredient");
+    const crossed = document.querySelectorAll(".fa-circle-xmark");
+    console.log(tagIngredient);
+    for ( iC = 0; iC < crossed.length; iC ++) {
+        crossed[iC].addEventListener("click" , function () {
+            console.log('coucou');
+            tagIngredient[iC].style.display = "none";
+        })
+    }
+
 
     return {ingredients,appliance , ustensils}
 }
@@ -293,6 +305,10 @@ function hideIngredientList () {
     divIngredient.style.display = "none";
     const chevronIngredient = document.querySelector(".chevron-ingredients");
     chevronIngredient.style.transform = "rotate(0)";
+    // const divCard = document.querySelectorAll(".div-card");
+    // for (let i = 0; i < divCard.length; i++ ) {
+    //     divCard[i].style.display = "block";
+    // }
 };
 
 const divIngredientButton = document.getElementById("ingredient");
@@ -312,6 +328,10 @@ function hideAppareilsList () {
     divAppareils.style.display = "none";
     const chevronAppareils = document.querySelector(".chevron-appareils");
     chevronAppareils.style.transform = "rotate(0)";
+    // const divCard = document.querySelectorAll(".div-card");
+    // for (let i = 0; i < divCard.length; i++ ) {
+    //     divCard[i].style.display = "block";
+    // }
 };
 
 const divAppareilsButton = document.getElementById("appareils");
@@ -331,17 +351,11 @@ function hideUstensilesList () {
     divUstensiles.style.display = "none";
     const chevronUstensiles = document.querySelector(".chevron-ustensiles");
     chevronUstensiles.style.transform = "rotate(0)";
+    // const divCard = document.querySelectorAll(".div-card");
+    // for (let i = 0; i < divCard.length; i++ ) {
+    //     divCard[i].style.display = "block";
+    // }
 };
 
 const divUstensilesButton = document.getElementById("ustensiles");
 divUstensilesButton.setAttribute("onclick","displayUstensilesList()");
-
-/** Supprimer un tag*/ 
-
-const crossTag = document.querySelectorAll(".fa-circle-xmark");
-const divTagIngredient = document.getElementById("ingredient-tag-liste");
-const tagIngredient = document.querySelectorAll(".tag-ingredient");
-for (let iC = 0; iC < crossTag.length; iC ++)
-crossTag[iC].addEventListener('click', function() {
-        divTagIngredient.removech(tagIngredient);
-})

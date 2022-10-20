@@ -92,13 +92,13 @@ function factorySearch (data) {
     /************************* USTENSILES *************************************/
 
     /** création d'un tableau avec uniquement les ingrédient*/ 
-    let dishArray = []; /** premier tableau avec les données brute */
+    let dishArrays = []; /** premier tableau avec les données brute */
     
     for ( let i = 0; i < data.length; i++ ) {
-        dishArray.push(data[i].name); /** pour chaque ingredient dans le JSON nous l'ajoutons dans le premier tableau*/
+        dishArrays.push(data[i].name); /** pour chaque ingredient dans le JSON nous l'ajoutons dans le premier tableau*/
     };
     
-    dishArray = dishArray.flat(); /** Mise a plat du premier tableau */
+    dishArrays = dishArrays.flat(); /** Mise a plat du premier tableau */
 
     /************************* SEARCH SYSTEM *************************************/
 
@@ -106,26 +106,40 @@ function factorySearch (data) {
     const searchBar = document.querySelector("#searchbar"); /** correspond a la barre de recherche*/
     const divCardArray = [...document.querySelectorAll(".div-card")]; /** tableau contenant les différentes card des plats */
     const divTitleArray = [...document.querySelectorAll(".card-title")]; /** tableau contenant les différents titre des card*/
+    const searchValue = searchBar.value;  /** On récuppére la valeur du texte saisie */
     
-    searchBar.addEventListener('keyup', function() { /** mise en place d'un écoute sur la barre de recherche lors de la saisie de texte*/ 
-        const searchValue = searchBar.value;  /** On récuppére la valeur du texte saisie */
-        let result = dishArray.filter((dish) => { /** on fait que la var result soit égale au tableau dishArrayer filtrer  */
-            divCardArray.forEach(dishCard => { /** pour chaque card du tableau de divCardArray*/
-            if (searchValue == divTitleArray.textContent) { /** si la valeur saisie en barre de recherche et égale au titre de notre card passer en minuscule */
-                    dishCard.style.display = "block"; /** alors la card reste afficher */
-                } else {
-                        dishCard.style.display = "none"; /** Sinon elle disparait*/
-                }
-                
-                if (searchValue == '') { /** Si la barre de recherche est vide  */
-                    divCardArray.forEach(dishCard => { /** pour chaque div card tu tableau contenant les div card*/
-                        dishCard.style.display = "block"; /** toute les card s'affiche*/
-                    })
-                }
-            })
-        })
-        return result /** on retourne le resulta du filtre */
+    searchBar.addEventListener('keyup', function() {
+    let result = dishArrays.filter((dish) => {
+        return dish;
     })
+    divCardArray.forEach(card => {
+            if (!divTitleArray.includes(searchValue.toLowerCase()) && searchValue == "") {
+                card.style.display = "none";
+            } else {
+                card.style.display = "block";
+            }
+        })
+    })
+
+    // searchBar.addEventListener('keyup', function() { /** mise en place d'un écoute sur la barre de recherche lors de la saisie de texte*/ 
+    //     const searchValue = searchBar.value;  /** On récuppére la valeur du texte saisie */
+    //     let result = dishArray.filter((dish) => { /** on fait que la var result soit égale au tableau dishArrayer filtrer  */
+    //         divCardArray.forEach(dishCard => { /** pour chaque card du tableau de divCardArray*/
+    //         if (searchValue == divTitleArray.textContent) { /** si la valeur saisie en barre de recherche et égale au titre de notre card passer en minuscule */
+    //                 dishCard.style.display = "block"; /** alors la card reste afficher */
+    //             } else {
+    //                     dishCard.style.display = "none"; /** Sinon elle disparait*/
+    //             }
+                
+    //             if (searchValue == '') { /** Si la barre de recherche est vide  */
+    //                 divCardArray.forEach(dishCard => { /** pour chaque div card tu tableau contenant les div card*/
+    //                     dishCard.style.display = "block"; /** toute les card s'affiche*/
+    //                 })
+    //             }
+    //         })
+    //     })
+    //     return result /** on retourne le resulta du filtre */
+    // })
 
     /** Recherchez dans les barres d'ingrédients d'appareils et d'ustensiles */ 
 

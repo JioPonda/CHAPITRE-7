@@ -89,8 +89,204 @@ function factorySearch (data) {
         suggestionUstensils.appendChild(pUstensils); /** notre DIV suggestion-ingédient enfante de chaque lien crée précédemment */
     });
 
+    /************************* USTENSILES *************************************/
+
+    /** création d'un tableau avec uniquement les ingrédient*/ 
+    let dishArray = []; /** premier tableau avec les données brute */
+    
+    for ( let i = 0; i < data.length; i++ ) {
+        dishArray.push(data[i].name); /** pour chaque ingredient dans le JSON nous l'ajoutons dans le premier tableau*/
+    };
+    
+    dishArray = dishArray.flat(); /** Mise a plat du premier tableau */
+
     /************************* SEARCH SYSTEM *************************************/
 
+    /** Element du DOM*/
+    const searchBar = document.querySelector("#searchbar"); /** correspond a la barre de recherche*/
+    const divCardArray = [...document.querySelectorAll(".div-card")]; /** tableau contenant les différentes card des plats */
+    const divTitleArray = [...document.querySelectorAll(".card-title")]; /** tableau contenant les différents titre des card*/
+    
+    searchBar.addEventListener('keyup', function() { /** mise en place d'un écoute sur la barre de recherche lors de la saisie de texte*/ 
+        const searchValue = searchBar.value;  /** On récuppére la valeur du texte saisie */
+        let result = dishArray.filter((dish) => { /** on fait que la var result soit égale au tableau dishArrayer filtrer  */
+            divCardArray.forEach(dishCard => { /** pour chaque card du tableau de divCardArray*/
+            if (searchValue == divTitleArray.textContent) { /** si la valeur saisie en barre de recherche et égale au titre de notre card passer en minuscule */
+                    dishCard.style.display = "block"; /** alors la card reste afficher */
+                } else {
+                        dishCard.style.display = "none"; /** Sinon elle disparait*/
+                }
+                
+                if (searchValue == '') { /** Si la barre de recherche est vide  */
+                    divCardArray.forEach(dishCard => { /** pour chaque div card tu tableau contenant les div card*/
+                        dishCard.style.display = "block"; /** toute les card s'affiche*/
+                    })
+                }
+            })
+        })
+        return result /** on retourne le resulta du filtre */
+    })
+
+    /** Recherchez dans les barres d'ingrédients d'appareils et d'ustensiles */ 
+
+    /** Element du DOM*/ 
+    const searchIngredient = document.getElementById('ingredient');
+    const pIngredient = document.querySelectorAll('#pIngredient')
+    const searchAppareils = document.getElementById('appareils');
+    const pAppareils = document.querySelectorAll('#pAppareils')
+    const searchUstensiles = document.getElementById('ustensiles');
+    const pUstensils = document.querySelectorAll('#pUstensils');
+    const cardIngredient = document.querySelectorAll(".card-ingredient")
+    const cardDescription = document.querySelectorAll(".card-description")
+    /** Recherche des Ingrédients*/     
+    searchIngredient.addEventListener('keyup', function() {
+        const inputIngredient = searchIngredient.value;
+
+        for (let i = 0; i < pIngredient.length; i++) {
+            if (pIngredient[i].textContent.toLowerCase().includes(inputIngredient.toLowerCase())) {
+                pIngredient[i].style.display = "block";
+            } else {
+                pIngredient[i].style.display = "none";
+            }
+
+            if (inputIngredient === "") {
+                pIngredient[i].style.display = "block";
+            }
+        }
+    });
+    
+    /** Recherche des Ingrédients via suggestion */ 
+    for (let iI = 0; iI < pIngredient.length; iI++)
+    pIngredient[iI].addEventListener('click', function() {
+        for (let i = 0; i < cardIngredient.length; i++) {
+            if (cardIngredient[i].textContent.toLowerCase().includes(pIngredient[iI].textContent.toLowerCase())) {
+                divCard[i].style.display = "block";
+            } else {
+                divCard[i].style.display = "none";
+            }
+        }
+    });
+
+    /** Affichage des tag ingrédients */ 
+    const ingredientSearch = document.querySelector("#ingredient");
+    ingredientSearch.addEventListener('keyup', function(e) {
+        const tag = document.getElementById("ingredient-tag-liste");
+        const divTag = document.createElement("div");
+        divTag.setAttribute("class" , "tag-ingredient");
+        const iTag = document.createElement("p");
+        iTag.setAttribute("class" , "text-ingredient-tag")
+        const crossTag = document.createElement("i");
+        if (e.key === "Enter" & ingredientSearch.value !== "") {
+            iTag.textContent = ingredientSearch.value        
+            crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
+            divTag.appendChild(iTag);
+            divTag.appendChild(crossTag);
+            tag.appendChild(divTag);
+        }
+    })
+
+
+    /** Recherche des Appareils*/
+    searchAppareils.addEventListener('keyup', function() {
+        const inputAppareils = searchAppareils.value;
+
+        for (let i = 0; i < pAppareils.length; i++) {
+            if (pAppareils[i].textContent.includes(inputAppareils.toLowerCase())) {
+                pAppareils[i].style.display = "block";
+            } else {
+                pAppareils[i].style.display = "none";
+            }
+
+            if (inputAppareils === "") {
+                pAppareils[i].style.display = "block";
+            }
+        }
+    })
+    
+    /** Recherche des Appareils via suggestion */ 
+    for (let iA = 0; iA < pAppareils.length; iA++)
+    pAppareils[iA].addEventListener('click', function() {
+        for (let i = 0; i < cardDescription.length; i++) {
+            if (cardDescription[i].textContent.includes(pAppareils[iA].textContent)) {
+                divCard[i].style.display = "block";
+            } else {
+                divCard[i].style.display = "none";
+            }
+        }
+    });
+    
+    /** Affichage des tag appareils */ 
+    const appareilSearch = document.querySelector("#appareils");
+    appareilSearch.addEventListener('keyup', function(e) {
+        const tag = document.getElementById("appareil-tag-liste");
+        const divTag = document.createElement("div");
+        divTag.setAttribute("class" , "tag-appareil");
+        const aTag = document.createElement("p");
+        aTag.setAttribute("class" , "text-appareil-tag")
+        const crossTag = document.createElement("i");
+        if (e.key === "Enter" & appareilSearch.value !== "") {
+            aTag.textContent = appareilSearch.value        
+            crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
+            divTag.appendChild(aTag);
+            divTag.appendChild(crossTag);
+            tag.appendChild(divTag);
+        }
+    })    
+    
+    /** Recherche des Ustensiles*/
+    searchUstensiles.addEventListener('keyup', function() {
+        const inputUstensiles = searchUstensiles.value;
+        for (let i = 0; i < pUstensils.length; i++) {
+            if (pUstensils[i].textContent.includes(inputUstensiles.toLowerCase())) {
+                pUstensils[i].style.display = "block";
+            } else {
+                pUstensils[i].style.display = "none";
+            }
+
+            if (inputUstensiles === "") {
+                pUstensils[i].style.display = "block";
+            }
+        }
+    })
+
+    /** Recherche des Ustensiles via suggestion */ 
+    for (let iU = 0; iU < pUstensils.length; iU++)
+    pUstensils[iU].addEventListener('click', function() {
+        for (let i = 0; i < cardDescription.length; i++) {
+            if (cardDescription[i].textContent.includes(pUstensils[iU].textContent)) {
+                divCard[i].style.display = "block";
+            } else {
+                divCard[i].style.display = "none";
+            }
+        }
+    });    
+
+    /** Affichage des tag ustensiles */ 
+    const ustensileSearch = document.querySelector("#ustensiles");
+    ustensileSearch.addEventListener('keyup', function(e) {
+        const tag = document.getElementById("ustensile-tag-liste");
+        const divTag = document.createElement("div");
+        divTag.setAttribute("class" , "tag-ustensile");
+        const uTag = document.createElement("p");
+        uTag.setAttribute("class" , "text-ustensile-tag")
+        const crossTag = document.createElement("i");
+        if (e.key === "Enter" & ustensileSearch.value !== "") {
+            uTag.textContent = ustensileSearch.value        
+            crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
+            divTag.appendChild(uTag);
+            divTag.appendChild(crossTag);
+            tag.appendChild(divTag);
+        }
+    })
+
+    const tagIngredient = document.querySelectorAll(".tag-ingredient");
+    const crossed = document.querySelectorAll(".fa-circle-xmark");
+    for ( iC = 0; iC < crossed.length; iC ++) {
+        crossed[iC].addEventListener("click" , function () {
+            console.log('coucou');
+            tagIngredient[iC].style.display = "none";
+        })
+    }
 
 
     return {ingredients,appliance , ustensils}

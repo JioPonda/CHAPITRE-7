@@ -109,17 +109,25 @@ function factorySearch (data) {
     const searchValue = searchBar.value;  /** On récuppére la valeur du texte saisie */
     
     searchBar.addEventListener('keyup', function() {
-    let result = dishArrays.filter((dish) => {
-        return dish;
-    })
-    divCardArray.forEach(card => {
-            if (!divTitleArray.includes(searchValue.toLowerCase()) && searchValue == "") {
-                card.style.display = "none";
-            } else {
-                card.style.display = "block";
-            }
-        })
-    })
+        let result = dishArrays.filter((dish)=>{
+            return dish.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1; 
+          });
+          console.log(searchValue);
+          console.log(result);
+    }) 
+
+    // let result = dishArrays.filter((dish) => {
+    //     return dish;
+    // })
+    // divCardArray.forEach(card => {
+    //         if (!divTitleArray.includes(searchValue.toLowerCase()) && searchValue == "") {
+    //             card.style.display = "none";
+    //         } else {
+    //             card.style.display = "block";
+    //         }
+    //     })
+    // return result
+    // })
 
     // searchBar.addEventListener('keyup', function() { /** mise en place d'un écoute sur la barre de recherche lors de la saisie de texte*/ 
     //     const searchValue = searchBar.value;  /** On récuppére la valeur du texte saisie */

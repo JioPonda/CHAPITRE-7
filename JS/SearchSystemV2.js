@@ -106,14 +106,14 @@ function factorySearch (data) {
     const searchBar = document.querySelector("#searchbar"); /** correspond a la barre de recherche*/
     const divCardArray = [...document.querySelectorAll(".div-card")]; /** tableau contenant les différentes card des plats */
     const divTitleArray = [...document.querySelectorAll(".card-title")]; /** tableau contenant les différents titre des card*/
-    const searchValue = searchBar.value;  /** On récuppére la valeur du texte saisie */
     
     searchBar.addEventListener('keyup', function() {
+        const searchValue = searchBar.value;  /** On récuppére la valeur du texte saisie */
         let result = dishArrays.filter((dish)=>{
             return dish.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1; 
           });
-          console.log(searchValue);
-          console.log(result);
+        console.log(searchValue);
+        console.log(result);
     }) 
 
     // let result = dishArrays.filter((dish) => {
@@ -133,19 +133,19 @@ function factorySearch (data) {
     //     const searchValue = searchBar.value;  /** On récuppére la valeur du texte saisie */
     //     let result = dishArray.filter((dish) => { /** on fait que la var result soit égale au tableau dishArrayer filtrer  */
     //         divCardArray.forEach(dishCard => { /** pour chaque card du tableau de divCardArray*/
-    //         if (searchValue == divTitleArray.textContent) { /** si la valeur saisie en barre de recherche et égale au titre de notre card passer en minuscule */
-    //                 dishCard.style.display = "block"; /** alors la card reste afficher */
-    //             } else {
-    //                     dishCard.style.display = "none"; /** Sinon elle disparait*/
-    //             }
+        //     if (searchValue == divTitleArray.textContent) { /** si la valeur saisie en barre de recherche et égale au titre de notre card passer en minuscule */
+        //             dishCard.style.display = "block"; /** alors la card reste afficher */
+        //         } else {
+        //                 dishCard.style.display = "none"; /** Sinon elle disparait*/
+        //         }
                 
-    //             if (searchValue == '') { /** Si la barre de recherche est vide  */
-    //                 divCardArray.forEach(dishCard => { /** pour chaque div card tu tableau contenant les div card*/
-    //                     dishCard.style.display = "block"; /** toute les card s'affiche*/
-    //                 })
-    //             }
-    //         })
-    //     })
+        //         if (searchValue == '') { /** Si la barre de recherche est vide  */
+        //             divCardArray.forEach(dishCard => { /** pour chaque div card tu tableau contenant les div card*/
+        //                 dishCard.style.display = "block"; /** toute les card s'affiche*/
+        //             })
+        //         }
+        //     })
+        // })
     //     return result /** on retourne le resulta du filtre */
     // })
 

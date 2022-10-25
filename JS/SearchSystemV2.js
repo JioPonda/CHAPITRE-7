@@ -129,25 +129,25 @@ function factorySearch (data) {
     // return result
     // })
 
-    // searchBar.addEventListener('keyup', function() { /** mise en place d'un écoute sur la barre de recherche lors de la saisie de texte*/ 
-    //     const searchValue = searchBar.value;  /** On récuppére la valeur du texte saisie */
-    //     let result = dishArray.filter((dish) => { /** on fait que la var result soit égale au tableau dishArrayer filtrer  */
-    //         divCardArray.forEach(dishCard => { /** pour chaque card du tableau de divCardArray*/
-        //     if (searchValue == divTitleArray.textContent) { /** si la valeur saisie en barre de recherche et égale au titre de notre card passer en minuscule */
-        //             dishCard.style.display = "block"; /** alors la card reste afficher */
-        //         } else {
-        //                 dishCard.style.display = "none"; /** Sinon elle disparait*/
-        //         }
+    searchBar.addEventListener('keyup', function() { /** mise en place d'un écoute sur la barre de recherche lors de la saisie de texte*/ 
+        const searchValue = searchBar.value;  /** On récuppére la valeur du texte saisie */
+        let result = dishArray.filter((dish) => { /** on fait que la var result soit égale au tableau dishArrayer filtrer  */
+            divCardArray.forEach(dishCard => { /** pour chaque card du tableau de divCardArray*/
+            if (searchValue == divTitleArray.textContent) { /** si la valeur saisie en barre de recherche et égale au titre de notre card passer en minuscule */
+                    dishCard.style.display = "block"; /** alors la card reste afficher */
+                } else {
+                        dishCard.style.display = "none"; /** Sinon elle disparait*/
+                }
                 
-        //         if (searchValue == '') { /** Si la barre de recherche est vide  */
-        //             divCardArray.forEach(dishCard => { /** pour chaque div card tu tableau contenant les div card*/
-        //                 dishCard.style.display = "block"; /** toute les card s'affiche*/
-        //             })
-        //         }
-        //     })
-        // })
-    //     return result /** on retourne le resulta du filtre */
-    // })
+                if (searchValue == '') { /** Si la barre de recherche est vide  */
+                    divCardArray.forEach(dishCard => { /** pour chaque div card tu tableau contenant les div card*/
+                        dishCard.style.display = "block"; /** toute les card s'affiche*/
+                    })
+                }
+            })
+        })
+        return result /** on retourne le resulta du filtre */
+    })
 
     /** Recherchez dans les barres d'ingrédients d'appareils et d'ustensiles */ 
 

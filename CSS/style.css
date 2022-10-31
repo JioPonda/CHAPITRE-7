@@ -301,6 +301,11 @@
    }
    
    /* card skull*/
+
+   .pName {
+    display: none;
+   }    
+
    .div-card {
        display: block;
        height: 400px;

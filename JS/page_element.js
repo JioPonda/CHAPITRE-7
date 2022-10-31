@@ -20,9 +20,7 @@ function getRecipesCardDOM() {
   /** Squelette de la card */ 
   const divCard = document.createElement("article");
   divCard.setAttribute("class","div-card");
-  const pName = document.createElement("p")
-  pName.setAttribute("class" , "pName")
-  pName.textContent = name;
+  divCard.setAttribute("id" , name);
   const divGreyZone = document.createElement("div");
   divGreyZone.setAttribute("class", "grey-zone");
   const divCardInfos = document.createElement("div");
@@ -62,7 +60,6 @@ function getRecipesCardDOM() {
   cardDescription.setAttribute("class" , "card-description");
   cardDescription.textContent = description;
   
-  divCard.appendChild(pName);
   divCard.appendChild(divGreyZone);
   divCard.appendChild(divCardInfos);
   divCardInfos.appendChild(divRecipes);

@@ -12,7 +12,8 @@
             },
             {
                 "ingredient" : "Jus de citron",
-                "quantity" : 2
+                "quantity" : 2,
+                "unit" : ""
             },
             {
                 "ingredient" : "Crème de coco",
@@ -25,7 +26,9 @@
                 "unit" : "grammes"
             },
             {
-                "ingredient": "Glaçons"
+                "ingredient": "Glaçons",
+                "quantite" : "",
+                "unit" : ""
             }
         ],
         "time": 10,

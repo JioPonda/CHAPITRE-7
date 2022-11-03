@@ -267,7 +267,6 @@ function factorySearch (data) {
 
     const tagIngredient = document.querySelectorAll(".tag-ingredient");
     const crossed = document.querySelectorAll(".fa-circle-xmark");
-    console.log(tagIngredient);
     for ( iC = 0; iC < crossed.length; iC ++) {
         crossed[iC].addEventListener("click" , function () {
             console.log('coucou');

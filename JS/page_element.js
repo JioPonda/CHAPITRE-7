@@ -13,7 +13,6 @@ async function getRecipes() {
 /** ---------- CREATION DU GABARIT DES CARDS ---------- */ 
 function recipesFactory(data) {
   const {id,name,servings,ingredients,time,description, appliance , ustensils }= data;
-  // console.log(data);
   const clock = "assets/clock.png";
   
   function getRecipesCardDOM() {
@@ -40,19 +39,20 @@ function recipesFactory(data) {
     const cardTime = document.createElement("p");
     cardTime.setAttribute("class", "card-time");
     cardTime.textContent = time + "min";
-    const cardIngredient = document.createElement("p"); 
-    const breakLine = document.createElement('br');
-    if ( ingredients.unit === 'undefined') {
+    const cardSpan = document.createElement('span');
+    if ( ingredients.unit === "") {
       for ( let i = 0 ; i < ingredients.length ; i++) {
+      const cardIngredient = document.createElement("p"); 
       cardIngredient.setAttribute("class" , "card-ingredient");
-      cardIngredient.textContent = cardIngredient.textContent + ingredients[i].ingredient + ":" + ingredients[i].quantity + breakLine;
-      // console.log(ingredients);
+      cardIngredient.innerHTML = cardIngredient.textContent + ingredients[i].ingredient + " : " + ingredients[i].quantity;
+      cardSpan.appendChild(cardIngredient);
       };
     } else {
       for ( let i = 0 ; i < ingredients.length ; i++) {
+      const cardIngredient = document.createElement("p");
       cardIngredient.setAttribute("class" , "card-ingredient");
-      cardIngredient.textContent = cardIngredient.textContent + ingredients[i].ingredient + ":" + ingredients[i].quantity + ingredients[i].unit + breakLine;
-      // console.log(ingredients);
+      cardIngredient.innerHTML = cardIngredient.textContent + ingredients[i].ingredient + " : " + ingredients[i].quantity + ingredients[i].unit;
+      cardSpan.appendChild(cardIngredient);
       };
     };
     const cardDescription = document.createElement("p");
@@ -63,7 +63,7 @@ function recipesFactory(data) {
     divCard.appendChild(divCardInfos);
     divCardInfos.appendChild(divRecipes);
     divRecipes.appendChild(cardTitle);
-    divRecipes.appendChild(cardIngredient);
+    divRecipes.appendChild(cardSpan);
     divCardInfos.appendChild(divDescription);
     divTime.appendChild(cardClock);
     divTime.appendChild(cardTime);

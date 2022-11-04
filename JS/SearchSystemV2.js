@@ -132,7 +132,7 @@ function factorySearch (data) {
     const pAppareils = document.querySelectorAll('#pAppareils')
     const searchUstensiles = document.getElementById('ustensiles');
     const pUstensils = document.querySelectorAll('#pUstensils');
-    const cardIngredient = document.querySelectorAll(".card-ingredient")
+    const spanIngredient = document.querySelectorAll(".span-ingredient")
     const cardDescription = document.querySelectorAll(".card-description")
     /** Recherche des Ingrédients*/     
     searchIngredient.addEventListener('keyup', function() {
@@ -154,8 +154,8 @@ function factorySearch (data) {
     /** Recherche des Ingrédients via suggestion */ 
     for (let iI = 0; iI < pIngredient.length; iI++)
     pIngredient[iI].addEventListener('click', function() {
-        for (let i = 0; i < cardIngredient.length; i++) {
-            if (cardIngredient[i].textContent.toLowerCase().includes(pIngredient[iI].textContent.toLowerCase())) {
+        for (let i = 0; i < spanIngredient.length; i++) {
+            if (spanIngredient[i].textContent.toLowerCase().includes(pIngredient[iI].textContent.toLowerCase())) {
                 divCard[i].style.display = "block";
             } else {
                 divCard[i].style.display = "none";

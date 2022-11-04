@@ -331,20 +331,24 @@
    }
    
    /* card infos left */
-   .div-recipes {
+    .div-recipes {
        display: flex;
        flex-direction: column;
        width: 50%;
-   }
+    }
    
-   .card-title{
+    .card-title{
        margin-left: 5%;
        font-size: 1.125em;    
-   }
+    }
    
-   .card-ingredient {
-       font-size: 0.75em;
-   }
+    .span-ingredient {
+        margin: -10px 0 0 1vw;
+    }
+
+    .card-ingredient {
+        font-size: 0.6em;
+    }
    
    /* card infos right */
    

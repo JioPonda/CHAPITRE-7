@@ -122,9 +122,8 @@ function factorySearch (data) {
     const pAppareils = document.querySelectorAll('#pAppareils')
     const searchUstensiles = document.getElementById('ustensiles');
     const pUstensils = document.querySelectorAll('#pUstensils');
-    const cardIngredient = document.querySelectorAll(".card-ingredient");
-    const cardDescription = document.querySelectorAll(".card-description");
     const spanIngredient = document.querySelectorAll(".span-ingredient");
+    const cardDescription = document.querySelectorAll(".card-description");
 
     /** Recherche des Ingrédients*/     
     searchIngredient.addEventListener('keyup', function() {
@@ -143,8 +142,7 @@ function factorySearch (data) {
         }
     });
     
-    /** Recherche des Ingrédients via suggestion */ 
-
+    /** Recherche des Ingrédients via suggestion + création du tag au click*/ 
     for (let iI = 0; iI < pIngredient.length; iI++)
     pIngredient[iI].addEventListener('click', function() {
         for (let i = 0; i < spanIngredient.length; i++) {
@@ -154,9 +152,23 @@ function factorySearch (data) {
                 divCard[i].style.display = "none";
             }
         }
+        const tag = document.getElementById("ingredient-tag-liste");
+        const divTag = document.createElement("div");
+        divTag.setAttribute("class" , "tag-ingredient");
+        const iTag = document.createElement("p");
+        iTag.setAttribute("class" , "text-ingredient-tag")
+        const crossTag = document.createElement("i");
+        iTag.textContent = pIngredient[iI].textContent;        
+        crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
+        crossTag.setAttribute("id" , "crossed-ingredient");
+        crossTag.setAttribute("onclick" , "hideTagIngredient ()");
+        divTag.appendChild(iTag);
+        divTag.appendChild(crossTag);
+        tag.appendChild(divTag);     
+        console.log(tag);   
     });
 
-    /** Affichage des tag ingrédients */ 
+    /** Affichage des tag ingrédients via la touche ENTER */ 
     const ingredientSearch = document.querySelector("#ingredient");
     ingredientSearch.addEventListener('keyup', function(e) {
         if (ingredientList.includes(ingredientSearch.value.toLowerCase())) {
@@ -164,7 +176,9 @@ function factorySearch (data) {
             const divTag = document.createElement("div");
             divTag.setAttribute("class" , "tag-ingredient");
             const iTag = document.createElement("p");
-            iTag.setAttribute("class" , "text-ingredient-tag")
+            iTag.setAttribute("class" , "text-ingredient-tag");
+            iTag.setAttribute("id" , "crossed-ingredient");
+            crossTag.setAttribute("onclick" , "hideTagIngredient ()");
             const crossTag = document.createElement("i");
             if (e.key === "Enter" & ingredientSearch.value !== "") {
                 iTag.textContent = ingredientSearch.value        
@@ -194,7 +208,7 @@ function factorySearch (data) {
         }
     })
     
-    /** Recherche des Appareils via suggestion */ 
+    /** Recherche des Appareils via suggestion + création du tag au click */ 
     for (let iA = 0; iA < pAppareils.length; iA++)
     pAppareils[iA].addEventListener('click', function() {
         for (let i = 0; i < cardDescription.length; i++) {
@@ -204,9 +218,22 @@ function factorySearch (data) {
                 divCard[i].style.display = "none";
             }
         }
+        const tag = document.getElementById("appareil-tag-liste");
+        const divTag = document.createElement("div");
+        divTag.setAttribute("class" , "tag-appareil");
+        const aTag = document.createElement("p");
+        aTag.setAttribute("class" , "text-appareil-tag")
+        const crossTag = document.createElement("i");
+        aTag.textContent = pAppareils[iA].textContent;        
+        crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
+        crossTag.setAttribute("id" , "crossed-appareils");
+        crossTag.setAttribute("onclick" , "hideTagAppareils ()");
+        divTag.appendChild(aTag);
+        divTag.appendChild(crossTag);
+        tag.appendChild(divTag);
     });
     
-    /** Affichage des tag appareils */ 
+    /** Affichage des tag appareils via la touche ENTER */ 
     const appareilSearch = document.querySelector("#appareils");
     appareilSearch.addEventListener('keyup', function(e) {
         if (appareilList.includes(appareilSearch.value.toLowerCase())) {
@@ -214,7 +241,9 @@ function factorySearch (data) {
             const divTag = document.createElement("div");
             divTag.setAttribute("class" , "tag-appareil");
             const aTag = document.createElement("p");
-            aTag.setAttribute("class" , "text-appareil-tag")
+            aTag.setAttribute("class" , "text-appareil-tag");
+            aTag.setAttribute("id" , "crossed-appareils");
+            crossTag.setAttribute("onclick" , "hideTagAppareils ()");
             const crossTag = document.createElement("i");
             if (e.key === "Enter" & appareilSearch.value !== "") {
                 aTag.textContent = appareilSearch.value        
@@ -242,7 +271,7 @@ function factorySearch (data) {
         }
     })
 
-    /** Recherche des Ustensiles via suggestion */ 
+    /** Recherche des Ustensiles via suggestion + création du tag au click */ 
     for (let iU = 0; iU < pUstensils.length; iU++)
     pUstensils[iU].addEventListener('click', function() {
         for (let i = 0; i < cardDescription.length; i++) {
@@ -252,9 +281,23 @@ function factorySearch (data) {
                 divCard[i].style.display = "none";
             }
         }
-    });    
 
-    /** Affichage des tag ustensiles */ 
+        const tag = document.getElementById("ustensile-tag-liste");
+        const divTag = document.createElement("div");
+        divTag.setAttribute("class" , "tag-ustensile");
+        const uTag = document.createElement("p");
+        uTag.setAttribute("class" , "text-ustensile-tag")
+        const crossTag = document.createElement("i");
+        uTag.textContent = pUstensils[iU].textContent;        
+        crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
+        crossTag.setAttribute("id" , "crossed-ustensiles");
+        crossTag.setAttribute("onclick" , "hideTagUstensiles ()");
+        divTag.appendChild(uTag);
+        divTag.appendChild(crossTag);
+        tag.appendChild(divTag);
+    });  
+
+    /** Affichage des tag ustensiles via la touche ENTER */ 
     const ustensileSearch = document.querySelector("#ustensiles");
     ustensileSearch.addEventListener('keyup', function(e) {
         if (ustensilslList.includes(ustensileSearch.value.toLowerCase())) {
@@ -263,6 +306,8 @@ function factorySearch (data) {
             divTag.setAttribute("class" , "tag-ustensile");
             const uTag = document.createElement("p");
             uTag.setAttribute("class" , "text-ustensile-tag")
+            uTag.setAttribute("id" , "crossed-ustensiles")
+            crossTag.setAttribute("onclick" , "hideTagUstensiles ()");
             const crossTag = document.createElement("i");
             if (e.key === "Enter" & ustensileSearch.value !== "") {
                 uTag.textContent = ustensileSearch.value        
@@ -273,16 +318,6 @@ function factorySearch (data) {
             }
         }
     })
-
-    const tagIngredient = document.querySelectorAll(".tag-ingredient");
-    const crossed = document.querySelectorAll(".fa-circle-xmark");
-    for ( iC = 0; iC < crossed.length; iC ++) {
-        crossed[iC].addEventListener("click" , function () {
-            console.log('coucou');
-            tagIngredient[iC].style.display = "none";
-        })
-    }
-
 
     return {ingredients,appliance , ustensils}
 }
@@ -367,3 +402,47 @@ function hideUstensilesList () {
 
 const divUstensilesButton = document.getElementById("ustensiles");
 divUstensilesButton.setAttribute("onclick","displayUstensilesList()");
+
+/** Suppression des tag ingrédient */
+function hideTagIngredient () {
+    const crossedIngredient = document.querySelectorAll("#crossed-ingredient");
+    for ( let crossI = 0; crossI < crossedIngredient.length; crossI++){
+        const tagIngredient = document.querySelectorAll('.tag-ingredient');
+        crossedIngredient[crossI].addEventListener('click' , function () {
+            tagIngredient[crossI].remove();
+        })
+    }
+}
+
+/** Suppression des tag appareils */
+function hideTagAppareils () {
+    const crossedAppareils = document.querySelectorAll("#crossed-appareils");
+    for ( let crossA = 0; crossA < crossedAppareils.length; crossA++){
+        const tagAppareils = document.querySelectorAll('.tag-appareil');
+        crossedAppareils[crossA].addEventListener('click' , function () {
+            tagAppareils[crossA].remove();
+        })
+    }
+}
+
+/** Suppression des tag ustensiles */
+function hideTagUstensiles () {
+    const crossedUstensiles = document.querySelectorAll("#crossed-ustensiles");
+    for ( let crossU = 0; crossU < crossedUstensiles.length; crossU++){
+        const tagUstensiles = document.querySelectorAll('.tag-ustensile');
+        crossedUstensiles[crossU].addEventListener('click' , function () {
+            tagUstensiles[crossU].remove();
+        })
+    }
+}
+
+/** Clean de la page quand les tag sont supprimez */ 
+const ingredientTagList = document.querySelector('#ingredient-tag-liste');
+const appareilTagList = document.querySelector('#appareil-tag-liste');
+const ustensileTagList = document.querySelector('#ustensile-tag-liste');
+const divCard = document.querySelectorAll(".div-card");
+// for (let div = 0 ; div < divCard.length; div++) {
+//     if (ingredientTagList.textContent !== "" && appareilTagList.textContent !== "" && ustensileTagList.textContent !== "") {
+//         divCard[div].style.display = "block";
+//     }
+// }

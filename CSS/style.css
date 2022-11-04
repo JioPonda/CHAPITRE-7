@@ -297,7 +297,7 @@ header input {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 2vw;
-    margin: 25px 0 50px 4vw;
+    margin: 50px 0 50px 4vw;
 }
 
 /* card skull*/
@@ -338,11 +338,12 @@ header input {
 }
 
 .span-ingredient {
-    margin: -10px 0 0 1vw;
+    margin: 0px 0 0 1vw;
 }
 
 .card-ingredient {
-    font-size: 0.6em;
+    font-size: 0.75em;
+    margin-top: -5px;
 }
 
 /* card infos right */

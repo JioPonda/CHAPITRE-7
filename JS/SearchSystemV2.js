@@ -134,6 +134,7 @@ function factorySearch (data) {
     const pUstensils = document.querySelectorAll('#pUstensils');
     const spanIngredient = document.querySelectorAll(".span-ingredient")
     const cardDescription = document.querySelectorAll(".card-description")
+    
     /** Recherche des Ingrédients*/     
     searchIngredient.addEventListener('keyup', function() {
         const inputIngredient = searchIngredient.value;
@@ -151,7 +152,7 @@ function factorySearch (data) {
         }
     });
     
-    /** Recherche des Ingrédients via suggestion */ 
+    /** Recherche des Ingrédients via suggestion + création du tag au click*/ 
     for (let iI = 0; iI < pIngredient.length; iI++)
     pIngredient[iI].addEventListener('click', function() {
         for (let i = 0; i < spanIngredient.length; i++) {
@@ -161,9 +162,20 @@ function factorySearch (data) {
                 divCard[i].style.display = "none";
             }
         }
+        const tag = document.getElementById("ingredient-tag-liste");
+        const divTag = document.createElement("div");
+        divTag.setAttribute("class" , "tag-ingredient");
+        const iTag = document.createElement("p");
+        iTag.setAttribute("class" , "text-ingredient-tag")
+        const crossTag = document.createElement("i");
+        iTag.textContent = pIngredient[iI].textContent;        
+        crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
+        divTag.appendChild(iTag);
+        divTag.appendChild(crossTag);
+        tag.appendChild(divTag);        
     });
 
-    /** Affichage des tag ingrédients */ 
+    /** Affichage des tag ingrédients via la touche ENTER */ 
     const ingredientSearch = document.querySelector("#ingredient");
     ingredientSearch.addEventListener('keyup', function(e) {
         if (ingredientList.includes(ingredientSearch.value.toLowerCase())) {
@@ -201,7 +213,7 @@ function factorySearch (data) {
         }
     })
     
-    /** Recherche des Appareils via suggestion */ 
+    /** Recherche des Appareils via suggestion + création du tag au click */ 
     for (let iA = 0; iA < pAppareils.length; iA++)
     pAppareils[iA].addEventListener('click', function() {
         for (let i = 0; i < cardDescription.length; i++) {
@@ -211,9 +223,20 @@ function factorySearch (data) {
                 divCard[i].style.display = "none";
             }
         }
+        const tag = document.getElementById("appareil-tag-liste");
+        const divTag = document.createElement("div");
+        divTag.setAttribute("class" , "tag-appareil");
+        const aTag = document.createElement("p");
+        aTag.setAttribute("class" , "text-appareil-tag")
+        const crossTag = document.createElement("i");
+        aTag.textContent = pAppareils[iA].textContent;        
+        crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
+        divTag.appendChild(aTag);
+        divTag.appendChild(crossTag);
+        tag.appendChild(divTag);
     });
     
-    /** Affichage des tag appareils */ 
+    /** Affichage des tag appareils via la touche ENTER */ 
     const appareilSearch = document.querySelector("#appareils");
     appareilSearch.addEventListener('keyup', function(e) {
         if (appareilList.includes(appareilSearch.value.toLowerCase())) {
@@ -249,7 +272,7 @@ function factorySearch (data) {
         }
     })
 
-    /** Recherche des Ustensiles via suggestion */ 
+    /** Recherche des Ustensiles via suggestion + création du tag au click */ 
     for (let iU = 0; iU < pUstensils.length; iU++)
     pUstensils[iU].addEventListener('click', function() {
         for (let i = 0; i < cardDescription.length; i++) {
@@ -259,9 +282,21 @@ function factorySearch (data) {
                 divCard[i].style.display = "none";
             }
         }
+
+        const tag = document.getElementById("ustensile-tag-liste");
+        const divTag = document.createElement("div");
+        divTag.setAttribute("class" , "tag-ustensile");
+        const uTag = document.createElement("p");
+        uTag.setAttribute("class" , "text-ustensile-tag")
+        const crossTag = document.createElement("i");
+        uTag.textContent = pUstensils[iU].textContent;        
+        crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
+        divTag.appendChild(uTag);
+        divTag.appendChild(crossTag);
+        tag.appendChild(divTag);
     });    
 
-    /** Affichage des tag ustensiles */ 
+    /** Affichage des tag ustensiles via la touche ENTER */ 
     const ustensileSearch = document.querySelector("#ustensiles");
     ustensileSearch.addEventListener('keyup', function(e) {
         if (ustensilslList.includes(ustensileSearch.value.toLowerCase())) {

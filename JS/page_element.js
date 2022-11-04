@@ -40,7 +40,8 @@ function recipesFactory(data) {
     cardTime.setAttribute("class", "card-time");
     cardTime.textContent = time + "min";
     const cardSpan = document.createElement('span');
-    if ( ingredients.unit === "") {
+    cardSpan.setAttribute("class" , "span-ingredient")
+    if ( ingredients.unit === "" && ingredients.quantity === "") {
       for ( let i = 0 ; i < ingredients.length ; i++) {
       const cardIngredient = document.createElement("p"); 
       cardIngredient.setAttribute("class" , "card-ingredient");
@@ -51,7 +52,7 @@ function recipesFactory(data) {
       for ( let i = 0 ; i < ingredients.length ; i++) {
       const cardIngredient = document.createElement("p");
       cardIngredient.setAttribute("class" , "card-ingredient");
-      cardIngredient.innerHTML = cardIngredient.textContent + ingredients[i].ingredient + " : " + ingredients[i].quantity + ingredients[i].unit;
+      cardIngredient.innerHTML = cardIngredient.textContent + ingredients[i].ingredient + " : " + ingredients[i].quantity + " " + ingredients[i].unit;
       cardSpan.appendChild(cardIngredient);
       };
     };

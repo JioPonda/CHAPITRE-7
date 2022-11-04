@@ -166,18 +166,20 @@ function factorySearch (data) {
     /** Affichage des tag ingrédients */ 
     const ingredientSearch = document.querySelector("#ingredient");
     ingredientSearch.addEventListener('keyup', function(e) {
-        const tag = document.getElementById("ingredient-tag-liste");
-        const divTag = document.createElement("div");
-        divTag.setAttribute("class" , "tag-ingredient");
-        const iTag = document.createElement("p");
-        iTag.setAttribute("class" , "text-ingredient-tag")
-        const crossTag = document.createElement("i");
-        if (e.key === "Enter" & ingredientSearch.value !== "") {
-            iTag.textContent = ingredientSearch.value        
-            crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
-            divTag.appendChild(iTag);
-            divTag.appendChild(crossTag);
-            tag.appendChild(divTag);
+        if (ingredientList.includes(ingredientSearch.value.toLowerCase())) {
+            const tag = document.getElementById("ingredient-tag-liste");
+            const divTag = document.createElement("div");
+            divTag.setAttribute("class" , "tag-ingredient");
+            const iTag = document.createElement("p");
+            iTag.setAttribute("class" , "text-ingredient-tag")
+            const crossTag = document.createElement("i");
+            if (e.key === "Enter" & ingredientSearch.value !== "") {
+                iTag.textContent = ingredientSearch.value        
+                crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
+                divTag.appendChild(iTag);
+                divTag.appendChild(crossTag);
+                tag.appendChild(divTag);
+            }
         }
     })
 
@@ -214,18 +216,20 @@ function factorySearch (data) {
     /** Affichage des tag appareils */ 
     const appareilSearch = document.querySelector("#appareils");
     appareilSearch.addEventListener('keyup', function(e) {
-        const tag = document.getElementById("appareil-tag-liste");
-        const divTag = document.createElement("div");
-        divTag.setAttribute("class" , "tag-appareil");
-        const aTag = document.createElement("p");
-        aTag.setAttribute("class" , "text-appareil-tag")
-        const crossTag = document.createElement("i");
-        if (e.key === "Enter" & appareilSearch.value !== "") {
-            aTag.textContent = appareilSearch.value        
-            crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
-            divTag.appendChild(aTag);
-            divTag.appendChild(crossTag);
-            tag.appendChild(divTag);
+        if (appareilList.includes(appareilSearch.value.toLowerCase())) {
+            const tag = document.getElementById("appareil-tag-liste");
+            const divTag = document.createElement("div");
+            divTag.setAttribute("class" , "tag-appareil");
+            const aTag = document.createElement("p");
+            aTag.setAttribute("class" , "text-appareil-tag")
+            const crossTag = document.createElement("i");
+            if (e.key === "Enter" & appareilSearch.value !== "") {
+                aTag.textContent = appareilSearch.value        
+                crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
+                divTag.appendChild(aTag);
+                divTag.appendChild(crossTag);
+                tag.appendChild(divTag);
+            }
         }
     })    
     
@@ -260,18 +264,20 @@ function factorySearch (data) {
     /** Affichage des tag ustensiles */ 
     const ustensileSearch = document.querySelector("#ustensiles");
     ustensileSearch.addEventListener('keyup', function(e) {
-        const tag = document.getElementById("ustensile-tag-liste");
-        const divTag = document.createElement("div");
-        divTag.setAttribute("class" , "tag-ustensile");
-        const uTag = document.createElement("p");
-        uTag.setAttribute("class" , "text-ustensile-tag")
-        const crossTag = document.createElement("i");
-        if (e.key === "Enter" & ustensileSearch.value !== "") {
-            uTag.textContent = ustensileSearch.value        
-            crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
-            divTag.appendChild(uTag);
-            divTag.appendChild(crossTag);
-            tag.appendChild(divTag);
+        if (ustensilslList.includes(ustensileSearch.value.toLowerCase())) {
+            const tag = document.getElementById("ustensile-tag-liste");
+            const divTag = document.createElement("div");
+            divTag.setAttribute("class" , "tag-ustensile");
+            const uTag = document.createElement("p");
+            uTag.setAttribute("class" , "text-ustensile-tag")
+            const crossTag = document.createElement("i");
+            if (e.key === "Enter" & ustensileSearch.value !== "") {
+                uTag.textContent = ustensileSearch.value        
+                crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
+                divTag.appendChild(uTag);
+                divTag.appendChild(crossTag);
+                tag.appendChild(divTag);
+            }
         }
     })
 

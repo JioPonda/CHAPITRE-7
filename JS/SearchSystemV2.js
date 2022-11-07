@@ -108,10 +108,10 @@ function factorySearch (data) {
     const error = document.querySelector('#error-search');
 
     searchBar.addEventListener('keyup', function() { /** mise en place d'un écoute sur la barre de recherche lors de la saisie de texte*/ 
-        
+    // searchValue.length >= 3 && 
         const searchValue = searchBar.value; /** On récupére la valeur saisie dans la barre de recherche */
         divCard.forEach((card) => { /** Pour chaque card */
-            if (searchValue.length >= 3 && card.id.toLowerCase().includes(searchValue.toLowerCase())) { /** si le tableau de noms inclue la valeur saisie */
+            if (card.id.toLowerCase().includes(searchValue.toLowerCase())) { /** si le tableau de noms inclue la valeur saisie */
                 card.style.display = "block"; 
             } else {
                 card.style.display = "none";
@@ -415,6 +415,7 @@ function hideTagIngredient () {
         const tagIngredient = document.querySelectorAll('.tag-ingredient');
         crossedIngredient[crossI].addEventListener('click' , function () {
             tagIngredient[crossI].remove();
+            location.reload();
         })
     }
 }
@@ -426,6 +427,7 @@ function hideTagAppareils () {
         const tagAppareils = document.querySelectorAll('.tag-appareil');
         crossedAppareils[crossA].addEventListener('click' , function () {
             tagAppareils[crossA].remove();
+            location.reload();
         })
     }
 }
@@ -437,12 +439,14 @@ function hideTagUstensiles () {
         const tagUstensiles = document.querySelectorAll('.tag-ustensile');
         crossedUstensiles[crossU].addEventListener('click' , function () {
             tagUstensiles[crossU].remove();
+            location.reload();
         })
     }
 }
 
-// /** Clean de la page quand les tag sont supprimez */ 
-// const ingredientTagList = document.querySelector('#ingredient-tag-liste');
-// const appareilTagList = document.querySelector('#appareil-tag-liste');
-// const ustensileTagList = document.querySelector('#ustensile-tag-liste');
-// const divCard = document.querySelectorAll(".div-card");
+/** Clean de la page quand les tag sont supprimez */ 
+const ingredientTagList = document.querySelector('#ingredient-tag-liste');
+const appareilTagList = document.querySelector('#appareil-tag-liste');
+const ustensileTagList = document.querySelector('#ustensile-tag-liste');
+const divCard = document.querySelectorAll(".div-card");
+

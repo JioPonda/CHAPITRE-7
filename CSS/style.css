@@ -45,7 +45,13 @@ header input {
 
 /* NAVBAR */
 
-/** tags */
+#error-search {
+    display: none;
+    margin: 5px 0 0 -41vw;
+    color: #D04F4F;    
+   }
+
+   /** tags */
 
 #ingredient-tag-liste {
     display: flex;

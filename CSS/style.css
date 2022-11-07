@@ -45,6 +45,12 @@
    
    /* NAVBAR */
    
+   #error-search {
+    display: none;
+    margin: 5px 0 0 -41vw;
+    color: #D04F4F;    
+   }
+
    /** tags */
    
    #ingredient-tag-liste {
@@ -382,6 +388,7 @@
        font-family: 'Roboto';
        font-weight: 400;
        font-size: 0.75em;
-       text-overflow: ellipsis;
        overflow: hidden;
+       white-space: nowrap;
+       text-overflow: ellipsis;
    }

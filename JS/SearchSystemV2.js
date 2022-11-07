@@ -21,14 +21,14 @@ function factorySearch (data) {
     
     for ( let i = 0; i < data.length; i++ ) {
         ingredientsArray.push(data[i].ingredients); /** pour chaque ingredient dans le JSON nous l'ajoutons dans le premier tableau*/
-    };
+    }
     
     ingredientsArray = ingredientsArray.flat(); /** Mise a plat du premier tableau */
     
     for ( let i = 0; i < ingredientsArray.length; i++ ) {
         ingredientsArray2.push(ingredientsArray[i].ingredient.toLowerCase()); /** Pour chaque ingrédient dans le premier tableau nous l'ajoutons dans le deuxiémée 
         tableau en supprimant les majuscule */
-    };
+    }
 
     let ingredientList = ingredientsArray2.filter((x, i) => ingredientsArray2.indexOf(x) === i); /** Nous créons une variable ou  nous filtrons les ingrédients 
     afin de retourner un tableau sans doublons */
@@ -49,7 +49,7 @@ function factorySearch (data) {
     
     for ( let i = 0; i < data.length; i++ ) {
         appareilsArray.push(data[i].appliance.toLowerCase()); /** pour chaque appareil dans le JSON nous l'ajoutons dans le tableau*/
-    };
+    }
     
     appareilsArray = appareilsArray.flat(); /** Mise a plat du tableau */
 
@@ -73,7 +73,7 @@ function factorySearch (data) {
     
     for ( let i = 0; i < data.length; i++ ) {
         ustensilesArray.push(data[i].ustensils); /** pour chaque ustensile dans le JSON nous l'ajoutons dans le tableau*/
-    };
+    }
     ustensilesArray = ustensilesArray.flat(); /** Mise a plat du tableau */
     
     let ustensilslList = ustensilesArray.filter((x, i) => ustensilesArray.indexOf(x) === i); /** Nous créons une variable ou nous filtrons les ustensiles 
@@ -96,7 +96,7 @@ function factorySearch (data) {
     
     for ( let i = 0; i < data.length; i++ ) {
         dishArrays.push(data[i].name); /** pour chaque ingredient dans le JSON nous l'ajoutons dans le premier tableau*/
-    };
+    }
     
     dishArrays = dishArrays.flat(); /** Mise a plat du premier tableau */
 
@@ -358,7 +358,7 @@ function hideIngredientList () {
     divIngredient.style.display = "none";
     const chevronIngredient = document.querySelector(".chevron-ingredients");
     chevronIngredient.style.transform = "rotate(0)";
-};
+}
 
 const divIngredientButton = document.getElementById("ingredient");
 divIngredientButton.setAttribute("onclick","displayIngredientList()");
@@ -369,7 +369,7 @@ function displayAppareilsList () {
     divAppareils.style.display = "grid";
     const chevronAppareils = document.querySelector(".chevron-appareils");
     chevronAppareils.style.transform = "rotate(180deg)";
-};
+}
 
 /** Masquer la liste d'appareils */
 function hideAppareilsList () {
@@ -377,7 +377,7 @@ function hideAppareilsList () {
     divAppareils.style.display = "none";
     const chevronAppareils = document.querySelector(".chevron-appareils");
     chevronAppareils.style.transform = "rotate(0)";
-};
+}
 
 const divAppareilsButton = document.getElementById("appareils");
 divAppareilsButton.setAttribute("onclick","displayAppareilsList()");
@@ -396,7 +396,7 @@ function hideUstensilesList () {
     divUstensiles.style.display = "none";
     const chevronUstensiles = document.querySelector(".chevron-ustensiles");
     chevronUstensiles.style.transform = "rotate(0)";
-};
+}
 
 const divUstensilesButton = document.getElementById("ustensiles");
 divUstensilesButton.setAttribute("onclick","displayUstensilesList()");

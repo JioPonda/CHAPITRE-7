@@ -98,8 +98,8 @@ function factorySearch (data) {
 
     searchBar.addEventListener('keyup', function() { /** mise en place d'un écoute sur la barre de recherche*/ 
     const searchValue = searchBar.value;       
-    
-    for ( let i = 0; i < divCard.length; i++) { /** Boucle for pour que */
+    if (searchValue.length >=3) {
+        for ( let i = 0; i < divCard.length; i++) { /** Boucle for pour que */       
         if (divTitle[i].textContent.toLowerCase().includes(searchValue.toLowerCase())) { /** Pour chaque card si le titre de notre plat inclue ce qui est saisie dans la barre de recherche */
             divCard[i].style.display = "block"; /** alors notre card reste ou deviennent visible */
             console.log(searchValue);
@@ -111,6 +111,7 @@ function factorySearch (data) {
         if (searchValue === "") /** et si la barre de recherche est vide  */
             divCard[i].style.display = "block"; /** les card s'affiche */
         }
+    }
     })
 
     /** Recherchez dans les barres d'ingrédients d'appareils et d'ustensiles */ 

@@ -378,11 +378,14 @@ header input {
 }
 
 .card-description{
-    height: 45%;
+    /* height: 45%; */
+    width: 10vw;
     margin-right: 12%;
     font-family: 'Roboto';
     font-weight: 400;
     font-size: 0.75em;
-    text-overflow: ellipsis;
+    -webkit-line-clamp: 4;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
     overflow: hidden;
 }

@@ -137,32 +137,33 @@ function factorySearch (data) {
     const cardDescription = document.querySelectorAll(".card-description");
     
     /** Recherche des Ingrédients*/     
-    searchIngredient.addEventListener('keyup', function() {
+    searchIngredient.addEventListener('keyup', function() { /** Création d'une écoute sur notre barre de recherche d'ingrédients */
         const inputIngredient = searchIngredient.value;
 
-        for (let i = 0; i < pIngredient.length; i++) {
-            if (pIngredient[i].textContent.toLowerCase().includes(inputIngredient.toLowerCase())) {
-                pIngredient[i].style.display = "block";
+        for (let i = 0; i < pIngredient.length; i++) { /** Pour chaque ingrédient */
+            if (pIngredient[i].textContent.toLowerCase().includes(inputIngredient.toLowerCase())) { /** si notre ingrédient saisie et inclus dans notre liste */
+                pIngredient[i].style.display = "block";/** Alors l'ingrédient reste affiché */
             } else {
-                pIngredient[i].style.display = "none";
+                pIngredient[i].style.display = "none"; /** Sinon il disparais*/
             }
 
-            if (inputIngredient === "") {
-                pIngredient[i].style.display = "block";
+            if (inputIngredient === "") { /** Si la zone de saisie est vide*/
+                pIngredient[i].style.display = "block"; /** Alors les ingrédients restent affiché */
             }
         }
     });
 
     /** Recherche des Ingrédients via suggestion + création du tag au click*/ 
     for (let iI = 0; iI < pIngredient.length; iI++)
-    pIngredient[iI].addEventListener('click', function() {
-        for (let i = 0; i < spanIngredient.length; i++) {
-            if (spanIngredient[i].textContent.toLowerCase().includes(pIngredient[iI].textContent.toLowerCase())) {
-                divCard[i].style.display = "block";
+    pIngredient[iI].addEventListener('click', function() { /** Pour chaque ingrédient */
+        for (let i = 0; i < spanIngredient.length; i++) { /** Création d'une écoute sur nos ingrédients */
+            if (spanIngredient[i].textContent.toLowerCase().includes(pIngredient[iI].textContent.toLowerCase())) { /** si notre Span contient notre ingrédient */
+                divCard[i].style.display = "block"; /** Alors notre card reste affiché */
             } else {
-                divCard[i].style.display = "none";
+                divCard[i].style.display = "none"; /** Sinon elle disparais */
             }
         }
+        /** Création du tag au click sur les ingrédients */
         const tag = document.getElementById("ingredient-tag-liste");
         const divTag = document.createElement("div");
         divTag.setAttribute("class" , "tag-ingredient");
@@ -181,8 +182,8 @@ function factorySearch (data) {
 
     /** Affichage des tag ingrédients via la touche ENTER */ 
     const ingredientSearch = document.querySelector("#ingredient");
-    ingredientSearch.addEventListener('keyup', function(e) {
-        if (ingredientList.includes(ingredientSearch.value.toLowerCase())) {
+    ingredientSearch.addEventListener('keyup', function(e) { /** Création d'une écoute d'évenement sur notre zone de saisie */
+        if (ingredientList.includes(ingredientSearch.value.toLowerCase())) { /**Si notre liste d'ingrédient inclue l'ingrédient saisie alors il crée un tag */
             const tag = document.getElementById("ingredient-tag-liste");
             const divTag = document.createElement("div");
             divTag.setAttribute("class" , "tag-ingredient");
@@ -191,7 +192,7 @@ function factorySearch (data) {
             const crossTag = document.createElement("i");
             crossTag.setAttribute("id" , "crossed-ingredient");
             crossTag.setAttribute("onclick" , "hideTagIngredient ()");
-            if (e.key === "Enter" & ingredientSearch.value !== "") {
+            if (e.key === "Enter" & ingredientSearch.value !== "") { /** Si la touche ENTER et que la valeur de la zone de recherche n'est pas vide alors il crée un tag */
                 iTag.textContent = ingredientSearch.value;
                 crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
                 crossTag.setAttribute("id" , "crossed-ingredient");       
@@ -204,32 +205,33 @@ function factorySearch (data) {
     });
 
     /** Recherche des Appareils*/
-    searchAppareils.addEventListener('keyup', function() {
+    searchAppareils.addEventListener('keyup', function() { /** Création d'une écoute sur notre barre de recherche d'appareils */
         const inputAppareils = searchAppareils.value;
 
-        for (let i = 0; i < pAppareils.length; i++) {
-            if (pAppareils[i].textContent.includes(inputAppareils.toLowerCase())) {
-                pAppareils[i].style.display = "block";
+        for (let i = 0; i < pAppareils.length; i++) { /** Pour chaque appareil */
+            if (pAppareils[i].textContent.includes(inputAppareils.toLowerCase())) { /** si notre appareil saisie et inclus dans notre liste */
+                pAppareils[i].style.display = "block"; /** Alors l'appareil reste affiché */
             } else {
-                pAppareils[i].style.display = "none";
+                pAppareils[i].style.display = "none"; /** Sinon il disparais*/
             }
 
-            if (inputAppareils === "") {
-                pAppareils[i].style.display = "block";
+            if (inputAppareils === "") { /** Si la zone de saisie est vide*/
+                pAppareils[i].style.display = "block"; /** Alors les appareils restent affiché */
             }
         }
     });
     
     /** Recherche des Appareils via suggestion + création du tag au click */ 
-    for (let iA = 0; iA < pAppareils.length; iA++)
-    pAppareils[iA].addEventListener('click', function() {
-        for (let i = 0; i < cardDescription.length; i++) {
-            if (cardDescription[i].textContent.includes(pAppareils[iA].textContent)) {
-                divCard[i].style.display = "block";
+    for (let iA = 0; iA < pAppareils.length; iA++) /** Pour chaque appareil */
+    pAppareils[iA].addEventListener('click', function() { /** Création d'une écoute sur nos appareils */
+        for (let i = 0; i < cardDescription.length; i++) { /** Pour chaque déscription contenant nos appareils */
+            if (cardDescription[i].textContent.includes(pAppareils[iA].textContent)) { /** Si notre déscription contient notre appareil */
+                divCard[i].style.display = "block"; /** Alors notre card reste affiché */
             } else {
-                divCard[i].style.display = "none";
+                divCard[i].style.display = "none"; /** Sinon elle disparais */
             }
         }
+        /** Création du tag au click sur les appareils */
         const tag = document.getElementById("appareil-tag-liste");
         const divTag = document.createElement("div");
         divTag.setAttribute("class" , "tag-appareil");
@@ -247,8 +249,8 @@ function factorySearch (data) {
     
     /** Affichage des tag appareils via la touche ENTER */ 
     const appareilSearch = document.querySelector("#appareils");
-    appareilSearch.addEventListener('keyup', function(e) {
-        if (appareilList.includes(appareilSearch.value.toLowerCase())) {
+    appareilSearch.addEventListener('keyup', function(e) {  /** Création d'une écoute d'évenement sur notre zone de saisie */
+        if (appareilList.includes(appareilSearch.value.toLowerCase())) { /**Si notre liste d'appareil inclue l'appareil saisie alors il crée un tag */
             const tag = document.getElementById("appareil-tag-liste");
             const divTag = document.createElement("div");
             divTag.setAttribute("class" , "tag-appareil");
@@ -257,7 +259,7 @@ function factorySearch (data) {
             const crossTag = document.createElement("i");
             crossTag.setAttribute("id" , "crossed-appareils");
             crossTag.setAttribute("onclick" , "hideTagAppareils ()");
-            if (e.key === "Enter" & appareilSearch.value !== "") {
+            if (e.key === "Enter" & appareilSearch.value !== "") { /** Si la touche ENTER et que la valeur de la zone de recherche n'est pas vide alors il crée un tag */
                 aTag.textContent = appareilSearch.value;
                 crossTag.setAttribute("id" , "crossed-appareils");        
                 crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
@@ -270,29 +272,29 @@ function factorySearch (data) {
     });
     
     /** Recherche des Ustensiles*/
-    searchUstensiles.addEventListener('keyup', function() {
+    searchUstensiles.addEventListener('keyup', function() { /** Création d'une écoute sur notre barre de recherche d'ustensiles */
         const inputUstensiles = searchUstensiles.value;
-        for (let i = 0; i < pUstensils.length; i++) {
-            if (pUstensils[i].textContent.includes(inputUstensiles.toLowerCase())) {
-                pUstensils[i].style.display = "block";
+        for (let i = 0; i < pUstensils.length; i++) { /** Pour chaque ingrédient */
+            if (pUstensils[i].textContent.includes(inputUstensiles.toLowerCase())) { /** si notre ustensile saisie et inclus dans notre liste */
+                pUstensils[i].style.display = "block"; /** Alors l'ustensile reste affiché */
             } else {
-                pUstensils[i].style.display = "none";
+                pUstensils[i].style.display = "none"; /** Sinon il disparais*/
             }
 
-            if (inputUstensiles === "") {
-                pUstensils[i].style.display = "block";
+            if (inputUstensiles === "") { /** Si la zone de saisie est vide*/
+                pUstensils[i].style.display = "block"; /** Alors les ustensiles restent affiché */
             }
         }
     });
 
     /** Recherche des Ustensiles via suggestion + création du tag au click */ 
-    for (let iU = 0; iU < pUstensils.length; iU++)
-    pUstensils[iU].addEventListener('click', function() {
-        for (let i = 0; i < cardDescription.length; i++) {
-            if (cardDescription[i].textContent.includes(pUstensils[iU].textContent)) {
-                divCard[i].style.display = "block";
+    for (let iU = 0; iU < pUstensils.length; iU++) /** Pour chaque ustensile */
+    pUstensils[iU].addEventListener('click', function() { /** Création d'une écoute sur nos ustensiles */
+        for (let i = 0; i < cardDescription.length; i++) { /** Pour chaque déscription contenant nos ustensiles */
+            if (cardDescription[i].textContent.includes(pUstensils[iU].textContent)) { /** Si notre déscription contient notre ustensile */
+                divCard[i].style.display = "block"; /** Alors notre card reste affiché */
             } else {
-                divCard[i].style.display = "none";
+                divCard[i].style.display = "none"; /** Sinon elle disparais */
             }
         }
 
@@ -313,8 +315,8 @@ function factorySearch (data) {
 
     /** Affichage des tag ustensiles via la touche ENTER */ 
     const ustensileSearch = document.querySelector("#ustensiles");
-    ustensileSearch.addEventListener('keyup', function(e) {
-        if (ustensilslList.includes(ustensileSearch.value.toLowerCase())) {
+    ustensileSearch.addEventListener('keyup', function(e) { /** Création d'une écoute d'évenement sur notre zone de saisie */
+        if (ustensilslList.includes(ustensileSearch.value.toLowerCase())) { /**Si notre liste d'ustensile inclue l'ustensile saisie alors il crée un tag */
             const tag = document.getElementById("ustensile-tag-liste");
             const divTag = document.createElement("div");
             divTag.setAttribute("class" , "tag-ustensile");
@@ -323,7 +325,7 @@ function factorySearch (data) {
             const crossTag = document.createElement("i");
             crossTag.setAttribute("id" , "crossed-ustensiles");
             crossTag.setAttribute("onclick" , "hideTagUstensiles ()");
-            if (e.key === "Enter" & ustensileSearch.value !== "") {
+            if (e.key === "Enter" & ustensileSearch.value !== "") { /** Si la touche ENTER et que la valeur de la zone de recherche n'est pas vide alors il crée un tag */
                 uTag.textContent = ustensileSearch.value;
                 crossTag.setAttribute("id" , "crossed-ustensiles");
                 crossTag.setAttribute("onclick" , "hideTagUstensiles ()");

@@ -147,7 +147,7 @@ function factorySearch (data) {
     for (let iI = 0; iI < pIngredient.length; iI++) /** Pour chaque ingrédient */
     pIngredient[iI].addEventListener('click', function() { /** Création d'une écoute sur nos ingrédients */
         for (let i = 0; i < spanIngredient.length; i++) { /** Pour chaque Span contenant nos ingrédient */
-            if (spanIngredient[i].textContent.toLowerCase().includes(pIngredient[iI].textContent.toLowerCase())) { /** Si notre Span contient notre ingrédient */
+            if (spanIngredient[i].textContent.toLowerCase().includes(pIngredient[iI].textContent.toLowerCase())) { /** si notre Span contient notre ingrédient */
                 divCard[i].style.display = "block"; /** Alors notre card reste affiché */
             } else {
                 divCard[i].style.display = "none"; /** Sinon elle disparais */

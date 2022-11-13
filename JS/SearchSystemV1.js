@@ -179,8 +179,8 @@ function factorySearch (data) {
             const iTag = document.createElement("p");
             iTag.setAttribute("class" , "text-ingredient-tag");
             iTag.setAttribute("id" , "crossed-ingredient");
-            crossTag.setAttribute("onclick" , "hideTagIngredient ()");
             const crossTag = document.createElement("i");
+            crossTag.setAttribute("onclick" , "hideTagIngredient ()");
             if (e.key === "Enter" & ingredientSearch.value !== "") {
                 iTag.textContent = ingredientSearch.value        
                 crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
@@ -244,8 +244,8 @@ function factorySearch (data) {
             const aTag = document.createElement("p");
             aTag.setAttribute("class" , "text-appareil-tag");
             aTag.setAttribute("id" , "crossed-appareils");
-            crossTag.setAttribute("onclick" , "hideTagAppareils ()");
             const crossTag = document.createElement("i");
+            crossTag.setAttribute("onclick" , "hideTagAppareils ()");
             if (e.key === "Enter" & appareilSearch.value !== "") {
                 aTag.textContent = appareilSearch.value        
                 crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
@@ -308,8 +308,8 @@ function factorySearch (data) {
             const uTag = document.createElement("p");
             uTag.setAttribute("class" , "text-ustensile-tag")
             uTag.setAttribute("id" , "crossed-ustensiles")
-            crossTag.setAttribute("onclick" , "hideTagUstensiles ()");
             const crossTag = document.createElement("i");
+            crossTag.setAttribute("onclick" , "hideTagUstensiles ()");
             if (e.key === "Enter" & ustensileSearch.value !== "") {
                 uTag.textContent = ustensileSearch.value        
                 crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");

@@ -158,8 +158,8 @@ function factorySearch (data) {
         divTag.setAttribute("class" , "tag-ingredient");
         const iTag = document.createElement("p");
         iTag.setAttribute("class" , "text-ingredient-tag")
-        const crossTag = document.createElement("i");
         iTag.textContent = pIngredient[iI].textContent;        
+        const crossTag = document.createElement("i");
         crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
         crossTag.setAttribute("id" , "crossed-ingredient");
         crossTag.setAttribute("onclick" , "hideTagIngredient ()");
@@ -182,8 +182,10 @@ function factorySearch (data) {
             const crossTag = document.createElement("i");
             crossTag.setAttribute("onclick" , "hideTagIngredient ()");
             if (e.key === "Enter" & ingredientSearch.value !== "") {
-                iTag.textContent = ingredientSearch.value        
+                iTag.textContent = ingredientSearch.value 
                 crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
+                crossTag.setAttribute("id" , "crossed-ingredient");       
+                crossTag.setAttribute("onclick" , "hideTagIngredient ()");
                 divTag.appendChild(iTag);
                 divTag.appendChild(crossTag);
                 tag.appendChild(divTag);
@@ -224,8 +226,8 @@ function factorySearch (data) {
         divTag.setAttribute("class" , "tag-appareil");
         const aTag = document.createElement("p");
         aTag.setAttribute("class" , "text-appareil-tag")
-        const crossTag = document.createElement("i");
         aTag.textContent = pAppareils[iA].textContent;        
+        const crossTag = document.createElement("i");
         crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
         crossTag.setAttribute("id" , "crossed-appareils");
         crossTag.setAttribute("onclick" , "hideTagAppareils ()");
@@ -247,8 +249,10 @@ function factorySearch (data) {
             const crossTag = document.createElement("i");
             crossTag.setAttribute("onclick" , "hideTagAppareils ()");
             if (e.key === "Enter" & appareilSearch.value !== "") {
-                aTag.textContent = appareilSearch.value        
+                aTag.textContent = appareilSearch.value;
+                crossTag.setAttribute("id" , "crossed-appareils");        
                 crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
+                crossTag.setAttribute("onclick" , "hideTagAppareils ()");
                 divTag.appendChild(aTag);
                 divTag.appendChild(crossTag);
                 tag.appendChild(divTag);

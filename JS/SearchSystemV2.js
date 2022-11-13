@@ -21,14 +21,14 @@ function factorySearch (data) {
     
     for ( let i = 0; i < data.length; i++ ) {
         ingredientsArray.push(data[i].ingredients); /** pour chaque ingredient dans le JSON nous l'ajoutons dans le premier tableau*/
-    };
+    }
     
     ingredientsArray = ingredientsArray.flat(); /** Mise a plat du premier tableau */
     
     for ( let i = 0; i < ingredientsArray.length; i++ ) {
         ingredientsArray2.push(ingredientsArray[i].ingredient.toLowerCase()); /** Pour chaque ingrédient dans le premier tableau nous l'ajoutons dans le deuxiémée 
         tableau en supprimant les majuscule */
-    };
+    }
 
     let ingredientList = ingredientsArray2.filter((x, i) => ingredientsArray2.indexOf(x) === i); /** Nous créons une variable ou  nous filtrons les ingrédients 
     afin de retourner un tableau sans doublons */
@@ -49,7 +49,7 @@ function factorySearch (data) {
     
     for ( let i = 0; i < data.length; i++ ) {
         appareilsArray.push(data[i].appliance.toLowerCase()); /** pour chaque appareil dans le JSON nous l'ajoutons dans le tableau*/
-    };
+    }
     
     appareilsArray = appareilsArray.flat(); /** Mise a plat du tableau */
 
@@ -60,7 +60,7 @@ function factorySearch (data) {
         /** Element du dom*/ 
         const suggestionAppareils = document.getElementById("suggestions-appareils"); 
         const pAppareils = document.createElement("p");
-        pAppareils.setAttribute("id" , "pAppareils")
+        pAppareils.setAttribute("id" , "pAppareils");
         /** Texte et implémentation*/ 
         pAppareils.textContent = e; /** pour chaque lien crée nous ajoutons en texte les appareils */
         suggestionAppareils.appendChild(pAppareils); /** notre DIV suggestion-ingédient enfante de chaque lien crée précédemment */
@@ -73,7 +73,7 @@ function factorySearch (data) {
     
     for ( let i = 0; i < data.length; i++ ) {
         ustensilesArray.push(data[i].ustensils); /** pour chaque ustensile dans le JSON nous l'ajoutons dans le tableau*/
-    };
+    }
     ustensilesArray = ustensilesArray.flat(); /** Mise a plat du tableau */
     
     let ustensilslList = ustensilesArray.filter((x, i) => ustensilesArray.indexOf(x) === i); /** Nous créons une variable ou nous filtrons les ustensiles 
@@ -83,7 +83,7 @@ function factorySearch (data) {
         /** Element du dom*/ 
         const suggestionUstensils = document.getElementById("suggestions-ustensiles"); 
         const pUstensils = document.createElement("p");
-        pUstensils.setAttribute("id" , "pUstensils")
+        pUstensils.setAttribute("id" , "pUstensils");
         /** Texte et implémentation*/ 
         pUstensils.textContent = e; /** pour chaque lien crée nous ajoutons en texte les ustensiles */
         suggestionUstensils.appendChild(pUstensils); /** notre DIV suggestion-ingédient enfante de chaque lien crée précédemment */
@@ -96,7 +96,7 @@ function factorySearch (data) {
     
     for ( let i = 0; i < data.length; i++ ) {
         dishArrays.push(data[i].name); /** pour chaque ingredient dans le JSON nous l'ajoutons dans le premier tableau*/
-    };
+    }
     
     dishArrays = dishArrays.flat(); /** Mise a plat du premier tableau */
 
@@ -121,20 +121,20 @@ function factorySearch (data) {
                 card.style.display = "block";
                 error.style.display = "none";
             }
-        })
-    })
+        });
+    });
     
     /** Recherchez dans les barres d'ingrédients d'appareils et d'ustensiles */ 
 
     /** Element du DOM*/ 
     const searchIngredient = document.getElementById('ingredient');
-    const pIngredient = document.querySelectorAll('#pIngredient')
+    const pIngredient = document.querySelectorAll('#pIngredient');
     const searchAppareils = document.getElementById('appareils');
-    const pAppareils = document.querySelectorAll('#pAppareils')
+    const pAppareils = document.querySelectorAll('#pAppareils');
     const searchUstensiles = document.getElementById('ustensiles');
     const pUstensils = document.querySelectorAll('#pUstensils');
-    const spanIngredient = document.querySelectorAll(".span-ingredient")
-    const cardDescription = document.querySelectorAll(".card-description")
+    const spanIngredient = document.querySelectorAll(".span-ingredient");
+    const cardDescription = document.querySelectorAll(".card-description");
     
     /** Recherche des Ingrédients*/     
     searchIngredient.addEventListener('keyup', function() {
@@ -167,7 +167,7 @@ function factorySearch (data) {
         const divTag = document.createElement("div");
         divTag.setAttribute("class" , "tag-ingredient");
         const iTag = document.createElement("p");
-        iTag.setAttribute("class" , "text-ingredient-tag")
+        iTag.setAttribute("class" , "text-ingredient-tag");
         iTag.textContent = pIngredient[iI].textContent;        
         const crossTag = document.createElement("i");
         crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
@@ -192,7 +192,7 @@ function factorySearch (data) {
             crossTag.setAttribute("id" , "crossed-ingredient");
             crossTag.setAttribute("onclick" , "hideTagIngredient ()");
             if (e.key === "Enter" & ingredientSearch.value !== "") {
-                iTag.textContent = ingredientSearch.value 
+                iTag.textContent = ingredientSearch.value;
                 crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
                 crossTag.setAttribute("id" , "crossed-ingredient");       
                 crossTag.setAttribute("onclick" , "hideTagIngredient ()");
@@ -201,7 +201,7 @@ function factorySearch (data) {
                 tag.appendChild(divTag);
             }
         }
-    })
+    });
 
     /** Recherche des Appareils*/
     searchAppareils.addEventListener('keyup', function() {
@@ -218,7 +218,7 @@ function factorySearch (data) {
                 pAppareils[i].style.display = "block";
             }
         }
-    })
+    });
     
     /** Recherche des Appareils via suggestion + création du tag au click */ 
     for (let iA = 0; iA < pAppareils.length; iA++)
@@ -234,7 +234,7 @@ function factorySearch (data) {
         const divTag = document.createElement("div");
         divTag.setAttribute("class" , "tag-appareil");
         const aTag = document.createElement("p");
-        aTag.setAttribute("class" , "text-appareil-tag")
+        aTag.setAttribute("class" , "text-appareil-tag");
         aTag.textContent = pAppareils[iA].textContent;        
         const crossTag = document.createElement("i");
         crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
@@ -267,7 +267,7 @@ function factorySearch (data) {
                 tag.appendChild(divTag);
             }
         }
-    })    
+    });
     
     /** Recherche des Ustensiles*/
     searchUstensiles.addEventListener('keyup', function() {
@@ -283,7 +283,7 @@ function factorySearch (data) {
                 pUstensils[i].style.display = "block";
             }
         }
-    })
+    });
 
     /** Recherche des Ustensiles via suggestion + création du tag au click */ 
     for (let iU = 0; iU < pUstensils.length; iU++)
@@ -333,10 +333,10 @@ function factorySearch (data) {
                 tag.appendChild(divTag);
             }
         }
-    })
+    });
 
 
-    return {ingredients,appliance,ustensils}
+    return {ingredients,appliance,ustensils};
 }
 /********************************************* INITIALISATION *********************************************************/
 

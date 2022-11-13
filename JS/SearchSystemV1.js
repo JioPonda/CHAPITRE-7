@@ -97,20 +97,22 @@ function factorySearch (data) {
     const divTitle = document.querySelectorAll(".card-title");
 
     searchBar.addEventListener('keyup', function() { /** mise en place d'un écoute sur la barre de recherche*/ 
-    const searchValue = searchBar.value;       
-    if (searchValue.length >=3) {
+    let searchValue = searchBar.value;       
+    // if (searchValue.length >=3) {
         for ( let i = 0; i < divCard.length; i++) { /** Boucle for afin que */       
-            if (divTitle[i].textContent.toLowerCase().includes(searchValue.toLowerCase())) { /** Pour chaque card si le titre de notre plat inclue ce qui est saisie dans la barre de recherche */
-                divCard[i].style.display = "block"; /** alors notre card reste ou deviennent visible */
-                console.log(searchValue);
-            } else {
-                divCard[i].style.display = "none"; /** sinon elle disparait */
-                console.log(searchValue);            
-            }
-            
-            if (searchValue === "") /** et si la barre de recherche est vide  */
+                // if (searchValue.length === <3) {/** et si la barre de recherche est vide  */
+                //     divCard[i].style.display = "block"; /** les card s'affiche */
+                // }
+                if (divTitle[i].textContent.toLowerCase().includes(searchValue.toLowerCase()) && searchValue.length >=3 ) { /** Pour chaque card si le titre de notre plat inclue ce qui est saisie dans la barre de recherche */
+                    divCard[i].style.display = "block"; /** alors notre card reste ou deviennent visible */
+                    console.log(searchValue);
+                } else if (searchValue.length <3) {/** et si la barre de recherche est vide  */
                 divCard[i].style.display = "block"; /** les card s'affiche */
-            }
+                } else {
+                    divCard[i].style.display = "none"; /** sinon elle disparait */
+                    console.log(searchValue);
+                }
+            // }
         }
     });
 

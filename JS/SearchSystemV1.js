@@ -60,7 +60,7 @@ function factorySearch (data) {
         /** Element du dom*/ 
         const suggestionAppareils = document.getElementById("suggestions-appareils"); 
         const pAppareils = document.createElement("p");
-        pAppareils.setAttribute("id" , "pAppareils")
+        pAppareils.setAttribute("id" , "pAppareils");
         /** Texte et implémentation*/ 
         pAppareils.textContent = e; /** pour chaque lien crée nous ajoutons en texte les appareils */
         suggestionAppareils.appendChild(pAppareils); /** notre DIV suggestion-ingédient enfante de chaque lien crée précédemment */
@@ -83,7 +83,7 @@ function factorySearch (data) {
         /** Element du dom*/ 
         const suggestionUstensils = document.getElementById("suggestions-ustensiles"); 
         const pUstensils = document.createElement("p");
-        pUstensils.setAttribute("id" , "pUstensils")
+        pUstensils.setAttribute("id" , "pUstensils");
         /** Texte et implémentation*/ 
         pUstensils.textContent = e; /** pour chaque lien crée nous ajoutons en texte les ustensiles */
         suggestionUstensils.appendChild(pUstensils); /** notre DIV suggestion-ingédient enfante de chaque lien crée précédemment */
@@ -112,19 +112,19 @@ function factorySearch (data) {
             divCard[i].style.display = "block"; /** les card s'affiche */
         }
     }
-    })
+    });
 
     /** Recherchez dans les barres d'ingrédients d'appareils et d'ustensiles */ 
 
     /** Element du DOM*/ 
     const searchIngredient = document.getElementById('ingredient');
-    const pIngredient = document.querySelectorAll('#pIngredient')
+    const pIngredient = document.querySelectorAll('#pIngredient');
     const searchAppareils = document.getElementById('appareils');
-    const pAppareils = document.querySelectorAll('#pAppareils')
+    const pAppareils = document.querySelectorAll('#pAppareils');
     const searchUstensiles = document.getElementById('ustensiles');
     const pUstensils = document.querySelectorAll('#pUstensils');
-    const spanIngredient = document.querySelectorAll(".span-ingredient")
-    const cardDescription = document.querySelectorAll(".card-description")
+    const spanIngredient = document.querySelectorAll(".span-ingredient");
+    const cardDescription = document.querySelectorAll(".card-description");
     
     /** Recherche des Ingrédients*/     
     searchIngredient.addEventListener('keyup', function() {
@@ -157,7 +157,7 @@ function factorySearch (data) {
         const divTag = document.createElement("div");
         divTag.setAttribute("class" , "tag-ingredient");
         const iTag = document.createElement("p");
-        iTag.setAttribute("class" , "text-ingredient-tag")
+        iTag.setAttribute("class" , "text-ingredient-tag");
         iTag.textContent = pIngredient[iI].textContent;        
         const crossTag = document.createElement("i");
         crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
@@ -182,7 +182,7 @@ function factorySearch (data) {
             crossTag.setAttribute("id" , "crossed-ingredient");
             crossTag.setAttribute("onclick" , "hideTagIngredient ()");
             if (e.key === "Enter" & ingredientSearch.value !== "") {
-                iTag.textContent = ingredientSearch.value 
+                iTag.textContent = ingredientSearch.value; 
                 crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
                 crossTag.setAttribute("id" , "crossed-ingredient");       
                 crossTag.setAttribute("onclick" , "hideTagIngredient ()");
@@ -191,7 +191,7 @@ function factorySearch (data) {
                 tag.appendChild(divTag);
             }
         }
-    })
+    });
 
     /** Recherche des Appareils*/
     searchAppareils.addEventListener('keyup', function() {
@@ -208,7 +208,7 @@ function factorySearch (data) {
                 pAppareils[i].style.display = "block";
             }
         }
-    })
+    });
     
     /** Recherche des Appareils via suggestion + création du tag au click */ 
     for (let iA = 0; iA < pAppareils.length; iA++)
@@ -224,7 +224,7 @@ function factorySearch (data) {
         const divTag = document.createElement("div");
         divTag.setAttribute("class" , "tag-appareil");
         const aTag = document.createElement("p");
-        aTag.setAttribute("class" , "text-appareil-tag")
+        aTag.setAttribute("class" , "text-appareil-tag");
         aTag.textContent = pAppareils[iA].textContent;        
         const crossTag = document.createElement("i");
         crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
@@ -257,7 +257,7 @@ function factorySearch (data) {
                 tag.appendChild(divTag);
             }
         }
-    })    
+    });    
     
     /** Recherche des Ustensiles*/
     searchUstensiles.addEventListener('keyup', function() {
@@ -273,7 +273,7 @@ function factorySearch (data) {
                 pUstensils[i].style.display = "block";
             }
         }
-    })
+    });
 
     /** Recherche des Ustensiles via suggestion + création du tag au click */ 
     for (let iU = 0; iU < pUstensils.length; iU++)
@@ -323,10 +323,10 @@ function factorySearch (data) {
                 tag.appendChild(divTag);
             }
         }
-    })
+    });
 
 
-    return {ingredients,appliance,ustensils}
+    return {ingredients,appliance,ustensils};
 }
 /********************************************* INITIALISATION *********************************************************/
 

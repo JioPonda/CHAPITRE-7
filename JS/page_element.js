@@ -19,6 +19,7 @@ function recipesFactory(data) {
     /** Squelette de la card */ 
     const divCard = document.createElement("article");
     divCard.setAttribute("class","div-card");
+    divCard.setAttribute("id" , name)
     const divGreyZone = document.createElement("div");
     divGreyZone.setAttribute("class", "grey-zone");
     const divCardInfos = document.createElement("div");

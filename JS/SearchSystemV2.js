@@ -129,18 +129,18 @@ function factorySearch (data) {
     const divCard = document.querySelectorAll(".div-card"); /** tableau contenant les différentes card des plats */
     
     searchBar.addEventListener('keyup', function() { /** mise en place d'un écoute sur la barre de recherche lors de la saisie de texte*/ 
-            
-        const searchValue = searchBar.value; /** On récupére la valeur saisie dans la barre de recherche */
-            
-        divCard.forEach((card) => { /** Pour chaque card */
-            if (card.id.toLowerCase().includes(searchValue.toLowerCase())) { /** si le tableau de noms inclue la valeur saisie */
+    
+    divCard.forEach((card) => { /** Pour chaque card */
+            let searchValue = searchBar.value; /** On récupére la valeur saisie dans la barre de recherche */
+            if (card.id.toLowerCase().includes(searchValue.toLowerCase()) && searchValue.length >=3) { /** si le tableau de noms inclue la valeur saisie */
                 card.style.display = "block"; 
+                console.log(card.id);
+            } else if ( searchValue.length <3) {
+                card.style.display = "block";
+                console.log(card.id);
             } else {
                 card.style.display = "none";
-            }
-        
-            if (searchValue == "" ) {
-                card.style.display = "block";
+                console.log(card.id);
             }
         })
     })

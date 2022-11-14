@@ -41,12 +41,13 @@ function recipesFactory(data) {
     cardTime.textContent = time + "min";
     const cardSpan = document.createElement('span');
     cardSpan.setAttribute("class" , "span-ingredient")
-    if ( ingredients.unit === "" && ingredients.quantity === "") {
+    if ( ingredients.unit === " " && ingredients.quantity === " ") {
       for ( let i = 0 ; i < ingredients.length ; i++) {
       const cardIngredient = document.createElement("p"); 
       cardIngredient.setAttribute("class" , "card-ingredient");
-      cardIngredient.innerHTML = cardIngredient.textContent + ingredients[i].ingredient + " : " + ingredients[i].quantity;
+      cardIngredient.innerHTML = cardIngredient.textContent + ingredients[i].ingredient;
       cardSpan.appendChild(cardIngredient);
+      console.log(ingredients[i].unit);
       };
     } else {
       for ( let i = 0 ; i < ingredients.length ; i++) {
@@ -54,6 +55,7 @@ function recipesFactory(data) {
       cardIngredient.setAttribute("class" , "card-ingredient");
       cardIngredient.innerHTML = cardIngredient.textContent + ingredients[i].ingredient + " : " + ingredients[i].quantity + " " + ingredients[i].unit;
       cardSpan.appendChild(cardIngredient);
+      console.log(ingredients[i].unit);
       };
     };
     const cardDescription = document.createElement("p");

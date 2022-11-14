@@ -102,28 +102,49 @@ function factorySearch (data) {
 
     /************************* SEARCH SYSTEM *************************************/
 
+    // /** Element du DOM*/
+    // const searchBar = document.querySelector("#searchbar"); /** correspond a la barre de recherche*/
+    // const divCard = document.querySelectorAll(".div-card"); /** tableau contenant les différentes card des plats */
+    // const error = document.querySelector('#error-search');
+
+    // // && searchValue.length >= 3
+
+    // searchBar.addEventListener('keyup', function() { /** mise en place d'un écoute sur la barre de recherche lors de la saisie de texte*/ 
+    //     let searchValue = searchBar.value; /** On récupére la valeur saisie dans la barre de recherche */
+    //     divCard.forEach((card) => { /** Pour chaque card */
+    //         if (card.id.toLowerCase().includes(searchValue.toLowerCase())) { /** si le tableau de noms inclue la valeur saisie */
+    //             card.style.display = "block"; 
+    //             console.log(searchValue);
+    //         } else if (searchValue === "" ) {
+    //             card.style.display = "block";
+    //             error.style.display = "none";
+    //         } else  {
+    //             card.style.display = "none";
+    //         }
+    //     });
+    // });
+    
     /** Element du DOM*/
     const searchBar = document.querySelector("#searchbar"); /** correspond a la barre de recherche*/
     const divCard = document.querySelectorAll(".div-card"); /** tableau contenant les différentes card des plats */
-    const error = document.querySelector('#error-search');
-
+    
     searchBar.addEventListener('keyup', function() { /** mise en place d'un écoute sur la barre de recherche lors de la saisie de texte*/ 
-    // searchValue.length >= 3 && 
+            
         const searchValue = searchBar.value; /** On récupére la valeur saisie dans la barre de recherche */
+            
         divCard.forEach((card) => { /** Pour chaque card */
             if (card.id.toLowerCase().includes(searchValue.toLowerCase())) { /** si le tableau de noms inclue la valeur saisie */
                 card.style.display = "block"; 
             } else {
                 card.style.display = "none";
             }
-    
+        
             if (searchValue == "" ) {
                 card.style.display = "block";
-                error.style.display = "none";
             }
-        });
-    });
-    
+        })
+    })
+
     /** Recherchez dans les barres d'ingrédients d'appareils et d'ustensiles */ 
 
     /** Element du DOM*/ 
@@ -414,10 +435,9 @@ divUstensilesButton.setAttribute("onclick","displayUstensilesList()");
 function hideTagIngredient () {
     const crossedIngredient = document.querySelectorAll("#crossed-ingredient");
     for ( let crossI = 0; crossI < crossedIngredient.length; crossI++){
-        const tagIngredient = document.querySelectorAll('.tag-ingredient');
-        crossedIngredient[crossI].addEventListener('click' , function () {
+            const tagIngredient = document.querySelectorAll('.tag-ingredient');
+            crossedIngredient[crossI].addEventListener('click' , function () {
             tagIngredient[crossI].remove();
-            location.reload();
         })
     }
 }
@@ -427,9 +447,8 @@ function hideTagAppareils () {
     const crossedAppareils = document.querySelectorAll("#crossed-appareils");
     for ( let crossA = 0; crossA < crossedAppareils.length; crossA++){
         const tagAppareils = document.querySelectorAll('.tag-appareil');
-        crossedAppareils[crossA].addEventListener('click' , function () {
+            crossedAppareils[crossA].addEventListener('click' , function () {
             tagAppareils[crossA].remove();
-            location.reload();
         })
     }
 }
@@ -439,9 +458,8 @@ function hideTagUstensiles () {
     const crossedUstensiles = document.querySelectorAll("#crossed-ustensiles");
     for ( let crossU = 0; crossU < crossedUstensiles.length; crossU++){
         const tagUstensiles = document.querySelectorAll('.tag-ustensile');
-        crossedUstensiles[crossU].addEventListener('click' , function () {
+            crossedUstensiles[crossU].addEventListener('click' , function () {
             tagUstensiles[crossU].remove();
-            location.reload();
         })
     }
 }

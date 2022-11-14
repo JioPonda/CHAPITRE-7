@@ -383,12 +383,14 @@
    }
    
    .card-description{
-       height: 45%;
-       margin-right: 12%;
-       font-family: 'Roboto';
-       font-weight: 400;
-       font-size: 0.75em;
-       overflow: hidden;
-       white-space: nowrap;
-       text-overflow: ellipsis;
-   }
+    /* height: 45%; */
+    width: 10vw;
+    margin-right: 12%;
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 0.75em;
+    -webkit-line-clamp: 4;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    }

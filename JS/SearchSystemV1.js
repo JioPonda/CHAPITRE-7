@@ -160,6 +160,7 @@ function factorySearch (data) {
                 divCard[i].style.display = "none"; /** Sinon elle disparais */
             }
         }
+
         /** Création du tag au click sur les ingrédients */
         const tag = document.getElementById("ingredient-tag-liste");
         const divTag = document.createElement("div");
@@ -334,6 +335,16 @@ function factorySearch (data) {
     });
 
 
+    // function hideTagIngredient () {
+    //     let crossedIngredient = document.querySelectorAll("#crossed-ingredient");
+    //     for ( let crossI = 0; crossI < crossedIngredient.length; crossI++){
+    //         const tagIngredient = document.querySelectorAll('.tag-ingredient');
+    //         crossedIngredient[crossI].addEventListener('click' , function () {
+    //             tagIngredient[crossI].remove();
+    //         })
+    //     }
+    // }
+
     return {ingredients,appliance,ustensils};
 }
 /********************************************* INITIALISATION *********************************************************/
@@ -406,39 +417,60 @@ function hideUstensilesList () {
 const divUstensilesButton = document.getElementById("ustensiles");
 divUstensilesButton.setAttribute("onclick","displayUstensilesList()");
 
+
+
 /** Suppression des tag ingrédient */
+
+
 function hideTagIngredient () {
-    const crossedIngredient = document.querySelectorAll("#crossed-ingredient");
+    const divcard = document.querySelectorAll(".div-card");
+    let crossedIngredient = document.querySelectorAll("#crossed-ingredient");
+    let tagIngredientListe = [];
     for ( let crossI = 0; crossI < crossedIngredient.length; crossI++){
         const tagIngredient = document.querySelectorAll('.tag-ingredient');
         crossedIngredient[crossI].addEventListener('click' , function () {
             tagIngredient[crossI].remove();
-            location.reload();
+            tagIngredientListe.push(tagIngredient[crossI].textContent)
+            if (tagIngredientListe.length == 1){
+                divcard.forEach((card)=>{card.style.display = 'block'})
+            }
         })
     }
 }
 
+
+
 /** Suppression des tag appareils */
 function hideTagAppareils () {
-    const crossedAppareils = document.querySelectorAll("#crossed-appareils");
+    const divcard = document.querySelectorAll(".div-card");
+    let crossedAppareils = document.querySelectorAll("#crossed-appareils");
+    let tagAppareilsListe = [];
     for ( let crossA = 0; crossA < crossedAppareils.length; crossA++){
         const tagAppareils = document.querySelectorAll('.tag-appareil');
         crossedAppareils[crossA].addEventListener('click' , function () {
             tagAppareils[crossA].remove();
-            location.reload();
+            tagAppareilsListe.push(tagAppareils[crossA].textContent)
+            if (tagAppareilsListe.length == 1){
+                divcard.forEach((card)=>{card.style.display = 'block'})
+            }
         })
     }
 }
 
 /** Suppression des tag ustensiles */
 function hideTagUstensiles () {
-    const crossedUstensiles = document.querySelectorAll("#crossed-ustensiles");
+    const divcard = document.querySelectorAll(".div-card");
+    let crossedUstensiles = document.querySelectorAll("#crossed-ustensiles");
+    let tagUstensilesListe = [];
     for ( let crossU = 0; crossU < crossedUstensiles.length; crossU++){
         const tagUstensiles = document.querySelectorAll('.tag-ustensile');
         crossedUstensiles[crossU].addEventListener('click' , function () {
             tagUstensiles[crossU].remove();
-            location.reload();
+            tagUstensiles[crossU].remove();
+            tagUstensilesListe.push(tagUstensiles[crossU].textContent)
+            if (tagUstensilesListe.length == 1){
+                divcard.forEach((card)=>{card.style.display = 'block'})
+            }
         })
     }
 }
-

@@ -47,7 +47,7 @@ function recipesFactory(data) {
       cardIngredient.setAttribute("class" , "card-ingredient");
       cardIngredient.innerHTML = cardIngredient.textContent + ingredients[i].ingredient;
       cardSpan.appendChild(cardIngredient);
-      console.log(ingredients[i].unit);
+      // console.log(ingredients[i].unit);
       };
     } else {
       for ( let i = 0 ; i < ingredients.length ; i++) {
@@ -55,7 +55,7 @@ function recipesFactory(data) {
       cardIngredient.setAttribute("class" , "card-ingredient");
       cardIngredient.innerHTML = cardIngredient.textContent + ingredients[i].ingredient + " : " + ingredients[i].quantity + " " + ingredients[i].unit;
       cardSpan.appendChild(cardIngredient);
-      console.log(ingredients[i].unit);
+      // console.log(ingredients[i].unit);
       };
     };
     const cardDescription = document.createElement("p");

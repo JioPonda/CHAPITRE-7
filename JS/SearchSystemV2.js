@@ -101,48 +101,37 @@ function factorySearch (data) {
     dishArrays = dishArrays.flat(); /** Mise a plat du premier tableau */
 
     /************************* SEARCH SYSTEM *************************************/
-
-    // /** Element du DOM*/
-    // const searchBar = document.querySelector("#searchbar"); /** correspond a la barre de recherche*/
-    // const divCard = document.querySelectorAll(".div-card"); /** tableau contenant les différentes card des plats */
-    // const error = document.querySelector('#error-search');
-
-    // // && searchValue.length >= 3
-
-    // searchBar.addEventListener('keyup', function() { /** mise en place d'un écoute sur la barre de recherche lors de la saisie de texte*/ 
-    //     let searchValue = searchBar.value; /** On récupére la valeur saisie dans la barre de recherche */
-    //     divCard.forEach((card) => { /** Pour chaque card */
-    //         if (card.id.toLowerCase().includes(searchValue.toLowerCase())) { /** si le tableau de noms inclue la valeur saisie */
-    //             card.style.display = "block"; 
-    //             console.log(searchValue);
-    //         } else if (searchValue === "" ) {
-    //             card.style.display = "block";
-    //             error.style.display = "none";
-    //         } else  {
-    //             card.style.display = "none";
-    //         }
-    //     });
-    // });
     
     /** Element du DOM*/
     const searchBar = document.querySelector("#searchbar"); /** correspond a la barre de recherche*/
     const divCard = document.querySelectorAll(".div-card"); /** tableau contenant les différentes card des plats */
-    
+    const errorMessage = document.querySelector("#error-search"); /** message d'erreur */
+
     searchBar.addEventListener('keyup', function() { /** mise en place d'un écoute sur la barre de recherche lors de la saisie de texte*/ 
+        let arrayCard = [];
     
-    divCard.forEach((card) => { /** Pour chaque card */
+        divCard.forEach((card) => { /** Pour chaque card */
             let searchValue = searchBar.value; /** On récupére la valeur saisie dans la barre de recherche */
             if (card.id.toLowerCase().includes(searchValue.toLowerCase()) && searchValue.length >=3) { /** si le tableau de noms inclue la valeur saisie */
-                card.style.display = "block"; 
-                console.log(card.id);
+                card.style.display = "block";
+                arrayCard.splice(card.id);
+                console.log(arrayCard);
             } else if ( searchValue.length <3) {
                 card.style.display = "block";
-                console.log(card.id);
             } else {
                 card.style.display = "none";
-                console.log(card.id);
+                arrayCard.push(card.id);
+                console.log(arrayCard);
             }
+            
         })
+        
+        if (arrayCard.length === divCard.length) {
+            errorMessage.style.display = "block";
+        } else {
+            errorMessage.style.display = "none";
+        }
+        
     })
 
     /** Recherchez dans les barres d'ingrédients d'appareils et d'ustensiles */ 
@@ -160,7 +149,7 @@ function factorySearch (data) {
     /** Recherche des Ingrédients*/     
     searchIngredient.addEventListener('keyup', function() { /** Création d'une écoute sur notre barre de recherche d'ingrédients */
         const inputIngredient = searchIngredient.value;
-
+        
         for (let i = 0; i < pIngredient.length; i++) { /** Pour chaque ingrédient */
             if (pIngredient[i].textContent.toLowerCase().includes(inputIngredient.toLowerCase())) { /** si notre ingrédient saisie et inclus dans notre liste */
                 pIngredient[i].style.display = "block";/** Alors l'ingrédient reste affiché */

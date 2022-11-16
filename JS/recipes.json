@@ -646,8 +646,8 @@
             },
             {
                 "ingredient": "Menthe",
-                "quantity": "",
-                "unit": ""
+                "quantity": " ",
+                "unit": " "
             }
         ],
         "time": 15,

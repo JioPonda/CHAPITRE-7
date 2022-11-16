@@ -40,24 +40,22 @@ function recipesFactory(data) {
     cardTime.setAttribute("class", "card-time");
     cardTime.textContent = time + "min";
     const cardSpan = document.createElement('span');
-    cardSpan.setAttribute("class" , "span-ingredient")
-    if ( ingredients.unit === " " && ingredients.quantity === " ") {
-      for ( let i = 0 ; i < ingredients.length ; i++) {
-      const cardIngredient = document.createElement("p"); 
-      cardIngredient.setAttribute("class" , "card-ingredient");
-      cardIngredient.innerHTML = cardIngredient.textContent + ingredients[i].ingredient;
-      cardSpan.appendChild(cardIngredient);
-      // console.log(ingredients[i].unit);
+    cardSpan.setAttribute("class" , "span-ingredient");
+    ingredients.forEach((ingredient) => {
+      if ( ingredient.unit === " " && ingredient.quantity === " ") {
+        const cardIngredient = document.createElement("p"); 
+        cardIngredient.setAttribute("class" , "card-ingredient");
+        cardIngredient.innerHTML = cardIngredient.textContent + ingredient.ingredient;
+        cardSpan.appendChild(cardIngredient);
+        console.log(ingredient.unit);
+      } else {
+        const cardIngredient = document.createElement("p");
+        cardIngredient.setAttribute("class" , "card-ingredient");
+        cardIngredient.innerHTML = cardIngredient.textContent + ingredient.ingredient + " : " + ingredient.quantity + " " + ingredient.unit;
+        cardSpan.appendChild(cardIngredient);
+        console.log(ingredient.unit);
       };
-    } else {
-      for ( let i = 0 ; i < ingredients.length ; i++) {
-      const cardIngredient = document.createElement("p");
-      cardIngredient.setAttribute("class" , "card-ingredient");
-      cardIngredient.innerHTML = cardIngredient.textContent + ingredients[i].ingredient + " : " + ingredients[i].quantity + " " + ingredients[i].unit;
-      cardSpan.appendChild(cardIngredient);
-      // console.log(ingredients[i].unit);
-      };
-    };
+    })
     const cardDescription = document.createElement("p");
     cardDescription.setAttribute("class" , "card-description");
     cardDescription.textContent = description;

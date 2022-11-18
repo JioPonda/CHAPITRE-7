@@ -494,6 +494,7 @@ divUstensilesButton.setAttribute("onclick","displayUstensilesList()");
 function hideTag () {
     const divcard = document.querySelectorAll(".div-card");
     const dishName = document.querySelectorAll("card-title");
+    const errorMessage = document.querySelector("#error-search");
     let crossedIngredient = document.querySelectorAll("#crossed-ingredient");
     let tagIngredientListe = [];
     let crossedAppareils = document.querySelectorAll("#crossed-appareils");
@@ -507,7 +508,10 @@ function hideTag () {
             tagIngredient[crossI].remove();
             tagIngredientListe.push(tagIngredient[crossI].textContent)
             if (tagIngredientListe.length == 1){
-                divcard.forEach((card)=>{card.style.display = 'block'})
+                divcard.forEach((card)=>{
+                    card.style.display = 'block';
+                    errorMessage.style.display = "none";
+                })
             }
         })
     }
@@ -518,7 +522,10 @@ function hideTag () {
             tagAppareils[crossA].remove();
             tagAppareilsListe.push(tagAppareils[crossA].textContent)
             if (tagAppareilsListe.length == 1){
-                divcard.forEach((card)=>{card.style.display = 'block'})
+                divcard.forEach((card)=>{
+                    card.style.display = 'block';
+                    errorMessage.style.display = "none";
+                })
             }
         })
     }
@@ -530,7 +537,10 @@ function hideTag () {
             tagUstensiles[crossU].remove();
             tagUstensilesListe.push(tagUstensiles[crossU].textContent)
             if (tagUstensilesListe.length == 1){
-                divcard.forEach((card)=>{card.style.display = 'block'})
+                divcard.forEach((card)=>{
+                    card.style.display = 'block';
+                    errorMessage.style.display = "none";
+                })
             }
         })
     }

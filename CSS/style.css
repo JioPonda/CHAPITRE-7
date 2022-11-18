@@ -46,16 +46,18 @@
    /* NAVBAR */
    
    #error-search {
-    display: none;
-    margin: 5px 0 0 -41vw;
-    color: #D04F4F;    
-   }
-
-   /** tags */
+       display: none;
+       margin: 5px 0 0 -41vw;
+       color: #D04F4F;    
+      }
+   
+      /** tags */
    
    #ingredient-tag-liste {
        display: flex;
        flex-direction: row;
+       flex-wrap: wrap;
+       width: 80vw;
        margin: 15px 0 0 9vw;
    }
    
@@ -81,6 +83,8 @@
    #appareil-tag-liste {
        display: flex;
        flex-direction: row;
+       flex-wrap: wrap;
+       width: 80vw;
        margin: 15px 0 0 9vw;
    }
    
@@ -111,6 +115,8 @@
    #ustensile-tag-liste {
        display: flex;
        flex-direction: row;
+       flex-wrap: wrap;
+       width: 80vw;
        margin: 15px 0 0 9vw;
    }
    
@@ -147,7 +153,7 @@
    #ingredient {
        /* aspect */
        height: 69px;
-       width: clamp(5vw ,10vw,15vw) ;
+       width: 10vw ;
        background-color: #3282F7;
        border-radius: 5px;
        border-color: #3282F7;
@@ -307,11 +313,6 @@
    }
    
    /* card skull*/
-
-   .pName {
-    display: none;
-   }    
-
    .div-card {
        display: block;
        height: 400px;
@@ -337,25 +338,25 @@
    }
    
    /* card infos left */
-    .div-recipes {
+   .div-recipes {
        display: flex;
        flex-direction: column;
        width: 50%;
-    }
+   }
    
-    .card-title{
+   .card-title{
        margin-left: 5%;
        font-size: 1.125em;    
-    }
+   }
    
-    .span-ingredient {
-        margin: 0px 0 0 0.9vw;
-    }
-
-    .card-ingredient {
-        margin-top: -5px;
-        font-size: 0.75em;
-    }
+   .span-ingredient {
+       margin: 0px 0 0 1vw;
+   }
+   
+   .card-ingredient {
+       font-size: 0.75em;
+       margin-top: -5px;
+   }
    
    /* card infos right */
    
@@ -383,14 +384,273 @@
    }
    
    .card-description{
-    /* height: 45%; */
-    width: 10vw;
-    margin-right: 12%;
-    font-family: 'Roboto';
-    font-weight: 400;
-    font-size: 0.75em;
-    -webkit-line-clamp: 4;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    }
+       /* height: 45%; */
+       width: 10vw;
+       margin-right: 12%;
+       font-family: 'Roboto';
+       font-weight: 400;
+       font-size: 0.75em;
+       -webkit-line-clamp: 4;
+       display: -webkit-box;
+       -webkit-box-orient: vertical;
+       overflow: hidden;
+   }
+   
+   @media screen and (max-width : 1440px) {
+   
+       .search-zone {
+           margin: 0px 0 0 4vw;
+       }
+   
+       .card-title {
+           font-size: 0.8em;
+       }
+    
+       .card-ingredient {
+           font-size: 0.6em;
+           margin-top: 10px;
+       }
+   
+       .card-clock {
+           padding-right: 1.5em;
+           height: 1em;
+           width: 1em;
+       }
+   
+       .card-time {
+           font-size: 15px;
+       }
+   
+       .card-description {
+           font-size: 0.65em;
+           margin-top: 30px;
+           margin-left: 5px;
+       }
+   }
+   
+   @media screen and (max-width : 1024px) {
+   
+       #ingredient {
+           width: 15vw;
+       }
+   
+       #appareils {
+           width: 15vw;
+       }
+   
+       #ustensiles {
+           width: 15vw;
+       }
+   
+       .chevron-ingredients {
+           margin: -55px 0 0 13vw;
+       }
+   
+       .chevron-appareils {
+           margin: -55px 0 0 13vw;
+       }
+   
+       .chevron-ustensiles {
+           margin: -55px 0 0 13vw;
+       }
+   
+       .card-title {
+           font-size: 0.75em;
+       }
+    
+       .card-ingredient {
+           font-size: 0.55em;
+           margin-top: -3px;
+       }
+   
+       .card-clock {
+           padding-right: 1em;
+           height: 0.8em;
+           width: 0.8em;
+       }
+   
+       .card-time {
+           font-size: 13px;
+       }
+   
+       .card-description {
+           margin-top: 35px;
+           margin-left: 5px;
+       }    
+   }
+   
+   @media screen and (max-width : 820px) {
+   
+       #ingredient {
+           width: 20vw;
+       }
+   
+       #appareils {
+           width: 20vw;
+       }
+   
+       #ustensiles {
+           width: 20vw;
+       }
+   
+       .chevron-ingredients {
+           margin: -55px 0 0 18vw;
+       }
+   
+       .chevron-appareils {
+           margin: -55px 0 0 18vw;
+       }
+   
+       .chevron-ustensiles {
+           margin: -55px 0 0 18vw;
+       }
+   
+       #suggestions-ingredient {
+           width: 80vw;
+       }
+   
+       #suggestions-ustensiles {
+           width: 38vw;
+       }
+       
+       .card-title {
+           font-size: 0.65em;
+       }
+   }
+   
+   @media screen and (max-width: 425px) {   
+   
+       header img {
+           height: 40px;
+           width: auto;
+       }
+   
+       header h1 {
+           font-family: 'DM Sans';
+           font-style: normal;
+           font-weight: 700;
+           font-size: 1.125em;
+           color: #D04F4F;
+       }
+   
+       header input {
+           Width: 80vw;
+           Height: 45px;
+           background: #E7E7E7;
+           border-color: #FFF;
+           border-radius: 10px;
+           margin: 10px 0 0 0vw;
+           font-style: normal;
+           font-weight: 400;
+           font-size: 1em;
+       }
+   
+       .search-zone {
+           margin: -15px 0 0 5vw;
+       }
+       
+       #ingredient {
+           height: 45px;
+           font-size: 0.8em;
+       }
+       
+       .chevron-ingredients {
+           margin: -34px 0 0 18vw;
+           font-size: 0.8em;
+       }
+       
+       #suggestions-ingredient {
+           margin-left: -40px;
+           border-radius: 5px;
+       }
+   
+       #pIngredient {
+           font-size: 0.75em;
+       }
+   
+       #appareils {
+           height: 45px;
+           font-size: 0.8em;
+       }
+   
+       .chevron-appareils {
+           margin: -34px 0 0 18vw;
+           font-size: 0.8em;
+       }
+   
+       #suggestions-appareils {
+           margin-left: -69px;
+           border-radius: 5px;
+       }
+   
+       #pAppareils {
+           font-size: 0.75em;
+       }
+   
+       #ustensiles {
+           height: 45px;
+           font-size: 0.8em;
+       }
+   
+       .chevron-ustensiles {
+           margin:  -34px 0 0 18vw;
+           font-size: 0.8em;
+       }
+   
+       #suggestions-ustensiles {
+           margin-left: -13px;
+           border-radius: 5px;
+       }
+   
+       #pUstensils {
+           font-size: 0.75em;
+       }
+   
+       
+       .div-card {
+           height: 300px;
+       }   
+       
+       .grey-zone {
+           height: 35%;
+           width: 100%;
+           background: #C7BEBE;
+           border-radius: 5px 5px 0px 0px;
+       }
+       
+       .card-title {
+           margin-top: 3px;
+           font-size: 0.45em;
+       }
+   
+       .card-ingredient {
+           font-size: 0.4em;
+           margin-top: -3px;
+       }
+   
+       .card-clock {
+           margin-top: -5px;
+           padding-right: 0.2em;
+           height: 0.5em;
+           width: 0.5em;
+       }
+   
+       .card-time {
+           font-size: 8px;
+           margin-top: 4px;
+       }
+   
+       .card-description {
+           height: 60%;
+           width: 10vw;
+           margin-right: 0%;
+           margin-top: 0;
+           font-family: 'Roboto';
+           font-weight: 400;
+           font-size: 0.4em;
+           -webkit-line-clamp: 13;
+           display: -webkit-box;
+           -webkit-box-orient: vertical;
+           overflow: hidden;
+       }
+   }

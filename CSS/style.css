@@ -654,3 +654,29 @@
            overflow: hidden;
        }
    }
+
+   @media screen and (max-width: 375px) {
+    
+    .chevron-ingredients {
+        margin: -31px 0 0 18.5vw;
+        font-size: 0.8em;
+    }
+    .chevron-appareils {
+        margin: -31px 0 0 18.5vw;
+        font-size: 0.8em;
+    }
+    .chevron-ustensiles {
+        margin: -31px 0 0 18.5vw;
+        font-size: 0.8em;
+    }
+
+    .card-title {
+        margin-top: 3px;
+        font-size: 0.3em;
+    }
+    
+    .card-ingredient {
+        font-size: 0.3em;
+        margin-top: -3px;
+    }
+   }

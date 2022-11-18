@@ -548,15 +548,20 @@ header input {
     .search-zone {
         margin: -15px 0 0 5vw;
     }
-
+    
     #ingredient {
         height: 45px;
         font-size: 0.8em;
     }
-
+    
     .chevron-ingredients {
         margin: -34px 0 0 18vw;
         font-size: 0.8em;
+    }
+    
+    #suggestions-ingredient {
+        margin-left: -40px;
+        border-radius: 5px;
     }
 
     #pIngredient {
@@ -573,11 +578,79 @@ header input {
         font-size: 0.8em;
     }
 
+    #suggestions-appareils {
+        margin-left: -69px;
+        border-radius: 5px;
+    }
+
     #pAppareils {
         font-size: 0.75em;
     }
 
+    #ustensiles {
+        height: 45px;
+        font-size: 0.8em;
+    }
+
+    .chevron-ustensiles {
+        margin:  -34px 0 0 18vw;
+        font-size: 0.8em;
+    }
+
+    #suggestions-ustensiles {
+        margin-left: -13px;
+        border-radius: 5px;
+    }
+
+    #pUstensils {
+        font-size: 0.75em;
+    }
+
+    
     .div-card {
-        height: 200px;
+        height: 300px;
     }   
+    
+    .grey-zone {
+        height: 35%;
+        width: 100%;
+        background: #C7BEBE;
+        border-radius: 5px 5px 0px 0px;
+    }
+    
+    .card-title {
+        margin-top: 3px;
+        font-size: 0.45em;
+    }
+
+    .card-ingredient {
+        font-size: 0.4em;
+        margin-top: -3px;
+    }
+
+    .card-clock {
+        margin-top: -5px;
+        padding-right: 0.2em;
+        height: 0.5em;
+        width: 0.5em;
+    }
+
+    .card-time {
+        font-size: 8px;
+        margin-top: 4px;
+    }
+
+    .card-description {
+        height: 60%;
+        width: 10vw;
+        margin-right: 0%;
+        margin-top: 0;
+        font-family: 'Roboto';
+        font-weight: 400;
+        font-size: 0.4em;
+        -webkit-line-clamp: 13;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
 }

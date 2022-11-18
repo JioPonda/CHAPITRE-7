@@ -47,13 +47,11 @@ function recipesFactory(data) {
         cardIngredient.setAttribute("class" , "card-ingredient");
         cardIngredient.innerHTML = cardIngredient.textContent + ingredient.ingredient;
         cardSpan.appendChild(cardIngredient);
-        console.log(ingredient.unit);
       } else {
         const cardIngredient = document.createElement("p");
         cardIngredient.setAttribute("class" , "card-ingredient");
         cardIngredient.innerHTML = cardIngredient.textContent + ingredient.ingredient + " : " + ingredient.quantity + " " + ingredient.unit;
         cardSpan.appendChild(cardIngredient);
-        console.log(ingredient.unit);
       };
     })
     const cardDescription = document.createElement("p");

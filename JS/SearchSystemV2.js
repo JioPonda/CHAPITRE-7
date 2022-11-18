@@ -149,10 +149,10 @@ function factorySearch (data) {
     /** Recherche des Ingrédients*/     
     searchIngredient.addEventListener('keyup', function() { /** Création d'une écoute sur notre barre de recherche d'ingrédients */
         const inputIngredient = searchIngredient.value;
-        
+
         for (let i = 0; i < pIngredient.length; i++) { /** Pour chaque ingrédient */
             if (pIngredient[i].textContent.toLowerCase().includes(inputIngredient.toLowerCase())) { /** si notre ingrédient saisie et inclus dans notre liste */
-                pIngredient[i].style.display = "block";/** Alors l'ingrédient reste affiché */
+                pIngredient[i].style.display = "block"; /** Alors l'ingrédient reste affiché */
             } else {
                 pIngredient[i].style.display = "none"; /** Sinon il disparais*/
             }
@@ -164,15 +164,25 @@ function factorySearch (data) {
     });
 
     /** Recherche des Ingrédients via suggestion + création du tag au click*/ 
-    for (let iI = 0; iI < pIngredient.length; iI++)
-    pIngredient[iI].addEventListener('click', function() { /** Pour chaque ingrédient */
-        for (let i = 0; i < spanIngredient.length; i++) { /** Création d'une écoute sur nos ingrédients */
+    for (let iI = 0; iI < pIngredient.length; iI++) /** Pour chaque ingrédient */
+    pIngredient[iI].addEventListener('click', function() { /** Création d'une écoute sur nos ingrédients */
+        let ingredientCardArray = [];
+        for (let i = 0; i < spanIngredient.length; i++) { /** Pour chaque Span contenant nos ingrédient */
             if (spanIngredient[i].textContent.toLowerCase().includes(pIngredient[iI].textContent.toLowerCase())) { /** si notre Span contient notre ingrédient */
                 divCard[i].style.display = "block"; /** Alors notre card reste affiché */
+                ingredientCardArray.splice(divCard[i]);   
             } else {
                 divCard[i].style.display = "none"; /** Sinon elle disparais */
+                ingredientCardArray.push(divCard[i]);
             }
         }
+
+        if (ingredientCardArray.length === divCard.length) {
+            errorMessage.style.display = "block";
+        } else {
+            errorMessage.style.display = "none";
+        }
+
         /** Création du tag au click sur les ingrédients */
         const tag = document.getElementById("ingredient-tag-liste");
         const divTag = document.createElement("div");
@@ -183,30 +193,47 @@ function factorySearch (data) {
         const crossTag = document.createElement("i");
         crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
         crossTag.setAttribute("id" , "crossed-ingredient");
-        crossTag.setAttribute("onclick" , "hideTagIngredient ()");
+        crossTag.setAttribute("onclick" , "hideTag ()");
         divTag.appendChild(iTag);
         divTag.appendChild(crossTag);
-        tag.appendChild(divTag);     
-        console.log(tag);   
+        tag.appendChild(divTag);
     });
 
     /** Affichage des tag ingrédients via la touche ENTER */ 
     const ingredientSearch = document.querySelector("#ingredient");
     ingredientSearch.addEventListener('keyup', function(e) { /** Création d'une écoute d'évenement sur notre zone de saisie */
-        if (ingredientList.includes(ingredientSearch.value.toLowerCase())) { /**Si notre liste d'ingrédient inclue l'ingrédient saisie alors il crée un tag */
-            const tag = document.getElementById("ingredient-tag-liste");
+        let ingredientEnterCardArray = [];
+        if (e.key === "Enter" && ingredientList.includes(ingredientSearch.value.toLowerCase())) {
+            for (let i = 0; i < spanIngredient.length; i++) { /** Pour chaque Span contenant nos ingrédient */
+                if (spanIngredient[i].textContent.toLowerCase().includes(ingredientSearch.value.toLowerCase())) { /** si notre Span contient notre ingrédient */
+                    divCard[i].style.display = "block"; /** Alors notre card reste affiché */
+                    ingredientEnterCardArray.splice(divCard[i]);   
+                } else {
+                    divCard[i].style.display = "none"; /** Sinon elle disparais */
+                    ingredientEnterCardArray.push(divCard[i]);
+                }
+            }
+
+            if (ingredientEnterCardArray.length === divCard.length) {
+                errorMessage.style.display = "block";
+            } else {
+                errorMessage.style.display = "none";
+            }
+        
+            const tag = document.getElementById("ingredient-tag-liste"); 
             const divTag = document.createElement("div");
             divTag.setAttribute("class" , "tag-ingredient");
             const iTag = document.createElement("p");
             iTag.setAttribute("class" , "text-ingredient-tag");
             const crossTag = document.createElement("i");
             crossTag.setAttribute("id" , "crossed-ingredient");
-            crossTag.setAttribute("onclick" , "hideTagIngredient ()");
+            crossTag.setAttribute("onclick" , "hideTagIngredient ()"); 
+            
             if (e.key === "Enter" & ingredientSearch.value !== "") { /** Si la touche ENTER et que la valeur de la zone de recherche n'est pas vide alors il crée un tag */
-                iTag.textContent = ingredientSearch.value;
+                iTag.textContent = ingredientSearch.value; 
                 crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
                 crossTag.setAttribute("id" , "crossed-ingredient");       
-                crossTag.setAttribute("onclick" , "hideTagIngredient ()");
+                crossTag.setAttribute("onclick" , "hideTag ()");
                 divTag.appendChild(iTag);
                 divTag.appendChild(crossTag);
                 tag.appendChild(divTag);
@@ -232,15 +259,25 @@ function factorySearch (data) {
     });
     
     /** Recherche des Appareils via suggestion + création du tag au click */ 
-    for (let iA = 0; iA < pAppareils.length; iA++) /** Pour chaque appareil */
-    pAppareils[iA].addEventListener('click', function() { /** Création d'une écoute sur nos appareils */
+    for (let iA = 0; iA < pAppareils.length; iA++)/** Pour chaque appareil */
+    pAppareils[iA].addEventListener('click', function() {/** Création d'une écoute sur nos appareils */
+        let appareilCardArray = [];
         for (let i = 0; i < cardDescription.length; i++) { /** Pour chaque déscription contenant nos appareils */
             if (cardDescription[i].textContent.includes(pAppareils[iA].textContent)) { /** Si notre déscription contient notre appareil */
                 divCard[i].style.display = "block"; /** Alors notre card reste affiché */
+                appareilCardArray.splice(divCard[i]);
             } else {
                 divCard[i].style.display = "none"; /** Sinon elle disparais */
+                appareilCardArray.push(divCard[i]);
             }
         }
+
+        if (appareilCardArray.length === divCard.length) {
+            errorMessage.style.display = "block";
+        } else {
+            errorMessage.style.display = "none";
+        }
+
         /** Création du tag au click sur les appareils */
         const tag = document.getElementById("appareil-tag-liste");
         const divTag = document.createElement("div");
@@ -251,7 +288,7 @@ function factorySearch (data) {
         const crossTag = document.createElement("i");
         crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
         crossTag.setAttribute("id" , "crossed-appareils");
-        crossTag.setAttribute("onclick" , "hideTagAppareils ()");
+        crossTag.setAttribute("onclick" , "hideTag ()");
         divTag.appendChild(aTag);
         divTag.appendChild(crossTag);
         tag.appendChild(divTag);
@@ -259,8 +296,25 @@ function factorySearch (data) {
     
     /** Affichage des tag appareils via la touche ENTER */ 
     const appareilSearch = document.querySelector("#appareils");
-    appareilSearch.addEventListener('keyup', function(e) {  /** Création d'une écoute d'évenement sur notre zone de saisie */
-        if (appareilList.includes(appareilSearch.value.toLowerCase())) { /**Si notre liste d'appareil inclue l'appareil saisie alors il crée un tag */
+    appareilSearch.addEventListener('keyup', function(e) { /** Création d'une écoute d'évenement sur notre zone de saisie */
+        let appareilEnterCardArray = [];
+        if (e.key === "Enter" && appareilList.includes(appareilSearch.value.toLowerCase())) {
+            for (let i = 0; i < cardDescription.length; i++) { /** Pour chaque déscription contenant nos appareils */
+                if (cardDescription[i].textContent.includes(appareilSearch.value.toLowerCase())) { /** Si notre déscription contient notre appareil */
+                    divCard[i].style.display = "block"; /** Alors notre card reste affiché */
+                    appareilEnterCardArray.splice(divCard[i]);
+                } else {
+                    divCard[i].style.display = "none"; /** Sinon elle disparais */
+                    appareilEnterCardArray.push(divCard[i]);
+                }
+            }
+
+            if (appareilEnterCardArray.length === divCard.length) {
+                errorMessage.style.display = "block";
+            } else {
+                errorMessage.style.display = "none";
+            }
+
             const tag = document.getElementById("appareil-tag-liste");
             const divTag = document.createElement("div");
             divTag.setAttribute("class" , "tag-appareil");
@@ -268,12 +322,12 @@ function factorySearch (data) {
             aTag.setAttribute("class" , "text-appareil-tag");
             const crossTag = document.createElement("i");
             crossTag.setAttribute("id" , "crossed-appareils");
-            crossTag.setAttribute("onclick" , "hideTagAppareils ()");
-            if (e.key === "Enter" & appareilSearch.value !== "") { /** Si la touche ENTER et que la valeur de la zone de recherche n'est pas vide alors il crée un tag */
-                aTag.textContent = appareilSearch.value;
+            crossTag.setAttribute("onclick" , "hideTag ()");
+
+            if (e.key === "Enter" & appareilSearch.value !== "") { /** Si la touche ENTER et que la valeur de la zone de recherche n'est pas vide alors il crée un tag */                aTag.textContent = appareilSearch.value;
                 crossTag.setAttribute("id" , "crossed-appareils");        
                 crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
-                crossTag.setAttribute("onclick" , "hideTagAppareils ()");
+                crossTag.setAttribute("onclick" , "hideTag ()");
                 divTag.appendChild(aTag);
                 divTag.appendChild(crossTag);
                 tag.appendChild(divTag);
@@ -300,14 +354,18 @@ function factorySearch (data) {
     /** Recherche des Ustensiles via suggestion + création du tag au click */ 
     for (let iU = 0; iU < pUstensils.length; iU++) /** Pour chaque ustensile */
     pUstensils[iU].addEventListener('click', function() { /** Création d'une écoute sur nos ustensiles */
+        let ustensileCardArray = [];
         for (let i = 0; i < cardDescription.length; i++) { /** Pour chaque déscription contenant nos ustensiles */
             if (cardDescription[i].textContent.includes(pUstensils[iU].textContent)) { /** Si notre déscription contient notre ustensile */
                 divCard[i].style.display = "block"; /** Alors notre card reste affiché */
+                ustensileCardArray.splice(divCard[i]);
             } else {
                 divCard[i].style.display = "none"; /** Sinon elle disparais */
+                ustensileCardArray.push(divCard[i]);
             }
         }
 
+        /** Création du tag au click sur les ustensiles */
         const tag = document.getElementById("ustensile-tag-liste");
         const divTag = document.createElement("div");
         divTag.setAttribute("class" , "tag-ustensile");
@@ -317,16 +375,39 @@ function factorySearch (data) {
         const crossTag = document.createElement("i");
         crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
         crossTag.setAttribute("id" , "crossed-ustensiles");
-        crossTag.setAttribute("onclick" , "hideTagUstensiles ()");
+        crossTag.setAttribute("onclick" , "hideTag ()");
         divTag.appendChild(uTag);
         divTag.appendChild(crossTag);
         tag.appendChild(divTag);
+
+        if (ustensileCardArray.length === divCard.length) {
+            errorMessage.style.display = "block";
+        } else {
+            errorMessage.style.display = "none";
+        }
     });    
 
     /** Affichage des tag ustensiles via la touche ENTER */ 
     const ustensileSearch = document.querySelector("#ustensiles");
     ustensileSearch.addEventListener('keyup', function(e) { /** Création d'une écoute d'évenement sur notre zone de saisie */
-        if (ustensilslList.includes(ustensileSearch.value.toLowerCase())) { /**Si notre liste d'ustensile inclue l'ustensile saisie alors il crée un tag */
+        let ustensileEnterCardArray = [];
+        if (e.key === "Enter" && ustensilslList.includes(ustensileSearch.value.toLowerCase())) { /**Si notre liste d'ustensile inclue l'ustensile saisie alors il crée un tag */    
+            for (let i = 0; i < cardDescription.length; i++) { /** Pour chaque déscription contenant nos appareils */
+                if (cardDescription[i].textContent.includes(ustensileSearch.value.toLowerCase())) { /** Si notre déscription contient notre appareil */
+                    divCard[i].style.display = "block"; /** Alors notre card reste affiché */
+                    ustensileEnterCardArray.splice(divCard[i]);
+                } else {
+                    divCard[i].style.display = "none"; /** Sinon elle disparais */
+                    ustensileEnterCardArray.push(divCard[i]);
+                }
+            }
+
+            if (ustensileEnterCardArray.length === divCard.length) {
+                errorMessage.style.display = "block";
+            } else {
+                errorMessage.style.display = "none";
+            } 
+
             const tag = document.getElementById("ustensile-tag-liste");
             const divTag = document.createElement("div");
             divTag.setAttribute("class" , "tag-ustensile");
@@ -334,11 +415,11 @@ function factorySearch (data) {
             uTag.setAttribute("class" , "text-ustensile-tag");
             const crossTag = document.createElement("i");
             crossTag.setAttribute("id" , "crossed-ustensiles");
-            crossTag.setAttribute("onclick" , "hideTagUstensiles ()");
+            crossTag.setAttribute("onclick" , "hideTag ()");
             if (e.key === "Enter" & ustensileSearch.value !== "") { /** Si la touche ENTER et que la valeur de la zone de recherche n'est pas vide alors il crée un tag */
                 uTag.textContent = ustensileSearch.value;
                 crossTag.setAttribute("id" , "crossed-ustensiles");
-                crossTag.setAttribute("onclick" , "hideTagUstensiles ()");
+                crossTag.setAttribute("onclick" , "hideTag ()");
                 crossTag.setAttribute("class" , "fa-regular fa-circle-xmark");
                 divTag.appendChild(uTag);
                 divTag.appendChild(crossTag);
@@ -346,7 +427,6 @@ function factorySearch (data) {
             }
         }
     });
-
 
     return {ingredients,appliance,ustensils};
 }
@@ -420,42 +500,62 @@ function hideUstensilesList () {
 const divUstensilesButton = document.getElementById("ustensiles");
 divUstensilesButton.setAttribute("onclick","displayUstensilesList()");
 
-/** Suppression des tag ingrédient */
-function hideTagIngredient () {
-    const crossedIngredient = document.querySelectorAll("#crossed-ingredient");
+
+
+// /** Suppression des tag ingrédient */
+
+function hideTag () {
+    const divcard = document.querySelectorAll(".div-card");
+    const dishName = document.querySelectorAll("card-title");
+    const errorMessage = document.querySelector("#error-search");
+    let crossedIngredient = document.querySelectorAll("#crossed-ingredient");
+    let tagIngredientListe = [];
+    let crossedAppareils = document.querySelectorAll("#crossed-appareils");
+    let tagAppareilsListe = [];
+    let crossedUstensiles = document.querySelectorAll("#crossed-ustensiles");
+    let tagUstensilesListe = [];
+    console.log(dishName);
     for ( let crossI = 0; crossI < crossedIngredient.length; crossI++){
-            const tagIngredient = document.querySelectorAll('.tag-ingredient');
-            crossedIngredient[crossI].addEventListener('click' , function () {
+        const tagIngredient = document.querySelectorAll('.tag-ingredient');
+        crossedIngredient[crossI].addEventListener('click' , function () {
             tagIngredient[crossI].remove();
+            tagIngredientListe.push(tagIngredient[crossI].textContent)
+            if (tagIngredientListe.length == 1){
+                divcard.forEach((card)=>{
+                    card.style.display = 'block';
+                    errorMessage.style.display = "none";
+                })
+            }
         })
     }
-}
 
-/** Suppression des tag appareils */
-function hideTagAppareils () {
-    const crossedAppareils = document.querySelectorAll("#crossed-appareils");
     for ( let crossA = 0; crossA < crossedAppareils.length; crossA++){
         const tagAppareils = document.querySelectorAll('.tag-appareil');
-            crossedAppareils[crossA].addEventListener('click' , function () {
+        crossedAppareils[crossA].addEventListener('click' , function () {
             tagAppareils[crossA].remove();
+            tagAppareilsListe.push(tagAppareils[crossA].textContent)
+            if (tagAppareilsListe.length == 1){
+                divcard.forEach((card)=>{
+                    card.style.display = 'block';
+                    errorMessage.style.display = "none";
+                })
+            }
         })
     }
-}
 
-/** Suppression des tag ustensiles */
-function hideTagUstensiles () {
-    const crossedUstensiles = document.querySelectorAll("#crossed-ustensiles");
     for ( let crossU = 0; crossU < crossedUstensiles.length; crossU++){
         const tagUstensiles = document.querySelectorAll('.tag-ustensile');
-            crossedUstensiles[crossU].addEventListener('click' , function () {
+        crossedUstensiles[crossU].addEventListener('click' , function () {
             tagUstensiles[crossU].remove();
+            tagUstensiles[crossU].remove();
+            tagUstensilesListe.push(tagUstensiles[crossU].textContent)
+            if (tagUstensilesListe.length == 1){
+                divcard.forEach((card)=>{
+                    card.style.display = 'block';
+                    errorMessage.style.display = "none";
+                })
+            }
         })
     }
 }
-
-/** Clean de la page quand les tag sont supprimez */ 
-const ingredientTagList = document.querySelector('#ingredient-tag-liste');
-const appareilTagList = document.querySelector('#appareil-tag-liste');
-const ustensileTagList = document.querySelector('#ustensile-tag-liste');
-const divCard = document.querySelectorAll(".div-card");
 

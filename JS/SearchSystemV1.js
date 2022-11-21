@@ -214,7 +214,6 @@ function factorySearch (data) {
             iTag.setAttribute("class" , "text-ingredient-tag");
             const crossTag = document.createElement("i");
             crossTag.setAttribute("id" , "crossed-ingredient");
-            crossTag.setAttribute("onclick" , "hideTagIngredient ()"); 
             
             if (e.key === "Enter" & ingredientSearch.value !== "") { /** Si la touche ENTER et que la valeur de la zone de recherche n'est pas vide alors il crée un tag */
                 iTag.textContent = ingredientSearch.value; 
@@ -412,7 +411,7 @@ function factorySearch (data) {
                 divTag.appendChild(crossTag);
                 tag.appendChild(divTag);
             }
-        }
+        }        
     });
 
     return {ingredients,appliance,ustensils};
@@ -489,11 +488,16 @@ divUstensilesButton.setAttribute("onclick","displayUstensilesList()");
 
 
 
-// /** Suppression des tag ingrédient */
+/** Suppression des tag ingrédient */
+
+const dishName = document.querySelectorAll("card-title");
+let dishNameListe = [];
+dishName.forEach((title) => {dishNameListe.push(title.textContent)});
+console.log(dishNameListe);
+
 
 function hideTag () {
     const divcard = document.querySelectorAll(".div-card");
-    const dishName = document.querySelectorAll("card-title");
     const errorMessage = document.querySelector("#error-search");
     let crossedIngredient = document.querySelectorAll("#crossed-ingredient");
     let tagIngredientListe = [];
@@ -501,12 +505,13 @@ function hideTag () {
     let tagAppareilsListe = [];
     let crossedUstensiles = document.querySelectorAll("#crossed-ustensiles");
     let tagUstensilesListe = [];
-    console.log(dishName);
+
     for ( let crossI = 0; crossI < crossedIngredient.length; crossI++){
         const tagIngredient = document.querySelectorAll('.tag-ingredient');
+        for (let tI = 0; tI < tagIngredient.length; tI++)
         crossedIngredient[crossI].addEventListener('click' , function () {
-            tagIngredient[crossI].remove();
-            tagIngredientListe.push(tagIngredient[crossI].textContent)
+            tagIngredient[tI].remove();
+            tagIngredientListe.push(tagIngredient[tI].textContent)
             if (tagIngredientListe.length == 1){
                 divcard.forEach((card)=>{
                     card.style.display = 'block';
@@ -518,9 +523,10 @@ function hideTag () {
 
     for ( let crossA = 0; crossA < crossedAppareils.length; crossA++){
         const tagAppareils = document.querySelectorAll('.tag-appareil');
+        for (let tA = 0; tA < tagAppareils.length; tA++)
         crossedAppareils[crossA].addEventListener('click' , function () {
-            tagAppareils[crossA].remove();
-            tagAppareilsListe.push(tagAppareils[crossA].textContent)
+            tagAppareils[tA].remove();
+            tagAppareilsListe.push(tagAppareils[tA].textContent)
             if (tagAppareilsListe.length == 1){
                 divcard.forEach((card)=>{
                     card.style.display = 'block';
@@ -532,10 +538,10 @@ function hideTag () {
 
     for ( let crossU = 0; crossU < crossedUstensiles.length; crossU++){
         const tagUstensiles = document.querySelectorAll('.tag-ustensile');
+        for (let tU = 0; tU < tagUstensiles.length; tU++)
         crossedUstensiles[crossU].addEventListener('click' , function () {
-            tagUstensiles[crossU].remove();
-            tagUstensiles[crossU].remove();
-            tagUstensilesListe.push(tagUstensiles[crossU].textContent)
+            tagUstensiles[tU].remove();
+            tagUstensilesListe.push(tagUstensiles[tU].textContent)
             if (tagUstensilesListe.length == 1){
                 divcard.forEach((card)=>{
                     card.style.display = 'block';

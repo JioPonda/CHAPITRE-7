@@ -478,7 +478,10 @@
         margin-left: 5px;
     }    
 }
-   
+
+
+/***************************** Version Mobile ************************/
+
 @media screen and (max-width : 820px) {
 
     body {
@@ -739,5 +742,120 @@
         display: -webkit-box;
         -webkit-box-orient: vertical;
         overflow: hidden;
+    }
+}
+
+@media screen and (max-width : 425px) {
+    
+    header input {
+    /* placeholder */
+        font-size: 1.5em;
+    }
+
+    #error-search {
+        margin: 10px 0 0 3.5vw;
+        font-size: 1.2em; 
+    }
+    
+
+    .tag-ingredient {
+        font-size: 1.5em;
+    }
+
+    #ingredient {
+        font-size: 1.5em;
+    }
+
+    #pIngredient {
+        font-size: 1.5em;
+    }
+
+    .chevron-ingredients {
+        font-size: 1.5em;
+        margin: -45px 0 0 65vw;
+    }
+
+    #appareils {
+        font-size: 1.5em;
+    }
+
+    .tag-appareil {
+        font-size: 1.5em;
+    }
+
+    #pAppareils {
+        font-size: 1.5em;
+    }
+
+    .chevron-appareils {
+        font-size: 1.5em;
+        margin: -45px 0 0 65vw;
+    }
+
+    #ustensiles {
+        font-size: 1.5em;
+    }
+
+    #pUstensils {
+        font-size: 1.5em;
+    }
+
+    .chevron-ustensiles {
+        font-size: 1.5em;
+        margin: -45px 0 0 65vw;
+    }
+
+    .div-card {
+        height: 500px;
+    }
+
+    .card-title {
+        font-size: 1em;
+    }
+
+    .card-ingredient {
+        font-size: 0.8em;
+        margin-top: -10px;
+    }
+
+    .card-clock {
+        padding-right: 0.5em;
+        height: 1.125em;
+        width: 1.125em;
+    }
+
+    .card-time {
+        font-size: 1em;
+    }
+
+    .div-time {
+        margin-top: 5px;
+    }
+
+    .card-description {
+        width: 30vw;
+        font-size: 1em;
+        margin: 10px 0 0 3vw;
+        -webkit-line-clamp: 7;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+}
+
+@media screen and (max-width : 320px) {
+    
+    header img {
+        height: 60px;
+    }
+
+    header h1 {
+        font-size: 2.25em;
+        align-items: center;
+    }
+
+    .card-title {
+        font-size: 0.9em;
     }
 }
